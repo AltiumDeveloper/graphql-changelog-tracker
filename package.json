@@ -1,0 +1,10 @@
+{
+  "name": "graphql-changelog-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated GraphQL schema snapshots and changelog, powered by @graphql-inspector/core.",
+  "dependencies": {
+    "@graphql-inspector/core": "^8.0.0",
+    "graphql": "^17.0.0"
+  }
+}
