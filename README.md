@@ -10,35 +10,19 @@ A **GitHub Action** runs the snapshot capture on a schedule and on demand — se
 
 ## 1. Capturing schema snapshots
 
-`Scripts/takeSchemaSnapshot.ps1` introspects a live GraphQL endpoint and saves a point-in-time snapshot of its schema — as either SDL (`.graphql`, the default) or the raw introspection result (`.json`). SDL is produced by a small Node helper (`Scripts/introspection-to-sdl.mjs`) using `graphql`'s `buildClientSchema` + `printSchema`. Files are named `<Name>-snapshot-<stamp>`, and the script can skip storing a capture that is identical to the previous one.
+`Scripts/takeSchemaSnapshot.ps1` downloads a live GraphQL endpoint's schema as SDL (it requests the endpoint's `?sdl`) and saves a point-in-time snapshot (`.graphql`). Files are named `<Name>-snapshot-<stamp>`, and the script can skip storing a capture identical to the previous one. It's pure PowerShell — no Node or other dependencies.
 
 ### Prerequisites
 
-- **[Node.js](https://nodejs.org/)** (includes `npm`) — required for SDL output.
-- **Node dependency** (`graphql`), installed from the repo root:
-
-  ```bash
-  npm ci
-  ```
-
 - **PowerShell** to run the script (Windows PowerShell, or [PowerShell 7+](https://learn.microsoft.com/powershell/) on macOS/Linux).
-
-For `-Format json`, no Node or dependencies are needed — the capture is pure PowerShell. For SDL, the script preflights for `node` and the helper and exits with a helpful message if either is missing.
 
 ### How to use
 
 ```powershell
-.\takeSchemaSnapshot.ps1 -Endpoint <url> -Name <name> -OutputDir <dir> [-Format graphql|json] [-IncludeTime] [-SkipIfUnchanged] [-Headers <hashtable>]
+.\takeSchemaSnapshot.ps1 -Endpoint <url> -Name <name> -OutputDir <dir> [-IncludeTime] [-SkipIfUnchanged] [-Headers <hashtable>]
 ```
 
-Run it from the `Scripts` folder (paths in the examples are relative to it).
-
-#### Output format (`-Format`)
-
-- **`graphql`** (default) — SDL, converted from the introspection result.
-- **`json`** — the raw introspection result, saved as-is.
-
-The extension follows the format (`.graphql` or `.json`).
+Run it from the `Scripts` folder (paths in the examples are relative to it). The snapshot is always SDL (`.graphql`), downloaded from the endpoint's `?sdl`.
 
 #### Filename stamping (`-IncludeTime`)
 
@@ -47,11 +31,11 @@ The extension follows the format (`.graphql` or `.json`).
 
 #### Skip unchanged (`-SkipIfUnchanged`)
 
-If the new capture is byte-identical to the most recent snapshot of the same format already in `-OutputDir`, it is deleted and nothing is written — so an unchanged schema is neither stored nor committed. Reliable for SDL (whose output is deterministic); raw JSON may differ run-to-run due to response noise.
+If the new capture is byte-identical to the most recent snapshot already in `-OutputDir`, it is deleted and nothing is written — so an unchanged schema is neither stored nor committed.
 
 #### Authentication (`-Headers`)
 
-Pass a hashtable of HTTP headers for the introspection request, e.g. `-Headers @{ Authorization = "Bearer <token>" }`.
+Pass a hashtable of HTTP headers for the request, e.g. `-Headers @{ Authorization = "Bearer <token>" }`.
 
 #### Output location
 
@@ -59,16 +43,10 @@ Pass a hashtable of HTTP headers for the introspection request, e.g. `-Headers @
 
 ### Examples
 
-Capture SDL (default):
+Capture the schema:
 
 ```powershell
 .\takeSchemaSnapshot.ps1 -Endpoint https://api.example.com/graphql -Name gateway -OutputDir .\snapshots
-```
-
-Capture raw introspection JSON:
-
-```powershell
-.\takeSchemaSnapshot.ps1 -Endpoint https://api.example.com/graphql -Name gateway -OutputDir .\snapshots -Format json
 ```
 
 Time-stamped, skip if unchanged, with auth:

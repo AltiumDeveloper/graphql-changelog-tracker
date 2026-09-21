@@ -94,16 +94,6 @@ jobs:
         if: steps.cfg.outputs.proceed == 'true'
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        if: steps.cfg.outputs.proceed == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        if: steps.cfg.outputs.proceed == 'true'
-        run: npm ci
-
       # Capture SDL. -SkipIfUnchanged drops a capture identical to the latest one in
       # the target folder, so an unchanged schema is never stored or committed.
       - name: Capture snapshot
