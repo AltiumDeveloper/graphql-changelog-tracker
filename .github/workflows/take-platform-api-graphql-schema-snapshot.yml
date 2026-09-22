@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Environment to snapshot on demand (SprintUpdate is scheduled-only; use Cloud to test)'
+        description: 'Environment to snapshot on demand (only Cloud; SprintUpdate is scheduled-only)'
         type: choice
-        options: [Cloud, OnPrem]
+        options: [Cloud]
         default: Cloud
 
 # Allow the job to commit the captured snapshot back to the repo
@@ -37,8 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Resolve mode → endpoint, target dir, filename stamp, and whether to proceed.
-      # Modes: Cloud (daily + on-demand), OnPrem (on-demand only), SprintUpdate
-      # (every other Tuesday from 2026-09-29, scheduled only).
+      # Modes: Cloud (daily + on-demand) and SprintUpdate (every other Tuesday from
+      # 2026-09-29, scheduled only). OnPrem has no public endpoint, so it's not captured here.
       - name: Resolve mode & config
         id: cfg
         shell: pwsh
@@ -66,10 +66,6 @@ jobs:
               $endpoint  = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.CLOUD_GRAPHQL_ENDPOINT
               $sub       = if ($isSchedule) { 'Scheduled' } else { 'OnDemand' }
               $targetDir = "PlatformApi/Cloud/Snapshots/$sub"
-            }
-            'OnPrem' {
-              $endpoint  = 'https://onprem.example.com/api/graphql/'   # TODO: -> vars.ONPREM_GRAPHQL_ENDPOINT
-              $targetDir = 'PlatformApi/OnPrem/Snapshots/OnDemand'
             }
             'SprintUpdate' {
               $endpoint  = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.SPRINT_GRAPHQL_ENDPOINT

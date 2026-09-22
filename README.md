@@ -57,7 +57,7 @@ Time-stamped, skip if unchanged, with auth:
 
 ### Use case
 
-The `take-platform-api-graphql-schema-snapshot` GitHub Action captures Platform API snapshots in three modes — **Cloud** (daily + on-demand), **OnPrem** (on-demand only), and **SprintUpdate** (every other Tuesday) — resolving the endpoint and target folder per mode and storing under `PlatformApi/<mode>/Snapshots/…`. The run name shows the active mode.
+The `take-platform-api-graphql-schema-snapshot` GitHub Action captures Platform API snapshots in two modes — **Cloud** (daily + on-demand) and **SprintUpdate** (every other Tuesday) — resolving the endpoint and target folder per mode and storing under `PlatformApi/<mode>/Snapshots/…`. The run name shows the active mode.
 
 ## 2. Generating GraphQL schema changes
 
