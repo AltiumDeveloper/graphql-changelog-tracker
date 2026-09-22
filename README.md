@@ -3,12 +3,63 @@ Automated GraphQL schema snapshots and changelog, powered by graphql-inspector a
 
 There are two scripts:
 
-- **`generateSchemaDiff.ps1`** — captures changes between two schemas as a Markdown changelog.
-- **Snapshot script** _(TBD)_ — takes point-in-time snapshots of a live schema.
+- **`takeSchemaSnapshot.ps1`** — captures a point-in-time snapshot of a live schema.
+- **`generateSchemaDiff.ps1`** — compares two schema snapshots into a Markdown changelog.
 
-**GitHub Actions** _(TBD)_ that run these periodically will be referenced here in the future.
+A **GitHub Action** runs the snapshot capture on a schedule and on demand — see the _Use case_ at the end of section 1.
 
-## 1. Generating GraphQL schema changes
+## 1. Capturing schema snapshots
+
+`Scripts/takeSchemaSnapshot.ps1` downloads a live GraphQL endpoint's schema as SDL (it requests the endpoint's `?sdl`) and saves a point-in-time snapshot (`.graphql`). Files are named `<Name>-snapshot-<stamp>`, and the script can skip storing a capture identical to the previous one. It's pure PowerShell — no Node or other dependencies.
+
+### Prerequisites
+
+- **PowerShell** to run the script (Windows PowerShell, or [PowerShell 7+](https://learn.microsoft.com/powershell/) on macOS/Linux).
+
+### How to use
+
+```powershell
+.\takeSchemaSnapshot.ps1 -Endpoint <url> -Name <name> -OutputDir <dir> [-IncludeTime] [-SkipIfUnchanged] [-Headers <hashtable>]
+```
+
+Run it from the `Scripts` folder (paths in the examples are relative to it). The snapshot is always SDL (`.graphql`), downloaded from the endpoint's `?sdl`.
+
+#### Filename stamping (`-IncludeTime`)
+
+- **Omit `-IncludeTime`** → date only, e.g. `gateway-snapshot-2026-09-17.graphql` (good for one capture per day).
+- **`-IncludeTime`** → date and time, e.g. `gateway-snapshot-2026-09-17-143022.graphql` — ideal when several snapshots are taken in a single day (e.g. on-demand captures rather than the daily scheduled one), so the capture time is recorded too. (Names never collide either way — an unstamped duplicate just gets a ` (1)`, ` (2)`, … suffix — this simply keeps the time visible.)
+
+#### Skip unchanged (`-SkipIfUnchanged`)
+
+If the new capture is byte-identical to the most recent snapshot already in `-OutputDir`, it is deleted and nothing is written — so an unchanged schema is neither stored nor committed.
+
+#### Authentication (`-Headers`)
+
+Pass a hashtable of HTTP headers for the request, e.g. `-Headers @{ Authorization = "Bearer <token>" }`.
+
+#### Output location
+
+`-OutputDir` accepts a local, relative, or UNC path and is created if it doesn't exist. Snapshots never overwrite: if the target name exists, the script appends ` (1)`, ` (2)`, … before the extension.
+
+### Examples
+
+Capture the schema:
+
+```powershell
+.\takeSchemaSnapshot.ps1 -Endpoint https://api.example.com/graphql -Name gateway -OutputDir .\snapshots
+```
+
+Time-stamped, skip if unchanged, with auth:
+
+```powershell
+.\takeSchemaSnapshot.ps1 -Endpoint https://api.example.com/graphql -Name gateway -OutputDir .\snapshots -IncludeTime -SkipIfUnchanged -Headers @{ Authorization = "Bearer mytoken" }
+```
+
+### Use case
+
+The `take-platform-api-graphql-schema-snapshot` GitHub Action captures Platform API snapshots in two modes — **Cloud** (daily + on-demand) and **SprintUpdate** (every other Tuesday) — resolving the endpoint and target folder per mode and storing under `PlatformApi/<mode>/Snapshots/…`. The run name shows the active mode.
+
+## 2. Generating GraphQL schema changes
 
 `Scripts/generateSchemaDiff.ps1` compares two GraphQL schemas using [`@graphql-inspector/core`](https://the-guild.dev/graphql/inspector) and writes a Markdown report that classifies every change as **breaking**, **dangerous**, or **non-breaking**. It runs a small Node helper (`Scripts/schema-diff.mjs`) that calls the library's `diff()` and returns each change with its criticality level, so the report is built from the change objects directly rather than parsed from CLI output. It reads two **local** schema files — either SDL or introspection JSON (the format is detected from the file contents, not the extension) — and can write the report to a local path, a UNC share, or a remote URL via HTTP PUT.
 

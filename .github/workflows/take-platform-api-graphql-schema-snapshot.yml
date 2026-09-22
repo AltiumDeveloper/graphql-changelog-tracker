@@ -1,0 +1,117 @@
+name: Take Platform API GraphQL schema snapshot
+
+# Show the mode in the run history (evaluated at start — maps cron → mode).
+run-name: >-
+  Snapshot — ${{ inputs.mode
+    || (github.event.schedule == '0 7 * * 2' && 'SprintUpdate')
+    || 'Cloud' }}
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # daily 06:00 UTC         → Cloud
+    - cron: '0 7 * * 2'   # every Tuesday 07:00 UTC → SprintUpdate (gated to every other;
+                          # 07:00 so it never overlaps the 06:00 Cloud run on Tuesdays)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Environment to snapshot on demand — Cloud, or SprintUpdate as a fallback if the scheduled sprint run was missed'
+        type: choice
+        options: [Cloud, SprintUpdate]
+        default: Cloud
+
+# Allow the job to commit the captured snapshot back to the repo
+permissions:
+  contents: write
+
+# Keep modes independent (daily vs Tuesday cron vs each dispatch mode)
+concurrency:
+  group: schema-snapshot-${{ inputs.mode || github.event.schedule }}
+  cancel-in-progress: false
+
+env:
+  SCHEMA_NAME: gateway
+
+jobs:
+  snapshot:
+    name: snapshot (${{ inputs.mode || (github.event.schedule == '0 7 * * 2' && 'SprintUpdate') || 'Cloud' }})
+    runs-on: ubuntu-latest
+    steps:
+      # Resolve mode → endpoint, target dir, filename stamp, and whether to proceed.
+      # Modes: Cloud (daily + on-demand) and SprintUpdate (every other Tuesday from
+      # 2026-09-29, scheduled only). OnPrem has no public endpoint, so it's not captured here.
+      - name: Resolve mode & config
+        id: cfg
+        shell: pwsh
+        env:
+          GH_EVENT: ${{ github.event_name }}
+          GH_INPUT_MODE: ${{ inputs.mode }}
+          GH_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          $event      = $env:GH_EVENT
+          $isSchedule = ($event -eq 'schedule')
+
+          if ($event -eq 'workflow_dispatch') {
+            $mode = $env:GH_INPUT_MODE
+          } elseif ($env:GH_SCHEDULE -eq '0 7 * * 2') {
+            $mode = 'SprintUpdate'
+          } else {
+            $mode = 'Cloud'
+          }
+
+          $proceed     = $true
+          $includeTime = (-not $isSchedule)   # dispatch → date+time, schedule → date only
+
+          switch ($mode) {
+            'Cloud' {
+              $endpoint  = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.CLOUD_GRAPHQL_ENDPOINT
+              $sub       = if ($isSchedule) { 'Scheduled' } else { 'OnDemand' }
+              $targetDir = "PlatformApi/Cloud/Snapshots/$sub"
+            }
+            'SprintUpdate' {
+              $endpoint    = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.SPRINT_GRAPHQL_ENDPOINT
+              # Scheduled sprint runs go to Scheduled; a manual fallback run goes to OnDemand.
+              $sub         = if ($isSchedule) { 'Scheduled' } else { 'OnDemand' }
+              $targetDir   = "PlatformApi/SprintUpdate/Snapshots/$sub"
+              $includeTime = $false   # always date-only so it aligns with the sprint date
+              # Fortnight gate applies only to the schedule (every other Tuesday, anchored
+              # to 2026-09-29 UTC); a manual fallback run always proceeds.
+              $anchor  = [datetime]::new(2026, 9, 29)
+              $days    = ([datetime]::UtcNow.Date - $anchor).Days
+              $proceed = if ($isSchedule) { ($days -ge 0 -and ($days % 14) -eq 0) } else { $true }
+            }
+            default { Write-Error "Unknown mode: $mode"; exit 1 }
+          }
+
+          Write-Host "mode=$mode endpoint=$endpoint targetDir=$targetDir includeTime=$includeTime proceed=$proceed"
+          "## Mode: $mode"           | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "mode=$mode"               | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "endpoint=$endpoint"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "targetDir=$targetDir"     | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "includeTime=$($includeTime.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "proceed=$($proceed.ToString().ToLower())"         | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Checkout
+        if: steps.cfg.outputs.proceed == 'true'
+        uses: actions/checkout@v4
+
+      # Capture SDL. -SkipIfUnchanged drops a capture identical to the latest one in
+      # the target folder, so an unchanged schema is never stored or committed.
+      - name: Capture snapshot
+        if: steps.cfg.outputs.proceed == 'true'
+        shell: pwsh
+        run: >-
+          ./Scripts/takeSchemaSnapshot.ps1
+          -Endpoint '${{ steps.cfg.outputs.endpoint }}'
+          -Name '${{ env.SCHEMA_NAME }}'
+          -OutputDir '${{ steps.cfg.outputs.targetDir }}'
+          -IncludeTime:${{ steps.cfg.outputs.includeTime == 'true' && '$true' || '$false' }}
+          -SkipIfUnchanged
+
+      # Commits only if a new snapshot file was actually stored (unchanged → no-op).
+      - name: Commit snapshot
+        if: steps.cfg.outputs.proceed == 'true'
+        shell: pwsh
+        run: >-
+          ./Scripts/commitSnapshot.ps1
+          -Path '${{ steps.cfg.outputs.targetDir }}'
+          -Message "chore(${{ steps.cfg.outputs.mode }}): schema snapshot ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))"
