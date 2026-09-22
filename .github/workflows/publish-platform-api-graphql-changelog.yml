@@ -1,0 +1,74 @@
+name: Publish Platform API GraphQL changelog page
+
+# Show the mode in the run history so you don't have to open the logs.
+run-name: Publish — ${{ inputs.mode }}
+
+# Manual only. Automatic publishing happens in-chain inside the change-tracker
+# workflow (it builds and commits the page whenever it produces a new changelog),
+# so this workflow is for ad-hoc rebuilds / backfills of a chosen mode.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which environment page to (re)build and publish'
+        type: choice
+        options: [Cloud, OnPrem, SprintUpdate]
+        default: Cloud
+
+# Allow the job to commit the generated page back to the repo
+permissions:
+  contents: write
+
+# Keep modes independent
+concurrency:
+  group: changelog-publish-${{ inputs.mode }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish (${{ inputs.mode }})
+    runs-on: ubuntu-latest
+    steps:
+      # Resolve mode → source changelog folder and the Published output folder.
+      # Cloud/SprintUpdate publish from Scheduled; OnPrem publishes from OnDemand.
+      - name: Resolve mode & config
+        id: cfg
+        shell: pwsh
+        env:
+          GH_MODE: ${{ inputs.mode }}
+        run: |
+          $mode = $env:GH_MODE
+          switch ($mode) {
+            'Cloud'        { $src = 'PlatformApi/Cloud/Changelogs/Scheduled' }
+            'SprintUpdate' { $src = 'PlatformApi/SprintUpdate/Changelogs/Scheduled' }
+            'OnPrem'       { $src = 'PlatformApi/OnPrem/Changelogs/OnDemand' }
+            default        { Write-Error "Unknown mode: $mode"; exit 1 }
+          }
+          $out = "PlatformApi/$mode/Changelogs/Published"
+
+          Write-Host "mode=$mode src=$src out=$out"
+          "## Mode: $mode" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "mode=$mode"     | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "src=$src"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "out=$out"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build changelog page
+        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.src }}" "${{ steps.cfg.outputs.out }}"
+
+      - name: Commit published page
+        shell: pwsh
+        run: >-
+          ./Scripts/commitPublished.ps1
+          -Path '${{ steps.cfg.outputs.out }}'
+          -Message "chore(${{ steps.cfg.outputs.mode }}): publish changelog page ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))"

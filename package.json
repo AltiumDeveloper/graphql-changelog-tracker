@@ -5,6 +5,7 @@
   "description": "Automated GraphQL schema snapshots and changelog, powered by @graphql-inspector/core.",
   "dependencies": {
     "@graphql-inspector/core": "^8.0.0",
-    "graphql": "^17.0.0"
+    "graphql": "^17.0.0",
+    "marked": "^14.0.0"
   }
 }
