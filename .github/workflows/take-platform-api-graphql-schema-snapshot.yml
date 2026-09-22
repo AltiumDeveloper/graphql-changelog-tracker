@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Environment to snapshot on demand (only Cloud; SprintUpdate is scheduled-only)'
+        description: 'Environment to snapshot on demand — Cloud, or SprintUpdate as a fallback if the scheduled sprint run was missed'
         type: choice
-        options: [Cloud]
+        options: [Cloud, SprintUpdate]
         default: Cloud
 
 # Allow the job to commit the captured snapshot back to the repo
@@ -68,12 +68,16 @@ jobs:
               $targetDir = "PlatformApi/Cloud/Snapshots/$sub"
             }
             'SprintUpdate' {
-              $endpoint  = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.SPRINT_GRAPHQL_ENDPOINT
-              $targetDir = 'PlatformApi/SprintUpdate/Snapshots/Scheduled'
-              # Every other Tuesday, anchored to 2026-09-29 (UTC).
+              $endpoint    = 'https://eur.365.altium.com/api/graphql/'   # TODO: -> vars.SPRINT_GRAPHQL_ENDPOINT
+              # Scheduled sprint runs go to Scheduled; a manual fallback run goes to OnDemand.
+              $sub         = if ($isSchedule) { 'Scheduled' } else { 'OnDemand' }
+              $targetDir   = "PlatformApi/SprintUpdate/Snapshots/$sub"
+              $includeTime = $false   # always date-only so it aligns with the sprint date
+              # Fortnight gate applies only to the schedule (every other Tuesday, anchored
+              # to 2026-09-29 UTC); a manual fallback run always proceeds.
               $anchor  = [datetime]::new(2026, 9, 29)
               $days    = ([datetime]::UtcNow.Date - $anchor).Days
-              $proceed = ($days -ge 0 -and ($days % 14) -eq 0)
+              $proceed = if ($isSchedule) { ($days -ge 0 -and ($days % 14) -eq 0) } else { $true }
             }
             default { Write-Error "Unknown mode: $mode"; exit 1 }
           }

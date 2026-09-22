@@ -12,12 +12,13 @@ PlatformApi/
 │   └── Snapshots/
 │       ├── Scheduled/         # daily captures (date-stamped)
 │       └── OnDemand/          # manual dispatch captures (date+time-stamped)
-└── SprintUpdate/              # every other Tuesday only
+└── SprintUpdate/              # every other Tuesday (+ manual fallback)
     └── Snapshots/
-        └── Scheduled/         # (date-stamped)
+        ├── Scheduled/         # sprint captures (date-stamped)
+        └── OnDemand/          # manual fallback captures (date-stamped)
 ```
 
-Each mode's folder shape mirrors how it can run: Cloud has both `Scheduled` and `OnDemand`; SprintUpdate is `Scheduled` only.
+Each mode's folder shape mirrors how it can run — both have `Scheduled` and `OnDemand`: Cloud's `OnDemand` holds ad-hoc manual captures, while SprintUpdate's `OnDemand` holds manual **fallback** captures for when a scheduled sprint run is missed.
 
 ## Modes
 
@@ -26,12 +27,14 @@ All captures are SDL (`.graphql`) and use `-SkipIfUnchanged` — a capture ident
 | Mode | Trigger | Endpoint | Stores in | Stamp |
 |---|---|---|---|---|
 | **Cloud** | daily cron (`0 6 * * *`) **and** on-demand dispatch | Cloud endpoint | `Cloud/Snapshots/Scheduled` (cron) or `Cloud/Snapshots/OnDemand` (dispatch) | date (cron) / date+time (dispatch) |
-| **SprintUpdate** | every other Tuesday from 2026-09-29 (scheduled only) | *(TODO — confirm)* | `SprintUpdate/Snapshots/Scheduled` | date |
+| **SprintUpdate** | every other Tuesday from 2026-09-29 (scheduled) **+ manual fallback** | *(TODO — confirm)* | `SprintUpdate/Snapshots/Scheduled` (cron) or `SprintUpdate/Snapshots/OnDemand` (fallback) | date |
 
 ### How the mode is chosen
 - **Scheduled** runs map from the cron: `0 6 * * *` (06:00 UTC) → Cloud, `0 7 * * 2` (07:00 UTC Tuesdays) → SprintUpdate. SprintUpdate runs an hour later so it never overlaps the Cloud run on Tuesdays.
-- **On-demand** runs use the `mode` dispatch input (`Cloud` only). SprintUpdate is **not** manually runnable — use **Cloud** to test on demand.
-- **SprintUpdate** additionally passes a fortnight gate: the Tuesday cron fires weekly, but the run only proceeds when the date is an even number of weeks from the `2026-09-29` anchor (so every other Tuesday: 2026-09-29, 2026-10-13, 2026-10-27, …).
+- **On-demand** runs use the `mode` dispatch input (`Cloud` or `SprintUpdate`).
+- **SprintUpdate** additionally passes a fortnight gate on **scheduled** runs: the Tuesday cron fires weekly, but the run only proceeds when the date is an even number of weeks from the `2026-09-29` anchor (so every other Tuesday: 2026-09-29, 2026-10-13, 2026-10-27, …). A manual SprintUpdate run bypasses the gate and always proceeds.
+
+**SprintUpdate fallback.** The scheduled run is timed to align with the dev team's sprint cadence (every other Tuesday). Since GitHub cron can be delayed or skipped, if a sprint run is missed you can dispatch SprintUpdate manually — it bypasses the fortnight gate and stores the snapshot (still date-only) in `SprintUpdate/Snapshots/OnDemand` instead of `Scheduled`. The changelog workflow will later fall back to `OnDemand` when a sprint-aligned schema isn't found in `Scheduled`.
 
 Each run ends with **Commit snapshot** ([`../Scripts/commitSnapshot.ps1`](../Scripts/commitSnapshot.ps1)) — a no-op when nothing new was stored.
 
