@@ -39,3 +39,7 @@ All captures are SDL (`.graphql`) and use `-SkipIfUnchanged` — a capture ident
 Each run ends with **Commit snapshot** ([`../Scripts/commitSnapshot.ps1`](../Scripts/commitSnapshot.ps1)) — a no-op when nothing new was stored.
 
 > **Note:** the SprintUpdate endpoint is a placeholder (`TODO`) in the workflow — set the real endpoint before relying on it.
+
+## Committing to the protected `main` branch
+
+The default branch is protected, so to commit snapshots back the snapshot workflow authenticates as a dedicated GitHub App — **`graphql-changelog-commit-bot`** — which is installed on the repo (with **Contents: write**) and added to the branch's **bypass allowlist**. A step (`actions/create-github-app-token`) exchanges the app credentials for a short-lived installation token each run, and `checkout` uses that token so the subsequent `git push` acts as the app and is allowed through. This depends on the repository variable **`COMMIT_BOT_APP_ID`** and the repository secret **`COMMIT_BOT_APP_PRIVATE_KEY`** — if the app is uninstalled, removed from the bypass list, or either value is missing/rotated, the commit step will fail to push.

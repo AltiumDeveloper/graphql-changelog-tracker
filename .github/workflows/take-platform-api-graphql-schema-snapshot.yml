@@ -90,9 +90,24 @@ jobs:
           "includeTime=$($includeTime.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "proceed=$($proceed.ToString().ToLower())"         | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
+      # Mint a short-lived installation token for the bypass app so the commit/push
+      # can write to the protected main branch. The app must be in the branch's
+      # bypass allowlist and have contents: write.
+      - name: Generate app token
+        id: app-token
+        if: steps.cfg.outputs.proceed == 'true'
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.COMMIT_BOT_APP_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_APP_PRIVATE_KEY }}
+
       - name: Checkout
         if: steps.cfg.outputs.proceed == 'true'
         uses: actions/checkout@v4
+        with:
+          # Use the app token so git push authenticates as the bypass app.
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
 
       # Capture SDL. -SkipIfUnchanged drops a capture identical to the latest one in
       # the target folder, so an unchanged schema is never stored or committed.
