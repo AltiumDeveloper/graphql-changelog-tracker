@@ -3,14 +3,14 @@ name: Take Platform API GraphQL schema snapshot
 # Show the mode in the run history (evaluated at start — maps cron → mode).
 run-name: >-
   Snapshot — ${{ inputs.mode
-    || (github.event.schedule == '0 7 * * 2' && 'SprintUpdate')
+    || (github.event.schedule == '0 13 * * 2' && 'SprintUpdate')
     || 'Cloud' }}
 
 on:
   schedule:
     - cron: '0 6 * * *'   # daily 06:00 UTC         → Cloud
-    - cron: '0 7 * * 2'   # every Tuesday 07:00 UTC → SprintUpdate (gated to every other;
-                          # 07:00 so it never overlaps the 06:00 Cloud run on Tuesdays)
+    - cron: '0 13 * * 2'   # every Tuesday 13:00 UTC → SprintUpdate (gated to every other;
+                          # 13:00 so it never overlaps the 06:00 Cloud run on Tuesdays)
   workflow_dispatch:
     inputs:
       mode:
@@ -33,7 +33,7 @@ env:
 
 jobs:
   snapshot:
-    name: snapshot (${{ inputs.mode || (github.event.schedule == '0 7 * * 2' && 'SprintUpdate') || 'Cloud' }})
+    name: snapshot (${{ inputs.mode || (github.event.schedule == '0 13 * * 2' && 'SprintUpdate') || 'Cloud' }})
     runs-on: ubuntu-latest
     steps:
       # Resolve mode → endpoint, target dir, filename stamp, and whether to proceed.
@@ -52,7 +52,7 @@ jobs:
 
           if ($event -eq 'workflow_dispatch') {
             $mode = $env:GH_INPUT_MODE
-          } elseif ($env:GH_SCHEDULE -eq '0 7 * * 2') {
+          } elseif ($env:GH_SCHEDULE -eq '0 13 * * 2') {
             $mode = 'SprintUpdate'
           } else {
             $mode = 'Cloud'

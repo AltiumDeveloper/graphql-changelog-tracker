@@ -57,7 +57,7 @@ Time-stamped, skip if unchanged, with auth:
 
 ### Use case
 
-The `take-platform-api-graphql-schema-snapshot` GitHub Action captures Platform API snapshots in two modes — **Cloud** (daily + on-demand) and **SprintUpdate** (every other Tuesday) — resolving the endpoint and target folder per mode and storing under `PlatformApi/<mode>/Snapshots/…`. The run name shows the active mode.
+The `take-platform-api-graphql-schema-snapshot` GitHub Action captures Platform API snapshots in two modes — **Cloud** (daily + on-demand) and **SprintUpdate** (every other Tuesday, with a manual fallback if a scheduled run is missed) — resolving the endpoint and target folder per mode and storing under `PlatformApi/<mode>/Snapshots/…`. The run name shows the active mode, and commits go to the protected `main` branch via the `graphql-changelog-commit-bot` app. See [`PlatformApi/README.md`](PlatformApi/README.md) for the full setup.
 
 ## 2. Generating GraphQL schema changes
 
@@ -115,6 +115,10 @@ Supported rules (the `DiffRule` names from `@graphql-inspector/core`):
 
 Two other `DiffRule` names exist but require a config object this tool doesn't supply, so they are **not supported** here and are rejected with an error: `considerUsage` (needs a usage data source) and `ignoreDirectives` (needs a directive list — without it, it silently does nothing).
 
+#### Ignored directives
+
+Changes to purely annotation directives that aren't part of the public schema contract are filtered out as noise, regardless of `-Rules`. By default this covers **`@cost`** (a query-cost annotation applied to nearly every field) — additions/removals of it on fields, and changes to its own definition, are dropped so they don't drown out real changes. The list lives in `Scripts/schema-diff.mjs` (`IGNORED_DIRECTIVES`); add directive names there to widen it.
+
 #### Types of changes
 
 The report uses the same three criticality levels that `@graphql-inspector/core` returns, mapped directly to the report's sections:
@@ -157,3 +161,7 @@ No rules at all:
 ```powershell
 .\generateSchemaDiff.ps1 -OldSchema ..\Snapshots\gateway-snapshot-2026-09-14.graphql -NewSchema ..\Snapshots\gateway-snapshot-2026-09-15.graphql -OutputFile ..\Changelog\gateway-changelog-2026-09-15.md -Rules @()
 ```
+
+### Use case
+
+The `platform-api-graphql-schema-change-tracker` GitHub Action turns Platform API snapshots into changelogs. After a **scheduled** snapshot run it automatically diffs the newest snapshot against the previous one for that mode (Cloud: today vs yesterday; SprintUpdate: this sprint vs the last) and, only when something changed, commits the changelog and rebuilds that mode's per-year HTML page in the same run. It can also be dispatched manually to diff two chosen schema files for any mode — including **OnPrem**, which isn't snapshotted (you provide the two files). A manual **SprintUpdate** run is **approval-gated** (a required reviewer must approve before it runs) so the published sprint series can't be polluted by unreviewed manual changelogs; approved manual changelogs still appear on the page because publishing merges the scheduled and on-demand folders. All commits go to the protected `main` branch via the `graphql-changelog-commit-bot` app. On the published per-mode page, each entry is titled from the changelog file name — a single date for **Cloud**, a date interval for **SprintUpdate**, and a version + date interval for **OnPrem**. See [`PlatformApi/README.md`](PlatformApi/README.md) for details.

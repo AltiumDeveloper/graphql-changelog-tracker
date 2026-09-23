@@ -1,0 +1,199 @@
+name: Track Platform API GraphQL schema changes
+
+# Show the mode in the run history.
+run-name: >-
+  Changelog — ${{ inputs.mode
+    || (contains(github.event.workflow_run.display_title, 'SprintUpdate') && 'SprintUpdate')
+    || (contains(github.event.workflow_run.display_title, 'OnPrem') && 'OnPrem')
+    || 'Cloud' }}
+
+on:
+  # Runs after the snapshot workflow finishes. Capturing snapshots is owned by that
+  # workflow; this one only diffs the committed snapshots into a changelog.
+  workflow_run:
+    workflows: ["Take Platform API GraphQL schema snapshot"]
+    types: [completed]
+  # Manual: diff two chosen snapshots (or the latest pair) for a given mode.
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which environment to diff'
+        type: choice
+        options: [Cloud, OnPrem, SprintUpdate]
+        default: Cloud
+      old_snapshot:
+        description: 'Old (previous) schema file for a manual run — a bare name of a file committed under the mode''s Snapshots/OnDemand folder (e.g. PlatformApi/OnPrem/Snapshots/OnDemand or PlatformApi/SprintUpdate/Snapshots/OnDemand), or a full path. REQUIRED for OnPrem; optional for Cloud/SprintUpdate (blank on a chained run auto-picks the previous snapshot).'
+        required: false
+        type: string
+      new_snapshot:
+        description: 'New (current) schema file — same location rules as old_snapshot. REQUIRED for OnPrem.'
+        required: false
+        type: string
+      changelog_name:
+        description: 'Optional changelog file name (recommended for OnPrem if the schema files are not date-named).'
+        required: false
+        type: string
+
+# Allow the job to commit the changelog back to the repo
+permissions:
+  contents: write
+
+# Keep modes independent
+concurrency:
+  group: schema-changelog-${{ inputs.mode || github.event.workflow_run.display_title }}
+  cancel-in-progress: false
+
+env:
+  SCHEMA_NAME: gateway
+
+jobs:
+  track:
+    # Chained runs: only react to a SUCCESSFUL, SCHEDULED snapshot run (Cloud daily or
+    # SprintUpdate fortnightly). On-demand snapshot captures don't trigger a changelog.
+    # Manual dispatch of this workflow always runs.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'schedule')
+    # Require approval ONLY for a manual SprintUpdate run (protects the published sprint
+    # series from unreviewed manual changelogs). Every other trigger — a chained run after
+    # a scheduled snapshot, or a manual Cloud/OnPrem run — evaluates to an empty
+    # environment name, which means no gate. The 'sprint-changelog-approval' environment
+    # must exist in repo settings with required reviewers.
+    environment: ${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'SprintUpdate') && 'sprint-changelog-approval' || '' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Resolve mode → the snapshot series to diff and where the changelog goes.
+      # Cloud/SprintUpdate chained runs use the Scheduled series; manual runs use each
+      # mode's on-demand location. OnPrem has no captured snapshots — its two schema
+      # files are supplied as inputs (paths).
+      - name: Resolve mode & config
+        id: cfg
+        shell: pwsh
+        env:
+          GH_EVENT: ${{ github.event_name }}
+          GH_INPUT_MODE: ${{ inputs.mode }}
+          GH_UP_TITLE: ${{ github.event.workflow_run.display_title }}
+          GH_OLD: ${{ inputs.old_snapshot }}
+          GH_NEW: ${{ inputs.new_snapshot }}
+        run: |
+          $event   = $env:GH_EVENT
+          $chained = ($event -ne 'workflow_dispatch')
+
+          if ($chained) {
+            # Upstream run-name is "Snapshot — <mode>"
+            $title = $env:GH_UP_TITLE
+            if     ($title -match 'SprintUpdate') { $mode = 'SprintUpdate' }
+            elseif ($title -match 'OnPrem')       { $mode = 'OnPrem' }
+            else                                  { $mode = 'Cloud' }
+          } else {
+            $mode = $env:GH_INPUT_MODE
+          }
+
+          switch ($mode) {
+            'Cloud' {
+              if ($chained) { $snap = 'PlatformApi/Cloud/Snapshots/Scheduled'; $log = 'PlatformApi/Cloud/Changelogs/Scheduled' }
+              else          { $snap = 'PlatformApi/Cloud/Snapshots/OnDemand';  $log = 'PlatformApi/Cloud/Changelogs/OnDemand' }
+            }
+            'SprintUpdate' {
+              # Chained sprint runs read/write the Scheduled series; a manual (fallback)
+              # run reads and writes OnDemand, so a manual run never lands directly in the
+              # published sprint series. Manual two-file runs are not date-gated — any two
+              # snapshots diff regardless of how far apart. (See "SprintUpdate gap closure".)
+              $sub  = if ($chained) { 'Scheduled' } else { 'OnDemand' }
+              $snap = "PlatformApi/SprintUpdate/Snapshots/$sub"
+              $log  = "PlatformApi/SprintUpdate/Changelogs/$sub"
+            }
+            'OnPrem' {
+              # OnPrem has no captured snapshots — commit the two schema files to
+              # PlatformApi/OnPrem/Snapshots/OnDemand and pass their names (or paths) here.
+              if (-not $env:GH_OLD -or -not $env:GH_NEW) {
+                Write-Error "OnPrem requires both old_snapshot and new_snapshot (files in PlatformApi/OnPrem/Snapshots/OnDemand, or paths)."
+                exit 1
+              }
+              $snap = 'PlatformApi/OnPrem/Snapshots/OnDemand'
+              $log  = 'PlatformApi/OnPrem/Changelogs/OnDemand'
+            }
+            default { Write-Error "Unknown mode: $mode"; exit 1 }
+          }
+
+          # Never emit the summary table (Status / Old schema / New schema / Rules) —
+          # the page shows only the change sections.
+          $includeSummary = $false
+          # Where this mode's published web page lives.
+          $pub = "PlatformApi/$mode/Changelogs/Published"
+          # Folder(s) the published page is built from. SprintUpdate merges Scheduled +
+          # OnDemand so an approved manual fallback changelog also appears on the page.
+          $pubsrc = if ($mode -eq 'SprintUpdate') { 'PlatformApi/SprintUpdate/Changelogs/Scheduled PlatformApi/SprintUpdate/Changelogs/OnDemand' } else { $log }
+
+          Write-Host "mode=$mode snap=$snap log=$log pub=$pub pubsrc=$pubsrc includeSummary=$includeSummary"
+          "## Mode: $mode"       | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "mode=$mode"           | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "snap=$snap"           | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "log=$log"             | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "pub=$pub"             | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "pubsrc=$pubsrc"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "includeSummary=$($includeSummary.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      # Authenticate as the bypass app so the changelog/page commits can push to the
+      # protected main branch (see snapshot workflow). App must be in the bypass allowlist.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.COMMIT_BOT_APP_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # For workflow_run, check out the default branch HEAD so we see the snapshot
+          # the triggering run just committed (not the older head_sha it ran on).
+          ref: ${{ github.event.repository.default_branch }}
+          # Use the app token so git push authenticates as the bypass app.
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate changelog
+        id: track
+        shell: pwsh
+        run: >-
+          ./Scripts/generateChangelogFromSnapshots.ps1
+          -Name '${{ env.SCHEMA_NAME }}'
+          -SnapshotDir '${{ steps.cfg.outputs.snap }}'
+          -ChangelogDir '${{ steps.cfg.outputs.log }}'
+          -OldSnapshot '${{ inputs.old_snapshot }}'
+          -NewSnapshot '${{ inputs.new_snapshot }}'
+          -ChangelogName '${{ inputs.changelog_name }}'
+          -IncludeSummary:${{ steps.cfg.outputs.includeSummary == 'true' && '$true' || '$false' }}
+          ${{ steps.cfg.outputs.mode == 'SprintUpdate' && '-IntervalName' || '' }}
+
+      # Commit only when the changelog has at least one change.
+      - name: Commit changelog
+        if: steps.track.outputs.changed == 'true'
+        shell: pwsh
+        run: >-
+          ./Scripts/commitChangelog.ps1
+          -Path '${{ steps.cfg.outputs.log }}'
+          -Message "chore(${{ steps.cfg.outputs.mode }}): schema changelog ($(Get-Date -Format 'yyyy-MM-dd'))"
+
+      # When there was a change, rebuild and commit this mode's web page so publishing
+      # happens in-chain without starting a separate workflow run (no extra token).
+      - name: Build changelog page
+        if: steps.track.outputs.changed == 'true'
+        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.pub }}" ${{ steps.cfg.outputs.pubsrc }}
+
+      - name: Commit published page
+        if: steps.track.outputs.changed == 'true'
+        shell: pwsh
+        run: >-
+          ./Scripts/commitPublished.ps1
+          -Path '${{ steps.cfg.outputs.pub }}'
+          -Message "chore(${{ steps.cfg.outputs.mode }}): publish changelog page ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))"
