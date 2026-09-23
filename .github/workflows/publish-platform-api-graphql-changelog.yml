@@ -38,9 +38,11 @@ jobs:
           GH_MODE: ${{ inputs.mode }}
         run: |
           $mode = $env:GH_MODE
+          # SprintUpdate merges Scheduled + OnDemand so approved manual fallback
+          # changelogs also appear on the page.
           switch ($mode) {
             'Cloud'        { $src = 'PlatformApi/Cloud/Changelogs/Scheduled' }
-            'SprintUpdate' { $src = 'PlatformApi/SprintUpdate/Changelogs/Scheduled' }
+            'SprintUpdate' { $src = 'PlatformApi/SprintUpdate/Changelogs/Scheduled PlatformApi/SprintUpdate/Changelogs/OnDemand' }
             'OnPrem'       { $src = 'PlatformApi/OnPrem/Changelogs/OnDemand' }
             default        { Write-Error "Unknown mode: $mode"; exit 1 }
           }
@@ -52,8 +54,21 @@ jobs:
           "src=$src"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "out=$out"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
+      # Authenticate as the bypass app so the published-page commit can push to the
+      # protected main branch (see snapshot workflow). App must be in the bypass allowlist.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.COMMIT_BOT_APP_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_APP_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Use the app token so git push authenticates as the bypass app.
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -64,7 +79,7 @@ jobs:
         run: npm ci
 
       - name: Build changelog page
-        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.src }}" "${{ steps.cfg.outputs.out }}"
+        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.out }}" ${{ steps.cfg.outputs.src }}
 
       - name: Commit published page
         shell: pwsh

@@ -54,6 +54,12 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'schedule')
+    # Require approval ONLY for a manual SprintUpdate run (protects the published sprint
+    # series from unreviewed manual changelogs). Every other trigger — a chained run after
+    # a scheduled snapshot, or a manual Cloud/OnPrem run — evaluates to an empty
+    # environment name, which means no gate. The 'sprint-changelog-approval' environment
+    # must exist in repo settings with required reviewers.
+    environment: ${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'SprintUpdate') && 'sprint-changelog-approval' || '' }}
     runs-on: ubuntu-latest
     steps:
       # Resolve mode → the snapshot series to diff and where the changelog goes.
@@ -110,18 +116,32 @@ jobs:
             default { Write-Error "Unknown mode: $mode"; exit 1 }
           }
 
-          # Scheduled/chained changelogs omit the summary table; manual runs keep it.
-          $includeSummary = (-not $chained)
+          # Never emit the summary table (Status / Old schema / New schema / Rules) —
+          # the page shows only the change sections.
+          $includeSummary = $false
           # Where this mode's published web page lives.
           $pub = "PlatformApi/$mode/Changelogs/Published"
+          # Folder(s) the published page is built from. SprintUpdate merges Scheduled +
+          # OnDemand so an approved manual fallback changelog also appears on the page.
+          $pubsrc = if ($mode -eq 'SprintUpdate') { 'PlatformApi/SprintUpdate/Changelogs/Scheduled PlatformApi/SprintUpdate/Changelogs/OnDemand' } else { $log }
 
-          Write-Host "mode=$mode snap=$snap log=$log pub=$pub includeSummary=$includeSummary"
+          Write-Host "mode=$mode snap=$snap log=$log pub=$pub pubsrc=$pubsrc includeSummary=$includeSummary"
           "## Mode: $mode"       | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "mode=$mode"           | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "snap=$snap"           | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "log=$log"             | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "pub=$pub"             | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "pubsrc=$pubsrc"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "includeSummary=$($includeSummary.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      # Authenticate as the bypass app so the changelog/page commits can push to the
+      # protected main branch (see snapshot workflow). App must be in the bypass allowlist.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.COMMIT_BOT_APP_ID }}
+          private-key: ${{ secrets.COMMIT_BOT_APP_PRIVATE_KEY }}
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -129,6 +149,9 @@ jobs:
           # For workflow_run, check out the default branch HEAD so we see the snapshot
           # the triggering run just committed (not the older head_sha it ran on).
           ref: ${{ github.event.repository.default_branch }}
+          # Use the app token so git push authenticates as the bypass app.
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -150,6 +173,7 @@ jobs:
           -NewSnapshot '${{ inputs.new_snapshot }}'
           -ChangelogName '${{ inputs.changelog_name }}'
           -IncludeSummary:${{ steps.cfg.outputs.includeSummary == 'true' && '$true' || '$false' }}
+          ${{ steps.cfg.outputs.mode == 'SprintUpdate' && '-IntervalName' || '' }}
 
       # Commit only when the changelog has at least one change.
       - name: Commit changelog
@@ -164,7 +188,7 @@ jobs:
       # happens in-chain without starting a separate workflow run (no extra token).
       - name: Build changelog page
         if: steps.track.outputs.changed == 'true'
-        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.log }}" "${{ steps.cfg.outputs.pub }}"
+        run: node Scripts/build-changelog-site.mjs "${{ steps.cfg.outputs.mode }}" "${{ steps.cfg.outputs.pub }}" ${{ steps.cfg.outputs.pubsrc }}
 
       - name: Commit published page
         if: steps.track.outputs.changed == 'true'

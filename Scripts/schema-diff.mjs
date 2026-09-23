@@ -57,7 +57,25 @@ const newSchema = loadSchema(newPath);
 // diff() is async because some rules (e.g. considerUsage) can be.
 const changes = await diff(oldSchema, newSchema, rules);
 
-const out = changes.map((c) => ({
+// Annotation-only directives whose add/remove/change is not a real schema-contract
+// change and should be treated as noise. @cost is a query-cost annotation applied to
+// every field — its churn drowns out the actual schema changes. The built-in
+// `ignoreDirectives` rule needs a config this tool doesn't pass, so we filter here:
+// drop any change that mentions one of these directives, whether it's the directive
+// being added/removed on a field (message: "Directive 'cost' was added to field ...")
+// or a change to the directive's own definition (message: "... added to '@cost'").
+// Add more names to widen the ignore list.
+const IGNORED_DIRECTIVES = ['cost'];
+const names = IGNORED_DIRECTIVES.join('|');
+const ignoreDirective = IGNORED_DIRECTIVES.length
+  ? new RegExp(`@(?:${names})\\b|directive '(?:${names})'`, 'i')
+  : null;
+
+const visible = ignoreDirective
+  ? changes.filter((c) => !ignoreDirective.test(c.message))
+  : changes;
+
+const out = visible.map((c) => ({
   level: c.criticality.level, // BREAKING | DANGEROUS | NON_BREAKING
   message: c.message,
 }));

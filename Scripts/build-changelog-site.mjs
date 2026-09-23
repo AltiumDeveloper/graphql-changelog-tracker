@@ -1,45 +1,71 @@
 #!/usr/bin/env node
 // Builds a single self-contained HTML changelog page for one mode, from the dated
-// changelog Markdown files in a folder, grouped by year (newest first).
+// changelog Markdown files in one or more folders, grouped by year (newest first).
 //
-// Usage: node build-changelog-site.mjs <mode> <inputDir> <outputDir>
+// Usage: node build-changelog-site.mjs <mode> <outputDir> <inputDir> [<inputDir> ...]
 //   <mode>      label shown in the page title (e.g. Cloud, OnPrem, SprintUpdate)
-//   <inputDir>  folder of <name>-changelog-<date>.md files
 //   <outputDir> folder to write index.html into (created if missing)
+//   <inputDir>  one or more folders of <name>-changelog-<date>.md files. When several
+//               are given they're merged; if the same date appears in more than one,
+//               the earlier-listed folder wins (list the authoritative folder first).
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { marked } from 'marked';
 
-const [mode, inputDir, outputDir] = process.argv.slice(2);
-if (!mode || !inputDir || !outputDir) {
-  console.error('Usage: node build-changelog-site.mjs <mode> <inputDir> <outputDir>');
+const [mode, outputDir, ...inputDirs] = process.argv.slice(2);
+if (!mode || !outputDir || inputDirs.length === 0) {
+  console.error('Usage: node build-changelog-site.mjs <mode> <outputDir> <inputDir> [<inputDir> ...]');
   process.exit(2);
 }
 
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'];
-const formatDate = (d) => { const [y, m, day] = d.split('-').map(Number); return `${MONTHS[m - 1]} ${day}, ${y}`; };
+const formatDate = (d) => { const [y, m, day] = d.split('-'); return `${day}/${m}/${y}`; }; // dd/mm/yyyy
 const escapeHtml = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// Entry heading, derived from the file name per mode:
+//   Cloud        → the new date only              e.g. 15/09/2026
+//   SprintUpdate → the date interval (old - new)  e.g. 29/09/2026 - 13/10/2026
+//   OnPrem       → version + date interval        e.g. 1.6 (26/09/2026) - 1.7 (01/12/2026)
+// Falls back to the new date when the extra info isn't present in the file name.
+function entryTitle(m, filename, dates) {
+  if (m === 'OnPrem') {
+    const pairs = [...filename.matchAll(/(\d+(?:\.\d+)+)-(\d{4}-\d{2}-\d{2})/g)].map((x) => ({ v: x[1], d: x[2] }));
+    if (pairs.length >= 2) {
+      const a = pairs[0], b = pairs[pairs.length - 1];
+      return `${a.v} (${formatDate(a.d)}) - ${b.v} (${formatDate(b.d)})`;
+    }
+  }
+  if (m === 'SprintUpdate' && dates.length >= 2) {
+    return `${formatDate(dates[0])} - ${formatDate(dates[dates.length - 1])}`;
+  }
+  return formatDate(dates[dates.length - 1]); // Cloud / fallback: new date only
+}
 
 marked.setOptions({ gfm: true });
 
-// Collect entries — each changelog file becomes one dated entry.
-let files = [];
-try {
-  files = readdirSync(inputDir).filter((f) => f.endsWith('.md') && /\d{4}-\d{2}-\d{2}/.test(f));
-} catch {
-  console.error(`Input folder not found or empty: ${inputDir}`);
+// Collect entries from all input folders — each changelog file becomes one dated
+// entry, deduped by its newest date (first folder listed wins).
+const byDate = new Map();
+for (const dir of inputDirs) {
+  let files = [];
+  try {
+    files = readdirSync(dir).filter((f) => f.endsWith('.md') && /\d{4}-\d{2}-\d{2}/.test(f));
+  } catch {
+    console.error(`Input folder not found or empty: ${dir}`);
+    continue;
+  }
+  for (const f of files) {
+    const dates = [...f.matchAll(/(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]);
+    const date = dates[dates.length - 1];            // newest date in the file name (group/sort key)
+    if (byDate.has(date)) continue;                  // earlier-listed folder wins
+    let md = readFileSync(join(dir, f), 'utf8');
+    md = md.replace(/^\s*#\s+.*\r?\n/, '');          // drop the file's own H1 title
+    md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
+    byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: marked.parse(md.trim()) });
+  }
 }
 
-const entries = files.map((f) => {
-  const dates = [...f.matchAll(/(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]);
-  const date = dates[dates.length - 1];              // newest date in the file name
-  let md = readFileSync(join(inputDir, f), 'utf8');
-  md = md.replace(/^\s*#\s+.*\r?\n/, '');            // drop the file's own H1 title
-  md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
-  return { date, year: date.slice(0, 4), html: marked.parse(md.trim()) };
-}).sort((a, b) => b.date.localeCompare(a.date));
+const entries = [...byDate.values()].sort((a, b) => b.date.localeCompare(a.date));
 
 // Group by year, newest year first.
 const byYear = {};
@@ -49,10 +75,9 @@ const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a));
 const yearNav = years.map((y) => `<a href="#year-${y}">${y}</a>`).join('');
 const body = years.map((y) => `
       <section class="year" id="year-${y}">
-        <h2>${y}</h2>
         ${byYear[y].map((e) => `
         <article class="entry" id="entry-${e.date}">
-          <h3><a href="#entry-${e.date}">${formatDate(e.date)}</a></h3>
+          <h3><a href="#entry-${e.date}">${escapeHtml(e.title)}</a></h3>
           ${e.html}
         </article>`).join('')}
       </section>`).join('');
@@ -105,7 +130,6 @@ const html = `<!doctype html>
   </header>
   ${years.length ? `<nav class="years"><div class="wrap">${yearNav}</div></nav>` : ''}
   <main><div class="wrap">${years.length ? body : empty}</div></main>
-  <footer><div class="wrap">Generated from schema snapshots — ${escapeHtml(mode)} · ${entries.length} entr${entries.length === 1 ? 'y' : 'ies'}</div></footer>
 </body>
 </html>
 `;

@@ -42,7 +42,10 @@ param(
     [Parameter(Mandatory = $false)] [string]$OldSnapshot,
     [Parameter(Mandatory = $false)] [string]$NewSnapshot,
     [Parameter(Mandatory = $false)] [string]$ChangelogName,
-    [Parameter(Mandatory = $false)] [bool]$IncludeSummary = $true
+    [Parameter(Mandatory = $false)] [bool]$IncludeSummary = $true,
+    # Name an automated changelog with the interval "<oldDate>-to-<newDate>" instead of
+    # just the new date, so the published page can show the diffed range (e.g. SprintUpdate).
+    [Parameter(Mandatory = $false)] [switch]$IntervalName
 )
 
 $ErrorActionPreference = 'Stop'
@@ -121,9 +124,12 @@ else {
         Set-Output 'changelog' ''; Set-Output 'changed' 'false'; exit 0
     }
 
-    $changelog = Join-Path $ChangelogDir "$Name-changelog-$($newest.Date).md"
+    # Daily series → name by the new date; interval series (e.g. SprintUpdate) → name
+    # "<oldDate>-to-<newDate>" so the published page can show the diffed range.
+    $stamp = if ($IntervalName) { "$($baseline.Date)-to-$($newest.Date)" } else { "$($newest.Date)" }
+    $changelog = Join-Path $ChangelogDir "$Name-changelog-$stamp.md"
     if (Test-Path -LiteralPath $changelog) {
-        Write-Host "Changelog already exists for $($newest.Date) — skipping."
+        Write-Host "Changelog already exists ($stamp) — skipping."
         Set-Output 'changelog' ''; Set-Output 'changed' 'false'; exit 0
     }
 
