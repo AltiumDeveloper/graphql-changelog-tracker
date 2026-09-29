@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cloud GraphQL schema changelog</title>
+  <style>
+    :root { --fg:#1f2328; --muted:#59636e; --border:#d1d9e0; --accent:#0969da; --bg:#ffffff; --canvas:#f6f8fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--fg); background:var(--bg);
+           font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+    a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+    header.site { border-bottom:1px solid var(--border); background:var(--canvas); }
+    .wrap { max-width:1012px; margin:0 auto; padding:0 24px; }
+    header.site .wrap { padding:32px 24px; }
+    header.site h1 { margin:0 0 4px; font-size:28px; }
+    header.site p { margin:0; color:var(--muted); }
+    nav.years { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--border); z-index:1; }
+    nav.years .wrap { display:flex; gap:16px; flex-wrap:wrap; padding:12px 24px; }
+    nav.years a { color:var(--muted); font-weight:600; }
+    main .wrap { padding:8px 24px 64px; }
+    section.year { margin-top:32px; }
+    section.year > h2 { font-size:24px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+    article.entry { padding:20px 0; border-bottom:1px solid var(--border); }
+    article.entry > h3 { margin:0 0 8px; font-size:18px; }
+    article.entry > h3 a { color:var(--fg); }
+    article.entry h4 { font-size:15px; margin:16px 0 8px; }
+    article.entry ul { margin:8px 0; padding-left:22px; }
+    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%; }
+    article.entry table { border-collapse:collapse; margin:8px 0; }
+    article.entry th, article.entry td { border:1px solid var(--border); padding:6px 12px; }
+    hr { border:0; border-top:1px solid var(--border); }
+    .empty { color:var(--muted); padding:32px 0; }
+    footer { color:var(--muted); font-size:13px; border-top:1px solid var(--border); }
+    footer .wrap { padding:24px; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <h1>Platform API — Cloud</h1>
+      <p>GraphQL schema changelog</p>
+    </div>
+  </header>
+  <nav class="years"><div class="wrap"><a href="#year-2026">2026</a></div></nav>
+  <main><div class="wrap">
+      <section class="year" id="year-2026">
+        
+        <article class="entry" id="entry-2026-09-29">
+          <h3><a href="#entry-2026-09-29">29/09/2026</a></h3>
+          <h4>✅ Non-Breaking Changes (38)</h4>
+<ul>
+<li>Type &#39;GloScrCreateSecretPayload&#39; was added</li>
+<li>Field &#39;gloScrSecret&#39; was added to object type &#39;GloScrCreateSecretPayload&#39;</li>
+<li>Type &#39;GloScrDeleteSecretPayload&#39; was added</li>
+<li>Field &#39;boolean&#39; was added to object type &#39;GloScrDeleteSecretPayload&#39;</li>
+<li>Type &#39;GloScrRenameScriptPayload&#39; was added</li>
+<li>Field &#39;gloScrScript&#39; was added to object type &#39;GloScrRenameScriptPayload&#39;</li>
+<li>Type &#39;GloScrScriptSecret&#39; was added</li>
+<li>Field &#39;isMissing&#39; was added to object type &#39;GloScrScriptSecret&#39;</li>
+<li>Field &#39;name&#39; was added to object type &#39;GloScrScriptSecret&#39;</li>
+<li>Type &#39;GloScrSecret&#39; was added</li>
+<li>Field &#39;name&#39; was added to object type &#39;GloScrSecret&#39;</li>
+<li>Type &#39;GloScrSetScriptSecretsPayload&#39; was added</li>
+<li>Field &#39;gloScrScriptSecret&#39; was added to object type &#39;GloScrSetScriptSecretsPayload&#39;</li>
+<li>Type &#39;GloScrCreateSecretInput&#39; was added</li>
+<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrCreateSecretInput&#39;</li>
+<li>Input field &#39;value&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrCreateSecretInput&#39;</li>
+<li>Type &#39;GloScrDeleteSecretInput&#39; was added</li>
+<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrDeleteSecretInput&#39;</li>
+<li>Type &#39;GloScrRenameScriptInput&#39; was added</li>
+<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
+<li>Input field &#39;onlyIfProvisional&#39; of type &#39;Boolean&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
+<li>Input field &#39;scriptId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
+<li>Type &#39;GloScrSetScriptSecretsInput&#39; was added</li>
+<li>Input field &#39;scriptId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
+<li>Input field &#39;scriptVersionId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
+<li>Input field &#39;secretNames&#39; of type &#39;[String!]!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
+<li>Field &#39;gloScrCreateSecret&#39; was added to object type &#39;Mutation&#39;</li>
+<li>Argument &#39;input: GloScrCreateSecretInput!&#39; added to field &#39;Mutation.gloScrCreateSecret&#39;</li>
+<li>Field &#39;gloScrDeleteSecret&#39; was added to object type &#39;Mutation&#39;</li>
+<li>Argument &#39;input: GloScrDeleteSecretInput!&#39; added to field &#39;Mutation.gloScrDeleteSecret&#39;</li>
+<li>Field &#39;gloScrRenameScript&#39; was added to object type &#39;Mutation&#39;</li>
+<li>Argument &#39;input: GloScrRenameScriptInput!&#39; added to field &#39;Mutation.gloScrRenameScript&#39;</li>
+<li>Field &#39;gloScrSetScriptSecrets&#39; was added to object type &#39;Mutation&#39;</li>
+<li>Argument &#39;input: GloScrSetScriptSecretsInput!&#39; added to field &#39;Mutation.gloScrSetScriptSecrets&#39;</li>
+<li>Field &#39;gloScrScriptSecrets&#39; was added to object type &#39;Query&#39;</li>
+<li>Argument &#39;scriptId: String!&#39; added to field &#39;Query.gloScrScriptSecrets&#39;</li>
+<li>Argument &#39;scriptVersionId: String&#39; added to field &#39;Query.gloScrScriptSecrets&#39;</li>
+<li>Field &#39;gloScrSecrets&#39; was added to object type &#39;Query&#39;</li>
+</ul>
+
+        </article>
+      </section></div></main>
+</body>
+</html>
