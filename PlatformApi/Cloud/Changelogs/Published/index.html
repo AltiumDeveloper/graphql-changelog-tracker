@@ -26,7 +26,8 @@
     article.entry > h3 a { color:var(--fg); }
     article.entry h4 { font-size:15px; margin:16px 0 8px; }
     article.entry ul { margin:8px 0; padding-left:22px; }
-    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%; }
+    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%;
+                         font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
     article.entry table { border-collapse:collapse; margin:8px 0; }
     article.entry th, article.entry td { border:1px solid var(--border); padding:6px 12px; }
     hr { border:0; border-top:1px solid var(--border); }
@@ -50,44 +51,44 @@
           <h3><a href="#entry-2026-09-29">29/09/2026</a></h3>
           <h4>✅ Non-Breaking Changes (38)</h4>
 <ul>
-<li>Type &#39;GloScrCreateSecretPayload&#39; was added</li>
-<li>Field &#39;gloScrSecret&#39; was added to object type &#39;GloScrCreateSecretPayload&#39;</li>
-<li>Type &#39;GloScrDeleteSecretPayload&#39; was added</li>
-<li>Field &#39;boolean&#39; was added to object type &#39;GloScrDeleteSecretPayload&#39;</li>
-<li>Type &#39;GloScrRenameScriptPayload&#39; was added</li>
-<li>Field &#39;gloScrScript&#39; was added to object type &#39;GloScrRenameScriptPayload&#39;</li>
-<li>Type &#39;GloScrScriptSecret&#39; was added</li>
-<li>Field &#39;isMissing&#39; was added to object type &#39;GloScrScriptSecret&#39;</li>
-<li>Field &#39;name&#39; was added to object type &#39;GloScrScriptSecret&#39;</li>
-<li>Type &#39;GloScrSecret&#39; was added</li>
-<li>Field &#39;name&#39; was added to object type &#39;GloScrSecret&#39;</li>
-<li>Type &#39;GloScrSetScriptSecretsPayload&#39; was added</li>
-<li>Field &#39;gloScrScriptSecret&#39; was added to object type &#39;GloScrSetScriptSecretsPayload&#39;</li>
-<li>Type &#39;GloScrCreateSecretInput&#39; was added</li>
-<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrCreateSecretInput&#39;</li>
-<li>Input field &#39;value&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrCreateSecretInput&#39;</li>
-<li>Type &#39;GloScrDeleteSecretInput&#39; was added</li>
-<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrDeleteSecretInput&#39;</li>
-<li>Type &#39;GloScrRenameScriptInput&#39; was added</li>
-<li>Input field &#39;name&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
-<li>Input field &#39;onlyIfProvisional&#39; of type &#39;Boolean&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
-<li>Input field &#39;scriptId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrRenameScriptInput&#39;</li>
-<li>Type &#39;GloScrSetScriptSecretsInput&#39; was added</li>
-<li>Input field &#39;scriptId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
-<li>Input field &#39;scriptVersionId&#39; of type &#39;String!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
-<li>Input field &#39;secretNames&#39; of type &#39;[String!]!&#39; was added to input object type &#39;GloScrSetScriptSecretsInput&#39;</li>
-<li>Field &#39;gloScrCreateSecret&#39; was added to object type &#39;Mutation&#39;</li>
-<li>Argument &#39;input: GloScrCreateSecretInput!&#39; added to field &#39;Mutation.gloScrCreateSecret&#39;</li>
-<li>Field &#39;gloScrDeleteSecret&#39; was added to object type &#39;Mutation&#39;</li>
-<li>Argument &#39;input: GloScrDeleteSecretInput!&#39; added to field &#39;Mutation.gloScrDeleteSecret&#39;</li>
-<li>Field &#39;gloScrRenameScript&#39; was added to object type &#39;Mutation&#39;</li>
-<li>Argument &#39;input: GloScrRenameScriptInput!&#39; added to field &#39;Mutation.gloScrRenameScript&#39;</li>
-<li>Field &#39;gloScrSetScriptSecrets&#39; was added to object type &#39;Mutation&#39;</li>
-<li>Argument &#39;input: GloScrSetScriptSecretsInput!&#39; added to field &#39;Mutation.gloScrSetScriptSecrets&#39;</li>
-<li>Field &#39;gloScrScriptSecrets&#39; was added to object type &#39;Query&#39;</li>
-<li>Argument &#39;scriptId: String!&#39; added to field &#39;Query.gloScrScriptSecrets&#39;</li>
-<li>Argument &#39;scriptVersionId: String&#39; added to field &#39;Query.gloScrScriptSecrets&#39;</li>
-<li>Field &#39;gloScrSecrets&#39; was added to object type &#39;Query&#39;</li>
+<li>Type <code>GloScrCreateSecretPayload</code> was added</li>
+<li>Field <code>gloScrSecret</code> was added to object type <code>GloScrCreateSecretPayload</code></li>
+<li>Type <code>GloScrDeleteSecretPayload</code> was added</li>
+<li>Field <code>boolean</code> was added to object type <code>GloScrDeleteSecretPayload</code></li>
+<li>Type <code>GloScrRenameScriptPayload</code> was added</li>
+<li>Field <code>gloScrScript</code> was added to object type <code>GloScrRenameScriptPayload</code></li>
+<li>Type <code>GloScrScriptSecret</code> was added</li>
+<li>Field <code>isMissing</code> was added to object type <code>GloScrScriptSecret</code></li>
+<li>Field <code>name</code> was added to object type <code>GloScrScriptSecret</code></li>
+<li>Type <code>GloScrSecret</code> was added</li>
+<li>Field <code>name</code> was added to object type <code>GloScrSecret</code></li>
+<li>Type <code>GloScrSetScriptSecretsPayload</code> was added</li>
+<li>Field <code>gloScrScriptSecret</code> was added to object type <code>GloScrSetScriptSecretsPayload</code></li>
+<li>Type <code>GloScrCreateSecretInput</code> was added</li>
+<li>Input field <code>name</code> of type <code>String!</code> was added to input object type <code>GloScrCreateSecretInput</code></li>
+<li>Input field <code>value</code> of type <code>String!</code> was added to input object type <code>GloScrCreateSecretInput</code></li>
+<li>Type <code>GloScrDeleteSecretInput</code> was added</li>
+<li>Input field <code>name</code> of type <code>String!</code> was added to input object type <code>GloScrDeleteSecretInput</code></li>
+<li>Type <code>GloScrRenameScriptInput</code> was added</li>
+<li>Input field <code>name</code> of type <code>String!</code> was added to input object type <code>GloScrRenameScriptInput</code></li>
+<li>Input field <code>onlyIfProvisional</code> of type <code>Boolean</code> was added to input object type <code>GloScrRenameScriptInput</code></li>
+<li>Input field <code>scriptId</code> of type <code>String!</code> was added to input object type <code>GloScrRenameScriptInput</code></li>
+<li>Type <code>GloScrSetScriptSecretsInput</code> was added</li>
+<li>Input field <code>scriptId</code> of type <code>String!</code> was added to input object type <code>GloScrSetScriptSecretsInput</code></li>
+<li>Input field <code>scriptVersionId</code> of type <code>String!</code> was added to input object type <code>GloScrSetScriptSecretsInput</code></li>
+<li>Input field <code>secretNames</code> of type <code>[String!]!</code> was added to input object type <code>GloScrSetScriptSecretsInput</code></li>
+<li>Field <code>gloScrCreateSecret</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: GloScrCreateSecretInput!</code> added to field <code>Mutation.gloScrCreateSecret</code></li>
+<li>Field <code>gloScrDeleteSecret</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: GloScrDeleteSecretInput!</code> added to field <code>Mutation.gloScrDeleteSecret</code></li>
+<li>Field <code>gloScrRenameScript</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: GloScrRenameScriptInput!</code> added to field <code>Mutation.gloScrRenameScript</code></li>
+<li>Field <code>gloScrSetScriptSecrets</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: GloScrSetScriptSecretsInput!</code> added to field <code>Mutation.gloScrSetScriptSecrets</code></li>
+<li>Field <code>gloScrScriptSecrets</code> was added to object type <code>Query</code></li>
+<li>Argument <code>scriptId: String!</code> added to field <code>Query.gloScrScriptSecrets</code></li>
+<li>Argument <code>scriptVersionId: String</code> added to field <code>Query.gloScrScriptSecrets</code></li>
+<li>Field <code>gloScrSecrets</code> was added to object type <code>Query</code></li>
 </ul>
 
         </article>
