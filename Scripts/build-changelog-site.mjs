@@ -43,6 +43,19 @@ function entryTitle(m, filename, dates) {
 
 marked.setOptions({ gfm: true });
 
+// graphql-inspector quotes schema coordinates in its change messages, e.g.
+//   Field 'User.name' was removed from object type 'User'
+// Turn those 'quoted' names in change bullets into inline code so they render in
+// monospace. The lookarounds skip apostrophes inside words (e.g. "doesn't").
+const codeSpan = (s) => {
+  const fence = '`'.repeat(Math.max(0, ...(s.match(/`+/g) ?? []).map((r) => r.length)) + 1);
+  const pad = s.startsWith('`') || s.endsWith('`') ? ' ' : '';
+  return `${fence}${pad}${s}${pad}${fence}`;
+};
+const monospaceNames = (md) =>
+  md.replace(/^(\s*[-*] )(.*)$/gm, (_, bullet, text) =>
+    bullet + text.replace(/(?<![\w'`])'([^'\n]+?)'(?![\w`])/g, (_m, name) => codeSpan(name)));
+
 // Collect entries from all input folders — each changelog file becomes one dated
 // entry, deduped by its newest date (first folder listed wins).
 const byDate = new Map();
@@ -60,6 +73,8 @@ for (const dir of inputDirs) {
     if (byDate.has(date)) continue;                  // earlier-listed folder wins
     let md = readFileSync(join(dir, f), 'utf8');
     md = md.replace(/^\s*#\s+.*\r?\n/, '');          // drop the file's own H1 title
+    md = md.replace(/^\s*(?:\|.*\|[ \t]*\r?\n)+\s*(?:---[ \t]*\r?\n)?/, ''); // drop the leading summary table (+ its --- rule)
+    md = monospaceNames(md);                         // field/type/query names → monospace
     md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
     byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: marked.parse(md.trim()) });
   }
@@ -112,7 +127,8 @@ const html = `<!doctype html>
     article.entry > h3 a { color:var(--fg); }
     article.entry h4 { font-size:15px; margin:16px 0 8px; }
     article.entry ul { margin:8px 0; padding-left:22px; }
-    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%; }
+    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%;
+                         font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
     article.entry table { border-collapse:collapse; margin:8px 0; }
     article.entry th, article.entry td { border:1px solid var(--border); padding:6px 12px; }
     hr { border:0; border-top:1px solid var(--border); }
