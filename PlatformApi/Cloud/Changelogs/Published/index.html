@@ -47,6 +47,48 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-10-08">
+          <h3><a href="#entry-2026-10-08">08/10/2026</a></h3>
+          <h4>✅ Non-Breaking Changes (35)</h4>
+<ul>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsPayload</code> was added</li>
+<li>Field <code>errors</code> was added to object type <code>SupSolutionTemplatePatchRefDesignsPayload</code></li>
+<li>Field <code>success</code> was added to object type <code>SupSolutionTemplatePatchRefDesignsPayload</code></li>
+<li>Object type <code>SupSolutionTemplatePatchRefDesignsPayload</code> has description <code>Payload for patching reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsPayload</code> was added</li>
+<li>Field <code>errors</code> was added to object type <code>SupSolutionTemplateSetRefDesignsPayload</code></li>
+<li>Field <code>success</code> was added to object type <code>SupSolutionTemplateSetRefDesignsPayload</code></li>
+<li>Object type <code>SupSolutionTemplateSetRefDesignsPayload</code> has description <code>Payload for replacing reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsError</code> was added</li>
+<li>Member <code>SupSolutionTemplateOperationFailedError</code> was added to Union type <code>SupSolutionTemplatePatchRefDesignsError</code></li>
+<li>Member <code>SupSolutionTemplateNotFoundError</code> was added to Union type <code>SupSolutionTemplatePatchRefDesignsError</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsError</code> was added</li>
+<li>Member <code>SupSolutionTemplateOperationFailedError</code> was added to Union type <code>SupSolutionTemplateSetRefDesignsError</code></li>
+<li>Member <code>SupSolutionTemplateNotFoundError</code> was added to Union type <code>SupSolutionTemplateSetRefDesignsError</code></li>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsInput</code> was added</li>
+<li>Input field <code>addRefDesignIds</code> of type <code>[ID!]</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Input field <code>removeRefDesignIds</code> of type <code>[ID!]</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Input field <code>solutionTemplateId</code> of type <code>ID!</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Object type <code>SupSolutionTemplatePatchRefDesignsInput</code> has description <code>Input for adding or removing individual reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsInput</code> was added</li>
+<li>Input field <code>refDesignIds</code> of type <code>[ID!]!</code> was added to input object type <code>SupSolutionTemplateSetRefDesignsInput</code></li>
+<li>Input field <code>solutionTemplateId</code> of type <code>ID!</code> was added to input object type <code>SupSolutionTemplateSetRefDesignsInput</code></li>
+<li>Object type <code>SupSolutionTemplateSetRefDesignsInput</code> has description <code>Input for replacing all reference designs on a solution template.</code></li>
+<li>Field <code>supSolutionTemplatePatchRefDesigns</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: SupSolutionTemplatePatchRefDesignsInput!</code> added to field <code>Mutation.supSolutionTemplatePatchRefDesigns</code></li>
+<li>Field <code>supSolutionTemplateSetRefDesigns</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: SupSolutionTemplateSetRefDesignsInput!</code> added to field <code>Mutation.supSolutionTemplateSetRefDesigns</code></li>
+<li>Field <code>byReleaseIdCombinedErc</code> was added to object type <code>RuleCheckExecutionQueries</code></li>
+<li>Argument <code>designId: ID!</code> added to field <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></li>
+<li>Argument <code>releaseId: ID!</code> added to field <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></li>
+<li>Field <code>refDesignIds</code> was added to object type <code>SupSolutionTemplate</code></li>
+<li>Field <code>SupSolutionTemplate.refDesignIds</code> is deprecated</li>
+<li>Directive <code>deprecated</code> was added to field <code>SupSolutionTemplate.refDesignIds</code></li>
+<li>Argument <code>reason</code> was added to <code>@deprecated</code></li>
+<li>Field <code>refDesigns</code> was added to object type <code>SupSolutionTemplate</code></li>
+</ul>
+
+        </article>
         <article class="entry" id="entry-2026-09-29">
           <h3><a href="#entry-2026-09-29">29/09/2026</a></h3>
           <h4>✅ Non-Breaking Changes (38)</h4>
