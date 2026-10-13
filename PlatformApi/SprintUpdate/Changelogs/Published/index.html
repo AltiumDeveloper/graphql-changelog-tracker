@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SprintUpdate GraphQL schema changelog</title>
+  <style>
+    :root { --fg:#1f2328; --muted:#59636e; --border:#d1d9e0; --accent:#0969da; --bg:#ffffff; --canvas:#f6f8fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--fg); background:var(--bg);
+           font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+    a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+    header.site { border-bottom:1px solid var(--border); background:var(--canvas); }
+    .wrap { max-width:1012px; margin:0 auto; padding:0 24px; }
+    header.site .wrap { padding:32px 24px; }
+    header.site h1 { margin:0 0 4px; font-size:28px; }
+    header.site p { margin:0; color:var(--muted); }
+    nav.years { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--border); z-index:1; }
+    nav.years .wrap { display:flex; gap:16px; flex-wrap:wrap; padding:12px 24px; }
+    nav.years a { color:var(--muted); font-weight:600; }
+    main .wrap { padding:8px 24px 64px; }
+    section.year { margin-top:32px; }
+    section.year > h2 { font-size:24px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+    article.entry { padding:20px 0; border-bottom:1px solid var(--border); }
+    article.entry > h3 { margin:0 0 8px; font-size:18px; }
+    article.entry > h3 a { color:var(--fg); }
+    article.entry h4 { font-size:15px; margin:16px 0 8px; }
+    article.entry ul { margin:8px 0; padding-left:22px; }
+    article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%;
+                         font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+    article.entry table { border-collapse:collapse; margin:8px 0; }
+    article.entry th, article.entry td { border:1px solid var(--border); padding:6px 12px; }
+    hr { border:0; border-top:1px solid var(--border); }
+    .empty { color:var(--muted); padding:32px 0; }
+    footer { color:var(--muted); font-size:13px; border-top:1px solid var(--border); }
+    footer .wrap { padding:24px; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <h1>Platform API — SprintUpdate</h1>
+      <p>GraphQL schema changelog</p>
+    </div>
+  </header>
+  <nav class="years"><div class="wrap"><a href="#year-2026">2026</a></div></nav>
+  <main><div class="wrap">
+      <section class="year" id="year-2026">
+        
+        <article class="entry" id="entry-2026-10-13">
+          <h3><a href="#entry-2026-10-13">29/09/2026 - 13/10/2026</a></h3>
+          <h4>✅ Non-Breaking Changes (48)</h4>
+<ul>
+<li>Type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code> was added</li>
+<li>Field <code>downloadUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></li>
+<li>Field <code>fileName</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></li>
+<li>Field <code>fileSizeInBytes</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></li>
+<li>Field <code>outputSdmUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></li>
+<li>Field <code>updatedAt</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></li>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsPayload</code> was added</li>
+<li>Field <code>errors</code> was added to object type <code>SupSolutionTemplatePatchRefDesignsPayload</code></li>
+<li>Field <code>success</code> was added to object type <code>SupSolutionTemplatePatchRefDesignsPayload</code></li>
+<li>Object type <code>SupSolutionTemplatePatchRefDesignsPayload</code> has description <code>Payload for patching reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsPayload</code> was added</li>
+<li>Field <code>errors</code> was added to object type <code>SupSolutionTemplateSetRefDesignsPayload</code></li>
+<li>Field <code>success</code> was added to object type <code>SupSolutionTemplateSetRefDesignsPayload</code></li>
+<li>Object type <code>SupSolutionTemplateSetRefDesignsPayload</code> has description <code>Payload for replacing reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsError</code> was added</li>
+<li>Member <code>SupSolutionTemplateOperationFailedError</code> was added to Union type <code>SupSolutionTemplatePatchRefDesignsError</code></li>
+<li>Member <code>SupSolutionTemplateNotFoundError</code> was added to Union type <code>SupSolutionTemplatePatchRefDesignsError</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsError</code> was added</li>
+<li>Member <code>SupSolutionTemplateOperationFailedError</code> was added to Union type <code>SupSolutionTemplateSetRefDesignsError</code></li>
+<li>Member <code>SupSolutionTemplateNotFoundError</code> was added to Union type <code>SupSolutionTemplateSetRefDesignsError</code></li>
+<li>Type <code>SupSolutionTemplatePatchRefDesignsInput</code> was added</li>
+<li>Input field <code>addRefDesignIds</code> of type <code>[ID!]</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Input field <code>removeRefDesignIds</code> of type <code>[ID!]</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Input field <code>solutionTemplateId</code> of type <code>ID!</code> was added to input object type <code>SupSolutionTemplatePatchRefDesignsInput</code></li>
+<li>Object type <code>SupSolutionTemplatePatchRefDesignsInput</code> has description <code>Input for adding or removing individual reference designs on a solution template.</code></li>
+<li>Type <code>SupSolutionTemplateSetRefDesignsInput</code> was added</li>
+<li>Input field <code>refDesignIds</code> of type <code>[ID!]!</code> was added to input object type <code>SupSolutionTemplateSetRefDesignsInput</code></li>
+<li>Input field <code>solutionTemplateId</code> of type <code>ID!</code> was added to input object type <code>SupSolutionTemplateSetRefDesignsInput</code></li>
+<li>Object type <code>SupSolutionTemplateSetRefDesignsInput</code> has description <code>Input for replacing all reference designs on a solution template.</code></li>
+<li>Field <code>supSolutionTemplatePatchRefDesigns</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: SupSolutionTemplatePatchRefDesignsInput!</code> added to field <code>Mutation.supSolutionTemplatePatchRefDesigns</code></li>
+<li>Field <code>supSolutionTemplateSetRefDesigns</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: SupSolutionTemplateSetRefDesignsInput!</code> added to field <code>Mutation.supSolutionTemplateSetRefDesigns</code></li>
+<li>Field <code>byReleaseIdCombinedErc</code> was added to object type <code>RuleCheckExecutionQueries</code></li>
+<li>Argument <code>designId: ID!</code> added to field <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></li>
+<li>Argument <code>releaseId: ID!</code> added to field <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></li>
+<li>Field <code>artifact</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></li>
+<li>Field <code>projectSourceId</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></li>
+<li>Field <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code> is deprecated</li>
+<li>Directive <code>deprecated</code> was added to field <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code></li>
+<li>Argument <code>reason</code> was added to <code>@deprecated</code></li>
+<li>Field <code>refDesignIds</code> was added to object type <code>SupSolutionTemplate</code></li>
+<li>Field <code>SupSolutionTemplate.refDesignIds</code> is deprecated</li>
+<li>Directive <code>deprecated</code> was added to field <code>SupSolutionTemplate.refDesignIds</code></li>
+<li>Argument <code>reason</code> was added to <code>@deprecated</code></li>
+<li>Field <code>refDesigns</code> was added to object type <code>SupSolutionTemplate</code></li>
+<li>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateFilterInput</code></li>
+<li>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateSearchFilterInput</code></li>
+</ul>
+
+        </article>
+      </section></div></main>
+</body>
+</html>
