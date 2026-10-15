@@ -47,6 +47,471 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-10-15">
+          <h3><a href="#entry-2026-10-15">15/10/2026</a></h3>
+          <h4>🔴 Breaking Changes (8)</h4>
+<ul>
+<li>Field <code>errorMessage</code> was removed from object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>status</code> was removed from object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>errorMessage</code> was removed from object type <code>DesPartUploadLibraryPartOperationResult</code></li>
+<li>Directive <code>oneOf</code> was added to input object <code>BomCreateBomItemElementAttributeValueInput</code></li>
+<li>Directive <code>oneOf</code> was added to input object <code>BomCreateBomOfferReferenceInput</code></li>
+<li>Directive <code>oneOf</code> was added to input object <code>BomCreateBomPartReferenceInput</code></li>
+<li>Directive <code>oneOf</code> was added to input object <code>BomCreateBomSupplierReferenceInput</code></li>
+<li>Directive <code>oneOf</code> was added to input object <code>GloCusUpdateAssignmentInput</code></li>
+</ul>
+<hr>
+<h4>⚠️ Dangerous Changes (117)</h4>
+<ul>
+<li>Directive <code>authorize</code> was added to field <code>BomItem.issues</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomItemAlternate.issues</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomItemAlternate.selectedOffer</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomItemSubstitute.issues</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomItemSubstitute.selectedOffer</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomRelease.healthChecks</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomRelease.incompleteHealthChecks</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomRelease.issues</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomWip.healthChecks</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomWip.incompleteHealthChecks</code></li>
+<li>Directive <code>authorize</code> was added to field <code>BomWip.issues</code></li>
+<li>Directive <code>authorize</code> was added to field <code>DesWorkspaceGroup.members</code></li>
+<li>Directive <code>listSize</code> was added to field <code>DesWorkspaceGroup.members</code></li>
+<li>Directive <code>authorize</code> was added to field <code>DesWorkspaceTeam.projectGuests</code></li>
+<li>Directive <code>listSize</code> was added to field <code>DesWorkspaceTeam.projectGuests</code></li>
+<li>Directive <code>authorize</code> was added to field <code>DesWorkspaceTeam.workspaceGroups</code></li>
+<li>Directive <code>listSize</code> was added to field <code>DesWorkspaceTeam.workspaceGroups</code></li>
+<li>Directive <code>authorize</code> was added to field <code>DesWorkspaceTeam.workspaceUsers</code></li>
+<li>Directive <code>listSize</code> was added to field <code>DesWorkspaceTeam.workspaceUsers</code></li>
+<li>Directive <code>listSize</code> was added to field <code>GloCusExtensionPoint.assignments</code></li>
+<li>Directive <code>listSize</code> was added to field <code>GloScrScript.versions</code></li>
+<li>Directive <code>authorize</code> was added to object <code>GloScrScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>GloScrScriptVersion.package</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomChangeBomReleaseLifecycleState</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomCreateBom</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBom</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBom</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBomById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBomById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBomRelease</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.bomExportBomRelease</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.desCompareReleases</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloAddAppClientSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloAddAppGrantType</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloAddAppRedirectUri</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloAddAppScope</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloAddUsersToGroup</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCreateApp</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCreateAppFromOAuthClient</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCreateUser</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCreateUserGroup</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCusAddAssignment</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCusDeleteAssignment</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCusUpdateAssignment</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloCusUpdateAssignmentConfigurations</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloDeleteApp</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloEvtCreateWebhookSubscription</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloEvtDeleteSubscription</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloEvtPublishEvent</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloInstallApp</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRemoveAppClientSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRemoveAppGrantType</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRemoveAppRedirectUri</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRemoveAppScope</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRemoveUsersFromGroup</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloRestoreApp</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrCreateScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrCreateSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrDeleteScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrDeleteSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrExecuteScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrRenameScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrSetScriptSecrets</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloScrUpdateScript</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloUninstallApp</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloUpdateAppContactEmail</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloUpdateAppDescription</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloUpdateAppHrid</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.gloUpdateAppName</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformTokenDelete</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformTokenUpdate</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformWorkspaceRefreshTokenCreate</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformWorkspaceRefreshTokenCreateNewSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformWorkspaceRefreshTokenDeleteSecret</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformWorkspaceTokenCreate</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.bomBom</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.bomBomById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.bomBomRelease</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.bomBoms</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desAnnotations</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.desAnnotations</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desComparisonHealthcheck</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.desPartGlobalSearch</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.desPartSearch</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceGroupById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceGroupsByIds</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.desWorkspaceInsInsights</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceTeamByAuth</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceUserByAuth</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceUserById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.desWorkspaceUsersByIds</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloAppByClientId</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloAppById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloAppInstalledApps</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloApps</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.gloApps</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloEvtSubscriptionById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloOrganization</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloOrganizationById</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.gloScrScriptExecutionResults</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.gloScrScripts</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloScrScriptSecrets</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloScrSecrets</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloUserById</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloUserGroups</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.gloUserGroups</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloUsers</code></li>
+<li>Directive <code>listSize</code> was added to field <code>Query.gloUsers</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Query.gloUsersByIds</code></li>
+<li>Directive <code>authorize</code> was added to field <code>TokenQueries.byTokenId</code></li>
+<li>Directive <code>authorize</code> was added to field <code>TokenQueries.byWorkspace</code></li>
+<li>Directive <code>listSize</code> was added to field <code>TokenQueries.byWorkspace</code></li>
+<li>Directive <code>authorize</code> was added to field <code>TokenQueries.workspaceTokenQuota</code></li>
+<li>Member <code>DesAnnotationManagedPartBinding</code> was added to Union type <code>DesAnnotationBinding</code></li>
+<li>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformTokenUpdateError</code></li>
+<li>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformWorkspaceRefreshTokenCreateError</code></li>
+<li>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformWorkspaceTokenCreateError</code></li>
+</ul>
+<hr>
+<h4>✅ Non-Breaking Changes (325)</h4>
+<ul>
+<li>Directive <code>listSize</code> was added</li>
+<li>Location <code>FIELD_DEFINITION</code> was added to directive <code>listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to directive <code>listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to directive <code>listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to directive <code>listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to directive <code>listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to directive <code>listSize</code></li>
+<li>Type <code>CostedBomsConnection</code> was added</li>
+<li>Field <code>edges</code> was added to object type <code>CostedBomsConnection</code></li>
+<li>Field <code>nodes</code> was added to object type <code>CostedBomsConnection</code></li>
+<li>Field <code>pageInfo</code> was added to object type <code>CostedBomsConnection</code></li>
+<li>Field <code>totalCount</code> was added to object type <code>CostedBomsConnection</code></li>
+<li>Object type <code>CostedBomsConnection</code> has description <code>A connection to a list of items.</code></li>
+<li>Type <code>CostedBomsEdge</code> was added</li>
+<li>Field <code>cursor</code> was added to object type <code>CostedBomsEdge</code></li>
+<li>Field <code>node</code> was added to object type <code>CostedBomsEdge</code></li>
+<li>Object type <code>CostedBomsEdge</code> has description <code>An edge in a connection.</code></li>
+<li>Type <code>DesAnnotationManagedPartBinding</code> was added</li>
+<li>Field <code>partId</code> was added to object type <code>DesAnnotationManagedPartBinding</code></li>
+<li>Type <code>DesWorkspaceInsInsightTypesSettingsGql</code> was added</li>
+<li>Field <code>excludedInsightTypes</code> was added to object type <code>DesWorkspaceInsInsightTypesSettingsGql</code></li>
+<li>Object type <code>DesWorkspaceInsInsightTypesSettingsGql</code> has description <code>Insight-type preferences affecting which insights are shown.</code></li>
+<li>Type <code>PlatformKeyValueStoreAddPayload</code> was added</li>
+<li>Field <code>entry</code> was added to object type <code>PlatformKeyValueStoreAddPayload</code></li>
+<li>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreAddPayload</code></li>
+<li>Type <code>PlatformKeyValueStoreDeletePayload</code> was added</li>
+<li>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreDeletePayload</code></li>
+<li>Field <code>isDeleted</code> was added to object type <code>PlatformKeyValueStoreDeletePayload</code></li>
+<li>Type <code>PlatformKeyValueStoreEntry</code> was added</li>
+<li>Field <code>createdAt</code> was added to object type <code>PlatformKeyValueStoreEntry</code></li>
+<li>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntry</code></li>
+<li>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreEntry</code></li>
+<li>Field <code>updatedAt</code> was added to object type <code>PlatformKeyValueStoreEntry</code></li>
+<li>Field <code>value</code> was added to object type <code>PlatformKeyValueStoreEntry</code></li>
+<li>Object type <code>PlatformKeyValueStoreEntry</code> has description <code>A value stored in the key-value store of an app installation, in the workspace of the access token.</code></li>
+<li>Type <code>PlatformKeyValueStoreEntryExistsError</code> was added</li>
+<li><code>PlatformKeyValueStoreEntryExistsError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntryExistsError</code></li>
+<li>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreEntryExistsError</code></li>
+<li>Type <code>PlatformKeyValueStoreEntryNotFoundError</code> was added</li>
+<li><code>PlatformKeyValueStoreEntryNotFoundError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntryNotFoundError</code></li>
+<li>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreEntryNotFoundError</code></li>
+<li>Type <code>PlatformKeyValueStoreEntrySummary</code> was added</li>
+<li>Field <code>createdAt</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></li>
+<li>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></li>
+<li>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></li>
+<li>Field <code>updatedAt</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></li>
+<li>Object type <code>PlatformKeyValueStoreEntrySummary</code> has description <code>Entry metadata returned by *all*, without the value.</code></li>
+<li>Type <code>PlatformKeyValueStoreEntrySummaryConnection</code> was added</li>
+<li>Field <code>edges</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></li>
+<li>Field <code>nodes</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></li>
+<li>Field <code>pageInfo</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></li>
+<li>Object type <code>PlatformKeyValueStoreEntrySummaryConnection</code> has description <code>A connection to a list of items.</code></li>
+<li>Type <code>PlatformKeyValueStoreEntrySummaryEdge</code> was added</li>
+<li>Field <code>cursor</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryEdge</code></li>
+<li>Field <code>node</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryEdge</code></li>
+<li>Object type <code>PlatformKeyValueStoreEntrySummaryEdge</code> has description <code>An edge in a connection.</code></li>
+<li>Type <code>PlatformKeyValueStoreKeyInvalidError</code> was added</li>
+<li><code>PlatformKeyValueStoreKeyInvalidError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreKeyInvalidError</code></li>
+<li>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreKeyInvalidError</code></li>
+<li>Type <code>PlatformKeyValueStoreQueries</code> was added</li>
+<li>Field <code>all</code> was added to object type <code>PlatformKeyValueStoreQueries</code></li>
+<li>Argument <code>after: String</code> added to field <code>PlatformKeyValueStoreQueries.all</code></li>
+<li>Argument <code>first: Int</code> added to field <code>PlatformKeyValueStoreQueries.all</code></li>
+<li>Argument <code>prefix: String</code> added to field <code>PlatformKeyValueStoreQueries.all</code></li>
+<li>Directive <code>listSize</code> was added to field <code>PlatformKeyValueStoreQueries.all</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Field <code>byKey</code> was added to object type <code>PlatformKeyValueStoreQueries</code></li>
+<li>Argument <code>key: String!</code> added to field <code>PlatformKeyValueStoreQueries.byKey</code></li>
+<li>Field <code>byKeys</code> was added to object type <code>PlatformKeyValueStoreQueries</code></li>
+<li>Argument <code>keys: [String!]!</code> added to field <code>PlatformKeyValueStoreQueries.byKeys</code></li>
+<li>Type <code>PlatformKeyValueStoreQuotaExceededError</code> was added</li>
+<li><code>PlatformKeyValueStoreQuotaExceededError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>maxEntryCount</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></li>
+<li>Field <code>maxTotalSizeBytes</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></li>
+<li>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></li>
+<li>Object type <code>PlatformKeyValueStoreQuotaExceededError</code> has description &#39;Returned when adding the entry, or growing its value, would exceed the installation`s quota.`</li>
+<li>Type <code>PlatformKeyValueStoreUpdatePayload</code> was added</li>
+<li>Field <code>entry</code> was added to object type <code>PlatformKeyValueStoreUpdatePayload</code></li>
+<li>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreUpdatePayload</code></li>
+<li>Type <code>PlatformKeyValueStoreValueTooLargeError</code> was added</li>
+<li><code>PlatformKeyValueStoreValueTooLargeError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>maxSizeBytes</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></li>
+<li>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></li>
+<li>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></li>
+<li>Type <code>PlatformTokenInvalidNameError</code> was added</li>
+<li><code>PlatformTokenInvalidNameError</code> object implements <code>Error</code> interface</li>
+<li>Field <code>message</code> was added to object type <code>PlatformTokenInvalidNameError</code></li>
+<li>Object type <code>PlatformTokenInvalidNameError</code> has description <code>Error returned by the Token API when an input name for a `PlatformToken` is invalid.</code></li>
+<li>Type <code>PlatformKeyValueStoreAddError</code> was added</li>
+<li>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></li>
+<li>Member <code>PlatformKeyValueStoreValueTooLargeError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></li>
+<li>Member <code>PlatformKeyValueStoreEntryExistsError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></li>
+<li>Member <code>PlatformKeyValueStoreQuotaExceededError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></li>
+<li>Type <code>PlatformKeyValueStoreDeleteError</code> was added</li>
+<li>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreDeleteError</code></li>
+<li>Type <code>PlatformKeyValueStoreUpdateError</code> was added</li>
+<li>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></li>
+<li>Member <code>PlatformKeyValueStoreValueTooLargeError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></li>
+<li>Member <code>PlatformKeyValueStoreEntryNotFoundError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></li>
+<li>Member <code>PlatformKeyValueStoreQuotaExceededError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></li>
+<li>Type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> was added</li>
+<li>Input field <code>excludedInsightTypes</code> of type <code>[String!]!</code> was added to input object type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code></li>
+<li>Object type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> has description <code>Insight-type preferences that define which insights are shown.</code></li>
+<li>Type <code>PlatformKeyValueStoreAddInput</code> was added</li>
+<li>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreAddInput</code></li>
+<li>Input field <code>value</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreAddInput</code></li>
+<li>Type <code>PlatformKeyValueStoreDeleteInput</code> was added</li>
+<li>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreDeleteInput</code></li>
+<li>Type <code>PlatformKeyValueStoreUpdateInput</code> was added</li>
+<li>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreUpdateInput</code></li>
+<li>Input field <code>value</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreUpdateInput</code></li>
+<li>Object type <code>BomChangeBomReleaseLifecycleStatePayload</code> has description <code>Result of changing the lifecycle state of a BOM release.</code></li>
+<li>Object type <code>BomCreateBomPayload</code> has description <code>Result of creating a new BOM.</code></li>
+<li>Object type <code>BomExportBomPayload</code> has description <code>Result of exporting a BOM to a file.</code></li>
+<li>Object type <code>BomExportBomReleasePayload</code> has description <code>Result of exporting a BOM release to a file.</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>costedBoms</code> was added to object type <code>BomWip</code></li>
+<li>Argument <code>after: String</code> added to field <code>BomWip.costedBoms</code></li>
+<li>Argument <code>before: String</code> added to field <code>BomWip.costedBoms</code></li>
+<li>Argument <code>first: Int</code> added to field <code>BomWip.costedBoms</code></li>
+<li>Argument <code>last: Int</code> added to field <code>BomWip.costedBoms</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>componentStatus</code> was added to object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>errorDetails</code> was added to object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>message</code> was added to object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>partChoiceStatus</code> was added to object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>revisionId</code> was added to object type <code>DesPartUploadComponentOperationResult</code></li>
+<li>Field <code>errorDetails</code> was added to object type <code>DesPartUploadLibraryPartOperationResult</code></li>
+<li>Field <code>message</code> was added to object type <code>DesPartUploadLibraryPartOperationResult</code></li>
+<li>Field <code>failureReason</code> was added to object type <code>DesPartUploadOperationPayload</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Field <code>insightTypesSettings</code> was added to object type <code>DesWorkspaceInsUserSettings</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Field <code>onChipMemoryCode</code> was added to object type <code>DmRaPartNumberModel</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>platformKeyValueStoreAdd</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: PlatformKeyValueStoreAddInput!</code> added to field <code>Mutation.platformKeyValueStoreAdd</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformKeyValueStoreAdd</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>platformKeyValueStoreDelete</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: PlatformKeyValueStoreDeleteInput!</code> added to field <code>Mutation.platformKeyValueStoreDelete</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformKeyValueStoreDelete</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>platformKeyValueStoreUpdate</code> was added to object type <code>Mutation</code></li>
+<li>Argument <code>input: PlatformKeyValueStoreUpdateInput!</code> added to field <code>Mutation.platformKeyValueStoreUpdate</code></li>
+<li>Directive <code>authorize</code> was added to field <code>Mutation.platformKeyValueStoreUpdate</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>keyValueStore</code> was added to object type <code>PlatformQueries</code></li>
+<li>Directive <code>authorize</code> was added to field <code>PlatformQueries.keyValueStore</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Field <code>Query.solBldEntityScaffoldingStatus</code> is deprecated</li>
+<li>Directive <code>deprecated</code> was added to field <code>Query.solBldEntityScaffoldingStatus</code></li>
+<li>Argument <code>reason</code> was added to <code>@deprecated</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Argument <code>assumedSize</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArguments</code> was added to <code>@listSize</code></li>
+<li>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></li>
+<li>Argument <code>sizedFields</code> was added to <code>@listSize</code></li>
+<li>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></li>
+<li>Argument <code>policy</code> was added to <code>@authorize</code></li>
+<li>Object type <code>BomChangeBomReleaseLifecycleStateInput</code> has description <code>Input for changing the lifecycle state of a BOM release.</code></li>
+<li>Object type <code>BomCreateBomInput</code> has description <code>Input for creating a new BOM.</code></li>
+<li>Object type <code>BomExportBomByIdInput</code> has description <code>Input for exporting a BOM by its identifier.</code></li>
+<li>Object type <code>BomExportBomInput</code> has description <code>Input for exporting a BOM.</code></li>
+<li>Object type <code>BomExportBomReleaseInput</code> has description <code>Input for exporting a BOM release.</code></li>
+<li>Input field <code>insightTypesSettings</code> of type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> was added to input object type <code>DesWorkspaceInsUserSettingsInput</code></li>
+<li>Object type <code>SolAccessibleToInput</code> has description <code>Specifies the grids whose permissions must provide access to a solution.</code></li>
+</ul>
+
+        </article>
         <article class="entry" id="entry-2026-10-10">
           <h3><a href="#entry-2026-10-10">10/10/2026</a></h3>
           <h4>✅ Non-Breaking Changes (13)</h4>
