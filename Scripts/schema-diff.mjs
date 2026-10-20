@@ -78,6 +78,8 @@ const visible = ignoreDirective
 const out = visible.map((c) => ({
   level: c.criticality.level, // BREAKING | DANGEROUS | NON_BREAKING
   message: c.message,
+  type: c.type,
+  path: c.path ?? null,
 }));
 
 process.stdout.write(JSON.stringify(out));

@@ -2,235 +2,302 @@
 
 ## 🔴 Breaking Changes (8)
 
+### Customization
+
+#### Input / Payload
+
+- Directive 'oneOf' was added to input object 'GloCusUpdateAssignmentInput'
+
+### Library Management
+
+#### Fields
+
 - Field 'errorMessage' was removed from object type 'DesPartUploadComponentOperationResult'
 - Field 'status' was removed from object type 'DesPartUploadComponentOperationResult'
 - Field 'errorMessage' was removed from object type 'DesPartUploadLibraryPartOperationResult'
+
+### Procurement
+
+#### Input / Payload
+
 - Directive 'oneOf' was added to input object 'BomCreateBomItemElementAttributeValueInput'
 - Directive 'oneOf' was added to input object 'BomCreateBomOfferReferenceInput'
 - Directive 'oneOf' was added to input object 'BomCreateBomPartReferenceInput'
 - Directive 'oneOf' was added to input object 'BomCreateBomSupplierReferenceInput'
-- Directive 'oneOf' was added to input object 'GloCusUpdateAssignmentInput'
 
 ---
 
 ## ⚠️ Dangerous Changes (117)
 
-- Directive 'authorize' was added to field 'BomItem.issues'
-- Directive 'authorize' was added to field 'BomItemAlternate.issues'
-- Directive 'authorize' was added to field 'BomItemAlternate.selectedOffer'
-- Directive 'authorize' was added to field 'BomItemSubstitute.issues'
-- Directive 'authorize' was added to field 'BomItemSubstitute.selectedOffer'
-- Directive 'authorize' was added to field 'BomRelease.healthChecks'
-- Directive 'authorize' was added to field 'BomRelease.incompleteHealthChecks'
-- Directive 'authorize' was added to field 'BomRelease.issues'
-- Directive 'authorize' was added to field 'BomWip.healthChecks'
-- Directive 'authorize' was added to field 'BomWip.incompleteHealthChecks'
-- Directive 'authorize' was added to field 'BomWip.issues'
-- Directive 'authorize' was added to field 'DesWorkspaceGroup.members'
-- Directive 'listSize' was added to field 'DesWorkspaceGroup.members'
-- Directive 'authorize' was added to field 'DesWorkspaceTeam.projectGuests'
-- Directive 'listSize' was added to field 'DesWorkspaceTeam.projectGuests'
-- Directive 'authorize' was added to field 'DesWorkspaceTeam.workspaceGroups'
-- Directive 'listSize' was added to field 'DesWorkspaceTeam.workspaceGroups'
-- Directive 'authorize' was added to field 'DesWorkspaceTeam.workspaceUsers'
-- Directive 'listSize' was added to field 'DesWorkspaceTeam.workspaceUsers'
-- Directive 'listSize' was added to field 'GloCusExtensionPoint.assignments'
-- Directive 'listSize' was added to field 'GloScrScript.versions'
-- Directive 'authorize' was added to object 'GloScrScript'
-- Directive 'authorize' was added to field 'GloScrScriptVersion.package'
-- Directive 'authorize' was added to field 'Mutation.bomChangeBomReleaseLifecycleState'
-- Directive 'authorize' was added to field 'Mutation.bomCreateBom'
-- Directive 'authorize' was added to field 'Mutation.bomExportBom'
-- Directive 'authorize' was added to field 'Mutation.bomExportBom'
-- Directive 'authorize' was added to field 'Mutation.bomExportBomById'
-- Directive 'authorize' was added to field 'Mutation.bomExportBomById'
-- Directive 'authorize' was added to field 'Mutation.bomExportBomRelease'
-- Directive 'authorize' was added to field 'Mutation.bomExportBomRelease'
-- Directive 'authorize' was added to field 'Mutation.desCompareReleases'
-- Directive 'authorize' was added to field 'Mutation.gloAddAppClientSecret'
-- Directive 'authorize' was added to field 'Mutation.gloAddAppGrantType'
-- Directive 'authorize' was added to field 'Mutation.gloAddAppRedirectUri'
-- Directive 'authorize' was added to field 'Mutation.gloAddAppScope'
-- Directive 'authorize' was added to field 'Mutation.gloAddUsersToGroup'
-- Directive 'authorize' was added to field 'Mutation.gloCreateApp'
-- Directive 'authorize' was added to field 'Mutation.gloCreateAppFromOAuthClient'
-- Directive 'authorize' was added to field 'Mutation.gloCreateUser'
-- Directive 'authorize' was added to field 'Mutation.gloCreateUserGroup'
-- Directive 'authorize' was added to field 'Mutation.gloCusAddAssignment'
-- Directive 'authorize' was added to field 'Mutation.gloCusDeleteAssignment'
-- Directive 'authorize' was added to field 'Mutation.gloCusUpdateAssignment'
-- Directive 'authorize' was added to field 'Mutation.gloCusUpdateAssignmentConfigurations'
-- Directive 'authorize' was added to field 'Mutation.gloDeleteApp'
-- Directive 'authorize' was added to field 'Mutation.gloEvtCreateWebhookSubscription'
-- Directive 'authorize' was added to field 'Mutation.gloEvtDeleteSubscription'
-- Directive 'authorize' was added to field 'Mutation.gloEvtPublishEvent'
-- Directive 'authorize' was added to field 'Mutation.gloInstallApp'
-- Directive 'authorize' was added to field 'Mutation.gloRemoveAppClientSecret'
-- Directive 'authorize' was added to field 'Mutation.gloRemoveAppGrantType'
-- Directive 'authorize' was added to field 'Mutation.gloRemoveAppRedirectUri'
-- Directive 'authorize' was added to field 'Mutation.gloRemoveAppScope'
-- Directive 'authorize' was added to field 'Mutation.gloRemoveUsersFromGroup'
-- Directive 'authorize' was added to field 'Mutation.gloRestoreApp'
-- Directive 'authorize' was added to field 'Mutation.gloScrCreateScript'
-- Directive 'authorize' was added to field 'Mutation.gloScrCreateSecret'
-- Directive 'authorize' was added to field 'Mutation.gloScrDeleteScript'
-- Directive 'authorize' was added to field 'Mutation.gloScrDeleteSecret'
-- Directive 'authorize' was added to field 'Mutation.gloScrExecuteScript'
-- Directive 'authorize' was added to field 'Mutation.gloScrRenameScript'
-- Directive 'authorize' was added to field 'Mutation.gloScrSetScriptSecrets'
-- Directive 'authorize' was added to field 'Mutation.gloScrUpdateScript'
-- Directive 'authorize' was added to field 'Mutation.gloUninstallApp'
-- Directive 'authorize' was added to field 'Mutation.gloUpdateAppContactEmail'
-- Directive 'authorize' was added to field 'Mutation.gloUpdateAppDescription'
-- Directive 'authorize' was added to field 'Mutation.gloUpdateAppHrid'
-- Directive 'authorize' was added to field 'Mutation.gloUpdateAppName'
-- Directive 'authorize' was added to field 'Mutation.platformTokenDelete'
-- Directive 'authorize' was added to field 'Mutation.platformTokenUpdate'
-- Directive 'authorize' was added to field 'Mutation.platformWorkspaceRefreshTokenCreate'
-- Directive 'authorize' was added to field 'Mutation.platformWorkspaceRefreshTokenCreateNewSecret'
-- Directive 'authorize' was added to field 'Mutation.platformWorkspaceRefreshTokenDeleteSecret'
-- Directive 'authorize' was added to field 'Mutation.platformWorkspaceTokenCreate'
-- Directive 'authorize' was added to field 'Query.bomBom'
-- Directive 'authorize' was added to field 'Query.bomBomById'
-- Directive 'authorize' was added to field 'Query.bomBomRelease'
-- Directive 'authorize' was added to field 'Query.bomBoms'
-- Directive 'authorize' was added to field 'Query.desAnnotations'
-- Directive 'listSize' was added to field 'Query.desAnnotations'
-- Directive 'authorize' was added to field 'Query.desComparisonHealthcheck'
-- Directive 'listSize' was added to field 'Query.desPartGlobalSearch'
-- Directive 'listSize' was added to field 'Query.desPartSearch'
-- Directive 'authorize' was added to field 'Query.desWorkspaceGroupById'
-- Directive 'authorize' was added to field 'Query.desWorkspaceGroupsByIds'
-- Directive 'listSize' was added to field 'Query.desWorkspaceInsInsights'
-- Directive 'authorize' was added to field 'Query.desWorkspaceTeamByAuth'
-- Directive 'authorize' was added to field 'Query.desWorkspaceUserByAuth'
-- Directive 'authorize' was added to field 'Query.desWorkspaceUserById'
-- Directive 'authorize' was added to field 'Query.desWorkspaceUsersByIds'
-- Directive 'authorize' was added to field 'Query.gloAppByClientId'
-- Directive 'authorize' was added to field 'Query.gloAppById'
-- Directive 'authorize' was added to field 'Query.gloAppInstalledApps'
-- Directive 'authorize' was added to field 'Query.gloApps'
-- Directive 'listSize' was added to field 'Query.gloApps'
-- Directive 'authorize' was added to field 'Query.gloEvtSubscriptionById'
-- Directive 'authorize' was added to field 'Query.gloOrganization'
-- Directive 'authorize' was added to field 'Query.gloOrganizationById'
-- Directive 'listSize' was added to field 'Query.gloScrScriptExecutionResults'
-- Directive 'listSize' was added to field 'Query.gloScrScripts'
-- Directive 'authorize' was added to field 'Query.gloScrScriptSecrets'
-- Directive 'authorize' was added to field 'Query.gloScrSecrets'
-- Directive 'authorize' was added to field 'Query.gloUserById'
-- Directive 'authorize' was added to field 'Query.gloUserGroups'
-- Directive 'listSize' was added to field 'Query.gloUserGroups'
-- Directive 'authorize' was added to field 'Query.gloUsers'
-- Directive 'listSize' was added to field 'Query.gloUsers'
-- Directive 'authorize' was added to field 'Query.gloUsersByIds'
-- Directive 'authorize' was added to field 'TokenQueries.byTokenId'
-- Directive 'authorize' was added to field 'TokenQueries.byWorkspace'
-- Directive 'listSize' was added to field 'TokenQueries.byWorkspace'
-- Directive 'authorize' was added to field 'TokenQueries.workspaceTokenQuota'
+### Collaboration
+
+#### 🔍 Query
+
+- Directive 'authorize' was added to 'Query.desAnnotations'
+- Directive 'listSize' was added to 'Query.desAnnotations'
+
+#### Types
+
 - Member 'DesAnnotationManagedPartBinding' was added to Union type 'DesAnnotationBinding'
+
+### Customization
+
+#### 🔍 Query
+
+- Directive 'listSize' was added to 'Query.gloScrScriptExecutionResults'
+- Directive 'listSize' was added to 'Query.gloScrScripts'
+- Directive 'authorize' was added to 'Query.gloScrScriptSecrets'
+- Directive 'authorize' was added to 'Query.gloScrSecrets'
+
+#### ✏️ Mutation
+
+- Directive 'authorize' was added to 'Mutation.gloCusAddAssignment'
+- Directive 'authorize' was added to 'Mutation.gloCusDeleteAssignment'
+- Directive 'authorize' was added to 'Mutation.gloCusUpdateAssignment'
+- Directive 'authorize' was added to 'Mutation.gloCusUpdateAssignmentConfigurations'
+- Directive 'authorize' was added to 'Mutation.gloScrCreateScript'
+- Directive 'authorize' was added to 'Mutation.gloScrCreateSecret'
+- Directive 'authorize' was added to 'Mutation.gloScrDeleteScript'
+- Directive 'authorize' was added to 'Mutation.gloScrDeleteSecret'
+- Directive 'authorize' was added to 'Mutation.gloScrExecuteScript'
+- Directive 'authorize' was added to 'Mutation.gloScrRenameScript'
+- Directive 'authorize' was added to 'Mutation.gloScrSetScriptSecrets'
+- Directive 'authorize' was added to 'Mutation.gloScrUpdateScript'
+
+#### Types
+
+- Directive 'authorize' was added to object 'GloScrScript'
+
+#### Fields
+
+- Directive 'listSize' was added to 'GloCusExtensionPoint.assignments'
+- Directive 'listSize' was added to 'GloScrScript.versions'
+- Directive 'authorize' was added to 'GloScrScriptVersion.package'
+
+### Design
+
+#### 🔍 Query
+
+- Directive 'authorize' was added to 'Query.desComparisonHealthcheck'
+
+#### ✏️ Mutation
+
+- Directive 'authorize' was added to 'Mutation.desCompareReleases'
+
+### Insights
+
+#### 🔍 Query
+
+- Directive 'listSize' was added to 'Query.desWorkspaceInsInsights'
+
+### Library Management
+
+#### 🔍 Query
+
+- Directive 'listSize' was added to 'Query.desPartGlobalSearch'
+- Directive 'listSize' was added to 'Query.desPartSearch'
+
+### Platform
+
+#### 🔍 Query
+
+- Directive 'authorize' was added to 'Query.gloAppByClientId'
+- Directive 'authorize' was added to 'Query.gloAppById'
+- Directive 'authorize' was added to 'Query.gloAppInstalledApps'
+- Directive 'authorize' was added to 'Query.gloApps'
+- Directive 'listSize' was added to 'Query.gloApps'
+- Directive 'authorize' was added to 'Query.desWorkspaceGroupById'
+- Directive 'authorize' was added to 'Query.desWorkspaceGroupsByIds'
+- Directive 'authorize' was added to 'Query.desWorkspaceTeamByAuth'
+- Directive 'authorize' was added to 'Query.desWorkspaceUserByAuth'
+- Directive 'authorize' was added to 'Query.desWorkspaceUserById'
+- Directive 'authorize' was added to 'Query.desWorkspaceUsersByIds'
+- Directive 'authorize' was added to 'Query.gloEvtSubscriptionById'
+- Directive 'authorize' was added to 'Query.gloOrganization'
+- Directive 'authorize' was added to 'Query.gloOrganizationById'
+- Directive 'authorize' was added to 'Query.gloUserById'
+- Directive 'authorize' was added to 'Query.gloUserGroups'
+- Directive 'listSize' was added to 'Query.gloUserGroups'
+- Directive 'authorize' was added to 'Query.gloUsers'
+- Directive 'listSize' was added to 'Query.gloUsers'
+- Directive 'authorize' was added to 'Query.gloUsersByIds'
+
+#### ✏️ Mutation
+
+- Directive 'authorize' was added to 'Mutation.gloAddAppClientSecret'
+- Directive 'authorize' was added to 'Mutation.gloAddAppGrantType'
+- Directive 'authorize' was added to 'Mutation.gloAddAppRedirectUri'
+- Directive 'authorize' was added to 'Mutation.gloAddAppScope'
+- Directive 'authorize' was added to 'Mutation.gloCreateApp'
+- Directive 'authorize' was added to 'Mutation.gloCreateAppFromOAuthClient'
+- Directive 'authorize' was added to 'Mutation.gloDeleteApp'
+- Directive 'authorize' was added to 'Mutation.gloInstallApp'
+- Directive 'authorize' was added to 'Mutation.gloRemoveAppClientSecret'
+- Directive 'authorize' was added to 'Mutation.gloRemoveAppGrantType'
+- Directive 'authorize' was added to 'Mutation.gloRemoveAppRedirectUri'
+- Directive 'authorize' was added to 'Mutation.gloRemoveAppScope'
+- Directive 'authorize' was added to 'Mutation.gloRestoreApp'
+- Directive 'authorize' was added to 'Mutation.gloUninstallApp'
+- Directive 'authorize' was added to 'Mutation.gloUpdateAppContactEmail'
+- Directive 'authorize' was added to 'Mutation.gloUpdateAppDescription'
+- Directive 'authorize' was added to 'Mutation.gloUpdateAppHrid'
+- Directive 'authorize' was added to 'Mutation.gloUpdateAppName'
+- Directive 'authorize' was added to 'Mutation.platformTokenDelete'
+- Directive 'authorize' was added to 'Mutation.platformTokenUpdate'
+- Directive 'authorize' was added to 'Mutation.platformWorkspaceRefreshTokenCreate'
+- Directive 'authorize' was added to 'Mutation.platformWorkspaceRefreshTokenCreateNewSecret'
+- Directive 'authorize' was added to 'Mutation.platformWorkspaceRefreshTokenDeleteSecret'
+- Directive 'authorize' was added to 'Mutation.platformWorkspaceTokenCreate'
+- Directive 'authorize' was added to 'Mutation.gloEvtCreateWebhookSubscription'
+- Directive 'authorize' was added to 'Mutation.gloEvtDeleteSubscription'
+- Directive 'authorize' was added to 'Mutation.gloEvtPublishEvent'
+- Directive 'authorize' was added to 'Mutation.gloAddUsersToGroup'
+- Directive 'authorize' was added to 'Mutation.gloCreateUser'
+- Directive 'authorize' was added to 'Mutation.gloCreateUserGroup'
+- Directive 'authorize' was added to 'Mutation.gloRemoveUsersFromGroup'
+
+#### Types
+
 - Member 'PlatformTokenInvalidNameError' was added to Union type 'PlatformTokenUpdateError'
 - Member 'PlatformTokenInvalidNameError' was added to Union type 'PlatformWorkspaceRefreshTokenCreateError'
 - Member 'PlatformTokenInvalidNameError' was added to Union type 'PlatformWorkspaceTokenCreateError'
 
+#### Fields
+
+- Directive 'authorize' was added to 'TokenQueries.byTokenId'
+- Directive 'authorize' was added to 'TokenQueries.byWorkspace'
+- Directive 'listSize' was added to 'TokenQueries.byWorkspace'
+- Directive 'authorize' was added to 'TokenQueries.workspaceTokenQuota'
+- Directive 'authorize' was added to 'DesWorkspaceGroup.members'
+- Directive 'listSize' was added to 'DesWorkspaceGroup.members'
+- Directive 'authorize' was added to 'DesWorkspaceTeam.projectGuests'
+- Directive 'listSize' was added to 'DesWorkspaceTeam.projectGuests'
+- Directive 'authorize' was added to 'DesWorkspaceTeam.workspaceGroups'
+- Directive 'listSize' was added to 'DesWorkspaceTeam.workspaceGroups'
+- Directive 'authorize' was added to 'DesWorkspaceTeam.workspaceUsers'
+- Directive 'listSize' was added to 'DesWorkspaceTeam.workspaceUsers'
+
+### Procurement
+
+#### 🔍 Query
+
+- Directive 'authorize' was added to 'Query.bomBom'
+- Directive 'authorize' was added to 'Query.bomBomById'
+- Directive 'authorize' was added to 'Query.bomBomRelease'
+- Directive 'authorize' was added to 'Query.bomBoms'
+
+#### ✏️ Mutation
+
+- Directive 'authorize' was added to 'Mutation.bomChangeBomReleaseLifecycleState'
+- Directive 'authorize' was added to 'Mutation.bomCreateBom'
+- Directive 'authorize' was added to 'Mutation.bomExportBom'
+- Directive 'authorize' was added to 'Mutation.bomExportBom'
+- Directive 'authorize' was added to 'Mutation.bomExportBomById'
+- Directive 'authorize' was added to 'Mutation.bomExportBomById'
+- Directive 'authorize' was added to 'Mutation.bomExportBomRelease'
+- Directive 'authorize' was added to 'Mutation.bomExportBomRelease'
+
+#### Fields
+
+- Directive 'authorize' was added to 'BomItem.issues'
+- Directive 'authorize' was added to 'BomItemAlternate.issues'
+- Directive 'authorize' was added to 'BomItemAlternate.selectedOffer'
+- Directive 'authorize' was added to 'BomItemSubstitute.issues'
+- Directive 'authorize' was added to 'BomItemSubstitute.selectedOffer'
+- Directive 'authorize' was added to 'BomRelease.healthChecks'
+- Directive 'authorize' was added to 'BomRelease.incompleteHealthChecks'
+- Directive 'authorize' was added to 'BomRelease.issues'
+- Directive 'authorize' was added to 'BomWip.healthChecks'
+- Directive 'authorize' was added to 'BomWip.incompleteHealthChecks'
+- Directive 'authorize' was added to 'BomWip.issues'
+
 ---
 
-## ✅ Non-Breaking Changes (325)
+## ✅ Non-Breaking Changes (145)
 
-- Directive 'listSize' was added
-- Location 'FIELD_DEFINITION' was added to directive 'listSize'
-- Argument 'assumedSize' was added to directive 'listSize'
-- Argument 'slicingArguments' was added to directive 'listSize'
-- Argument 'slicingArgumentDefaultValue' was added to directive 'listSize'
-- Argument 'sizedFields' was added to directive 'listSize'
-- Argument 'requireOneSlicingArgument' was added to directive 'listSize'
-- Type 'CostedBomsConnection' was added
-- Field 'edges' was added to object type 'CostedBomsConnection'
-- Field 'nodes' was added to object type 'CostedBomsConnection'
-- Field 'pageInfo' was added to object type 'CostedBomsConnection'
-- Field 'totalCount' was added to object type 'CostedBomsConnection'
-- Object type 'CostedBomsConnection' has description 'A connection to a list of items.'
-- Type 'CostedBomsEdge' was added
-- Field 'cursor' was added to object type 'CostedBomsEdge'
-- Field 'node' was added to object type 'CostedBomsEdge'
-- Object type 'CostedBomsEdge' has description 'An edge in a connection.'
+### Collaboration
+
+#### Types
+
 - Type 'DesAnnotationManagedPartBinding' was added
+
+#### Fields
+
 - Field 'partId' was added to object type 'DesAnnotationManagedPartBinding'
+
+### Insights
+
+#### Types
+
 - Type 'DesWorkspaceInsInsightTypesSettingsGql' was added
-- Field 'excludedInsightTypes' was added to object type 'DesWorkspaceInsInsightTypesSettingsGql'
 - Object type 'DesWorkspaceInsInsightTypesSettingsGql' has description 'Insight-type preferences affecting which insights are shown.'
+- Type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' was added
+- Object type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' has description 'Insight-type preferences that define which insights are shown.'
+
+#### Fields
+
+- Field 'excludedInsightTypes' was added to object type 'DesWorkspaceInsInsightTypesSettingsGql'
+- Field 'insightTypesSettings' was added to object type 'DesWorkspaceInsUserSettings'
+
+#### Input / Payload
+
+- Input field 'excludedInsightTypes' of type '[String!]!' was added to input object type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput'
+- Input field 'insightTypesSettings' of type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' was added to input object type 'DesWorkspaceInsUserSettingsInput'
+
+### Library Management
+
+#### Fields
+
+- Field 'componentStatus' was added to object type 'DesPartUploadComponentOperationResult'
+- Field 'errorDetails' was added to object type 'DesPartUploadComponentOperationResult'
+- Field 'message' was added to object type 'DesPartUploadComponentOperationResult'
+- Field 'partChoiceStatus' was added to object type 'DesPartUploadComponentOperationResult'
+- Field 'revisionId' was added to object type 'DesPartUploadComponentOperationResult'
+- Field 'errorDetails' was added to object type 'DesPartUploadLibraryPartOperationResult'
+- Field 'message' was added to object type 'DesPartUploadLibraryPartOperationResult'
+- Field 'failureReason' was added to object type 'DesPartUploadOperationPayload'
+
+### Platform
+
+#### ✏️ Mutation
+
+- Field 'platformKeyValueStoreAdd' was added to object type 'Mutation'
+- Argument 'input: PlatformKeyValueStoreAddInput!' added to 'Mutation.platformKeyValueStoreAdd'
+- Directive 'authorize' was added to 'Mutation.platformKeyValueStoreAdd'
+- Field 'platformKeyValueStoreDelete' was added to object type 'Mutation'
+- Argument 'input: PlatformKeyValueStoreDeleteInput!' added to 'Mutation.platformKeyValueStoreDelete'
+- Directive 'authorize' was added to 'Mutation.platformKeyValueStoreDelete'
+- Field 'platformKeyValueStoreUpdate' was added to object type 'Mutation'
+- Argument 'input: PlatformKeyValueStoreUpdateInput!' added to 'Mutation.platformKeyValueStoreUpdate'
+- Directive 'authorize' was added to 'Mutation.platformKeyValueStoreUpdate'
+
+#### Types
+
 - Type 'PlatformKeyValueStoreAddPayload' was added
-- Field 'entry' was added to object type 'PlatformKeyValueStoreAddPayload'
-- Field 'errors' was added to object type 'PlatformKeyValueStoreAddPayload'
 - Type 'PlatformKeyValueStoreDeletePayload' was added
-- Field 'errors' was added to object type 'PlatformKeyValueStoreDeletePayload'
-- Field 'isDeleted' was added to object type 'PlatformKeyValueStoreDeletePayload'
 - Type 'PlatformKeyValueStoreEntry' was added
-- Field 'createdAt' was added to object type 'PlatformKeyValueStoreEntry'
-- Field 'key' was added to object type 'PlatformKeyValueStoreEntry'
-- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreEntry'
-- Field 'updatedAt' was added to object type 'PlatformKeyValueStoreEntry'
-- Field 'value' was added to object type 'PlatformKeyValueStoreEntry'
 - Object type 'PlatformKeyValueStoreEntry' has description 'A value stored in the key-value store of an app installation, in the workspace of the access token.'
 - Type 'PlatformKeyValueStoreEntryExistsError' was added
 - 'PlatformKeyValueStoreEntryExistsError' object implements 'Error' interface
-- Field 'key' was added to object type 'PlatformKeyValueStoreEntryExistsError'
-- Field 'message' was added to object type 'PlatformKeyValueStoreEntryExistsError'
 - Type 'PlatformKeyValueStoreEntryNotFoundError' was added
 - 'PlatformKeyValueStoreEntryNotFoundError' object implements 'Error' interface
-- Field 'key' was added to object type 'PlatformKeyValueStoreEntryNotFoundError'
-- Field 'message' was added to object type 'PlatformKeyValueStoreEntryNotFoundError'
 - Type 'PlatformKeyValueStoreEntrySummary' was added
-- Field 'createdAt' was added to object type 'PlatformKeyValueStoreEntrySummary'
-- Field 'key' was added to object type 'PlatformKeyValueStoreEntrySummary'
-- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreEntrySummary'
-- Field 'updatedAt' was added to object type 'PlatformKeyValueStoreEntrySummary'
 - Object type 'PlatformKeyValueStoreEntrySummary' has description 'Entry metadata returned by *all*, without the value.'
 - Type 'PlatformKeyValueStoreEntrySummaryConnection' was added
-- Field 'edges' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
-- Field 'nodes' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
-- Field 'pageInfo' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
 - Object type 'PlatformKeyValueStoreEntrySummaryConnection' has description 'A connection to a list of items.'
 - Type 'PlatformKeyValueStoreEntrySummaryEdge' was added
-- Field 'cursor' was added to object type 'PlatformKeyValueStoreEntrySummaryEdge'
-- Field 'node' was added to object type 'PlatformKeyValueStoreEntrySummaryEdge'
 - Object type 'PlatformKeyValueStoreEntrySummaryEdge' has description 'An edge in a connection.'
 - Type 'PlatformKeyValueStoreKeyInvalidError' was added
 - 'PlatformKeyValueStoreKeyInvalidError' object implements 'Error' interface
-- Field 'key' was added to object type 'PlatformKeyValueStoreKeyInvalidError'
-- Field 'message' was added to object type 'PlatformKeyValueStoreKeyInvalidError'
 - Type 'PlatformKeyValueStoreQueries' was added
-- Field 'all' was added to object type 'PlatformKeyValueStoreQueries'
-- Argument 'after: String' added to field 'PlatformKeyValueStoreQueries.all'
-- Argument 'first: Int' added to field 'PlatformKeyValueStoreQueries.all'
-- Argument 'prefix: String' added to field 'PlatformKeyValueStoreQueries.all'
-- Directive 'listSize' was added to field 'PlatformKeyValueStoreQueries.all'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Field 'byKey' was added to object type 'PlatformKeyValueStoreQueries'
-- Argument 'key: String!' added to field 'PlatformKeyValueStoreQueries.byKey'
-- Field 'byKeys' was added to object type 'PlatformKeyValueStoreQueries'
-- Argument 'keys: [String!]!' added to field 'PlatformKeyValueStoreQueries.byKeys'
 - Type 'PlatformKeyValueStoreQuotaExceededError' was added
 - 'PlatformKeyValueStoreQuotaExceededError' object implements 'Error' interface
-- Field 'maxEntryCount' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
-- Field 'maxTotalSizeBytes' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
-- Field 'message' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
 - Object type 'PlatformKeyValueStoreQuotaExceededError' has description 'Returned when adding the entry, or growing its value, would exceed the installation\'s quota.'
 - Type 'PlatformKeyValueStoreUpdatePayload' was added
-- Field 'entry' was added to object type 'PlatformKeyValueStoreUpdatePayload'
-- Field 'errors' was added to object type 'PlatformKeyValueStoreUpdatePayload'
 - Type 'PlatformKeyValueStoreValueTooLargeError' was added
 - 'PlatformKeyValueStoreValueTooLargeError' object implements 'Error' interface
-- Field 'maxSizeBytes' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
-- Field 'message' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
-- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
 - Type 'PlatformTokenInvalidNameError' was added
 - 'PlatformTokenInvalidNameError' object implements 'Error' interface
-- Field 'message' was added to object type 'PlatformTokenInvalidNameError'
 - Object type 'PlatformTokenInvalidNameError' has description 'Error returned by the Token API when an input name for a `PlatformToken` is invalid.'
 - Type 'PlatformKeyValueStoreAddError' was added
 - Member 'PlatformKeyValueStoreKeyInvalidError' was added to Union type 'PlatformKeyValueStoreAddError'
@@ -244,222 +311,119 @@
 - Member 'PlatformKeyValueStoreValueTooLargeError' was added to Union type 'PlatformKeyValueStoreUpdateError'
 - Member 'PlatformKeyValueStoreEntryNotFoundError' was added to Union type 'PlatformKeyValueStoreUpdateError'
 - Member 'PlatformKeyValueStoreQuotaExceededError' was added to Union type 'PlatformKeyValueStoreUpdateError'
-- Type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' was added
-- Input field 'excludedInsightTypes' of type '[String!]!' was added to input object type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput'
-- Object type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' has description 'Insight-type preferences that define which insights are shown.'
 - Type 'PlatformKeyValueStoreAddInput' was added
+- Type 'PlatformKeyValueStoreDeleteInput' was added
+- Type 'PlatformKeyValueStoreUpdateInput' was added
+
+#### Arguments
+
+- Argument 'after: String' added to 'PlatformKeyValueStoreQueries.all'
+- Argument 'first: Int' added to 'PlatformKeyValueStoreQueries.all'
+- Argument 'prefix: String' added to 'PlatformKeyValueStoreQueries.all'
+- Argument 'key: String!' added to 'PlatformKeyValueStoreQueries.byKey'
+- Argument 'keys: [String!]!' added to 'PlatformKeyValueStoreQueries.byKeys'
+
+#### Fields
+
+- Field 'entry' was added to object type 'PlatformKeyValueStoreAddPayload'
+- Field 'errors' was added to object type 'PlatformKeyValueStoreAddPayload'
+- Field 'errors' was added to object type 'PlatformKeyValueStoreDeletePayload'
+- Field 'isDeleted' was added to object type 'PlatformKeyValueStoreDeletePayload'
+- Field 'createdAt' was added to object type 'PlatformKeyValueStoreEntry'
+- Field 'key' was added to object type 'PlatformKeyValueStoreEntry'
+- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreEntry'
+- Field 'updatedAt' was added to object type 'PlatformKeyValueStoreEntry'
+- Field 'value' was added to object type 'PlatformKeyValueStoreEntry'
+- Field 'key' was added to object type 'PlatformKeyValueStoreEntryExistsError'
+- Field 'message' was added to object type 'PlatformKeyValueStoreEntryExistsError'
+- Field 'key' was added to object type 'PlatformKeyValueStoreEntryNotFoundError'
+- Field 'message' was added to object type 'PlatformKeyValueStoreEntryNotFoundError'
+- Field 'createdAt' was added to object type 'PlatformKeyValueStoreEntrySummary'
+- Field 'key' was added to object type 'PlatformKeyValueStoreEntrySummary'
+- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreEntrySummary'
+- Field 'updatedAt' was added to object type 'PlatformKeyValueStoreEntrySummary'
+- Field 'edges' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
+- Field 'nodes' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
+- Field 'pageInfo' was added to object type 'PlatformKeyValueStoreEntrySummaryConnection'
+- Field 'cursor' was added to object type 'PlatformKeyValueStoreEntrySummaryEdge'
+- Field 'node' was added to object type 'PlatformKeyValueStoreEntrySummaryEdge'
+- Field 'key' was added to object type 'PlatformKeyValueStoreKeyInvalidError'
+- Field 'message' was added to object type 'PlatformKeyValueStoreKeyInvalidError'
+- Field 'all' was added to object type 'PlatformKeyValueStoreQueries'
+- Directive 'listSize' was added to 'PlatformKeyValueStoreQueries.all'
+- Field 'byKey' was added to object type 'PlatformKeyValueStoreQueries'
+- Field 'byKeys' was added to object type 'PlatformKeyValueStoreQueries'
+- Field 'maxEntryCount' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
+- Field 'maxTotalSizeBytes' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
+- Field 'message' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
+- Field 'entry' was added to object type 'PlatformKeyValueStoreUpdatePayload'
+- Field 'errors' was added to object type 'PlatformKeyValueStoreUpdatePayload'
+- Field 'maxSizeBytes' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
+- Field 'message' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
+- Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
+- Field 'message' was added to object type 'PlatformTokenInvalidNameError'
+- Field 'keyValueStore' was added to object type 'PlatformQueries'
+- Directive 'authorize' was added to 'PlatformQueries.keyValueStore'
+
+#### Input / Payload
+
 - Input field 'key' of type 'String!' was added to input object type 'PlatformKeyValueStoreAddInput'
 - Input field 'value' of type 'String!' was added to input object type 'PlatformKeyValueStoreAddInput'
-- Type 'PlatformKeyValueStoreDeleteInput' was added
 - Input field 'key' of type 'String!' was added to input object type 'PlatformKeyValueStoreDeleteInput'
-- Type 'PlatformKeyValueStoreUpdateInput' was added
 - Input field 'key' of type 'String!' was added to input object type 'PlatformKeyValueStoreUpdateInput'
 - Input field 'value' of type 'String!' was added to input object type 'PlatformKeyValueStoreUpdateInput'
+
+### Procurement
+
+#### Types
+
+- Type 'CostedBomsConnection' was added
+- Object type 'CostedBomsConnection' has description 'A connection to a list of items.'
+- Type 'CostedBomsEdge' was added
+- Object type 'CostedBomsEdge' has description 'An edge in a connection.'
 - Object type 'BomChangeBomReleaseLifecycleStatePayload' has description 'Result of changing the lifecycle state of a BOM release.'
 - Object type 'BomCreateBomPayload' has description 'Result of creating a new BOM.'
 - Object type 'BomExportBomPayload' has description 'Result of exporting a BOM to a file.'
 - Object type 'BomExportBomReleasePayload' has description 'Result of exporting a BOM release to a file.'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Field 'costedBoms' was added to object type 'BomWip'
-- Argument 'after: String' added to field 'BomWip.costedBoms'
-- Argument 'before: String' added to field 'BomWip.costedBoms'
-- Argument 'first: Int' added to field 'BomWip.costedBoms'
-- Argument 'last: Int' added to field 'BomWip.costedBoms'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Field 'componentStatus' was added to object type 'DesPartUploadComponentOperationResult'
-- Field 'errorDetails' was added to object type 'DesPartUploadComponentOperationResult'
-- Field 'message' was added to object type 'DesPartUploadComponentOperationResult'
-- Field 'partChoiceStatus' was added to object type 'DesPartUploadComponentOperationResult'
-- Field 'revisionId' was added to object type 'DesPartUploadComponentOperationResult'
-- Field 'errorDetails' was added to object type 'DesPartUploadLibraryPartOperationResult'
-- Field 'message' was added to object type 'DesPartUploadLibraryPartOperationResult'
-- Field 'failureReason' was added to object type 'DesPartUploadOperationPayload'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Field 'insightTypesSettings' was added to object type 'DesWorkspaceInsUserSettings'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Field 'onChipMemoryCode' was added to object type 'DmRaPartNumberModel'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Field 'platformKeyValueStoreAdd' was added to object type 'Mutation'
-- Argument 'input: PlatformKeyValueStoreAddInput!' added to field 'Mutation.platformKeyValueStoreAdd'
-- Directive 'authorize' was added to field 'Mutation.platformKeyValueStoreAdd'
-- Argument 'policy' was added to '@authorize'
-- Field 'platformKeyValueStoreDelete' was added to object type 'Mutation'
-- Argument 'input: PlatformKeyValueStoreDeleteInput!' added to field 'Mutation.platformKeyValueStoreDelete'
-- Directive 'authorize' was added to field 'Mutation.platformKeyValueStoreDelete'
-- Argument 'policy' was added to '@authorize'
-- Field 'platformKeyValueStoreUpdate' was added to object type 'Mutation'
-- Argument 'input: PlatformKeyValueStoreUpdateInput!' added to field 'Mutation.platformKeyValueStoreUpdate'
-- Directive 'authorize' was added to field 'Mutation.platformKeyValueStoreUpdate'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Field 'keyValueStore' was added to object type 'PlatformQueries'
-- Directive 'authorize' was added to field 'PlatformQueries.keyValueStore'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Field 'Query.solBldEntityScaffoldingStatus' is deprecated
-- Directive 'deprecated' was added to field 'Query.solBldEntityScaffoldingStatus'
-- Argument 'reason' was added to '@deprecated'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
 - Object type 'BomChangeBomReleaseLifecycleStateInput' has description 'Input for changing the lifecycle state of a BOM release.'
 - Object type 'BomCreateBomInput' has description 'Input for creating a new BOM.'
 - Object type 'BomExportBomByIdInput' has description 'Input for exporting a BOM by its identifier.'
 - Object type 'BomExportBomInput' has description 'Input for exporting a BOM.'
 - Object type 'BomExportBomReleaseInput' has description 'Input for exporting a BOM release.'
-- Input field 'insightTypesSettings' of type 'DesWorkspaceInsInsightTypesSettingsInputGqlInput' was added to input object type 'DesWorkspaceInsUserSettingsInput'
+
+#### Arguments
+
+- Argument 'after: String' added to 'BomWip.costedBoms'
+- Argument 'before: String' added to 'BomWip.costedBoms'
+- Argument 'first: Int' added to 'BomWip.costedBoms'
+- Argument 'last: Int' added to 'BomWip.costedBoms'
+
+#### Fields
+
+- Field 'edges' was added to object type 'CostedBomsConnection'
+- Field 'nodes' was added to object type 'CostedBomsConnection'
+- Field 'pageInfo' was added to object type 'CostedBomsConnection'
+- Field 'totalCount' was added to object type 'CostedBomsConnection'
+- Field 'cursor' was added to object type 'CostedBomsEdge'
+- Field 'node' was added to object type 'CostedBomsEdge'
+- Field 'costedBoms' was added to object type 'BomWip'
+
+### Renesas (preview)
+
+#### Fields
+
+- Field 'onChipMemoryCode' was added to object type 'DmRaPartNumberModel'
+
+### Solution Builder
+
+#### 🔍 Query
+
+- Field 'Query.solBldEntityScaffoldingStatus' is deprecated
+- Directive 'deprecated' was added to 'Query.solBldEntityScaffoldingStatus'
+
+### Solutions
+
+#### Types
+
 - Object type 'SolAccessibleToInput' has description 'Specifies the grids whose permissions must provide access to a solution.'
 
