@@ -165,3 +165,27 @@ No rules at all:
 ### Use case
 
 The `platform-api-graphql-schema-change-tracker` GitHub Action turns Platform API snapshots into changelogs. After a **scheduled** snapshot run it automatically diffs the newest snapshot against the previous one for that mode (Cloud: today vs yesterday; SprintUpdate: this sprint vs the last) and, only when something changed, commits the changelog and rebuilds that mode's per-year HTML page in the same run. It can also be dispatched manually to diff two chosen schema files for any mode — including **OnPrem**, which isn't snapshotted (you provide the two files). A manual **SprintUpdate** run is **approval-gated** (a required reviewer must approve before it runs) so the published sprint series can't be polluted by unreviewed manual changelogs; approved manual changelogs still appear on the page because publishing merges the scheduled and on-demand folders. All commits go to the protected `main` branch via the `graphql-changelog-commit-bot` app. On the published per-mode page, each entry is titled from the changelog file name — a single date for **Cloud**, a date interval for **SprintUpdate**, and a version + date interval for **OnPrem**. See [`PlatformApi/README.md`](PlatformApi/README.md) for details.
+
+## 3. Building the HTML changelog site
+
+`Scripts/build-changelog-site.mjs` reads all the dated `.md` changelog files for a given mode and renders a single self-contained `index.html` — grouped by year, with each entry, bounded context, and change kind collapsible (expanded by default).
+
+```bash
+node Scripts/build-changelog-site.mjs <mode> <outputDir> <inputDir> [<inputDir> ...]
+```
+
+The GitHub Action calls this automatically after each diff run. You can also run it locally after adding or editing `.md` files.
+
+## 4. Restructuring existing changelog files
+
+`Scripts/regroup-changelogs.mjs` is a one-time utility that rewrites existing `.md` files into the bounded-context / change-kind structure that `generateSchemaDiff.ps1` now produces. Run it when changelog files were generated before the grouped format was introduced, or after updating the classification rules.
+
+```bash
+# Regroup a specific file
+node Scripts/regroup-changelogs.mjs PlatformApi/Cloud/Changelogs/Scheduled/gateway-changelog-2026-10-15.md
+
+# Regroup all files under PlatformApi/
+node Scripts/regroup-changelogs.mjs --all
+```
+
+The script is idempotent — running it on an already-grouped file produces the same output.
