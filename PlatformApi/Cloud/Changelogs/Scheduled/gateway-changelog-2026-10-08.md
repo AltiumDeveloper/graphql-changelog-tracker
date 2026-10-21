@@ -1,6 +1,13 @@
 # gateway-changelog-2026-10-08
 
-## ✅ Non-Breaking Changes (34)
+## ✅ Non-Breaking Changes (35)
+
+
+### Common
+
+#### Directives
+
+- Argument 'reason' was added to '@deprecated'
 
 ### Design
 

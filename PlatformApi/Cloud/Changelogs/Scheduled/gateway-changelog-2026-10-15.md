@@ -2,6 +2,7 @@
 
 ## 🔴 Breaking Changes (8)
 
+
 ### Customization
 
 #### Input / Payload
@@ -28,6 +29,7 @@
 ---
 
 ## ⚠️ Dangerous Changes (117)
+
 
 ### Collaboration
 
@@ -101,17 +103,17 @@
 
 #### 🔍 Query
 
-- Directive 'authorize' was added to 'Query.gloAppByClientId'
-- Directive 'authorize' was added to 'Query.gloAppById'
-- Directive 'authorize' was added to 'Query.gloAppInstalledApps'
-- Directive 'authorize' was added to 'Query.gloApps'
-- Directive 'listSize' was added to 'Query.gloApps'
 - Directive 'authorize' was added to 'Query.desWorkspaceGroupById'
 - Directive 'authorize' was added to 'Query.desWorkspaceGroupsByIds'
 - Directive 'authorize' was added to 'Query.desWorkspaceTeamByAuth'
 - Directive 'authorize' was added to 'Query.desWorkspaceUserByAuth'
 - Directive 'authorize' was added to 'Query.desWorkspaceUserById'
 - Directive 'authorize' was added to 'Query.desWorkspaceUsersByIds'
+- Directive 'authorize' was added to 'Query.gloAppByClientId'
+- Directive 'authorize' was added to 'Query.gloAppById'
+- Directive 'authorize' was added to 'Query.gloAppInstalledApps'
+- Directive 'authorize' was added to 'Query.gloApps'
+- Directive 'listSize' was added to 'Query.gloApps'
 - Directive 'authorize' was added to 'Query.gloEvtSubscriptionById'
 - Directive 'authorize' was added to 'Query.gloOrganization'
 - Directive 'authorize' was added to 'Query.gloOrganizationById'
@@ -128,14 +130,21 @@
 - Directive 'authorize' was added to 'Mutation.gloAddAppGrantType'
 - Directive 'authorize' was added to 'Mutation.gloAddAppRedirectUri'
 - Directive 'authorize' was added to 'Mutation.gloAddAppScope'
+- Directive 'authorize' was added to 'Mutation.gloAddUsersToGroup'
 - Directive 'authorize' was added to 'Mutation.gloCreateApp'
 - Directive 'authorize' was added to 'Mutation.gloCreateAppFromOAuthClient'
+- Directive 'authorize' was added to 'Mutation.gloCreateUser'
+- Directive 'authorize' was added to 'Mutation.gloCreateUserGroup'
 - Directive 'authorize' was added to 'Mutation.gloDeleteApp'
+- Directive 'authorize' was added to 'Mutation.gloEvtCreateWebhookSubscription'
+- Directive 'authorize' was added to 'Mutation.gloEvtDeleteSubscription'
+- Directive 'authorize' was added to 'Mutation.gloEvtPublishEvent'
 - Directive 'authorize' was added to 'Mutation.gloInstallApp'
 - Directive 'authorize' was added to 'Mutation.gloRemoveAppClientSecret'
 - Directive 'authorize' was added to 'Mutation.gloRemoveAppGrantType'
 - Directive 'authorize' was added to 'Mutation.gloRemoveAppRedirectUri'
 - Directive 'authorize' was added to 'Mutation.gloRemoveAppScope'
+- Directive 'authorize' was added to 'Mutation.gloRemoveUsersFromGroup'
 - Directive 'authorize' was added to 'Mutation.gloRestoreApp'
 - Directive 'authorize' was added to 'Mutation.gloUninstallApp'
 - Directive 'authorize' was added to 'Mutation.gloUpdateAppContactEmail'
@@ -148,13 +157,6 @@
 - Directive 'authorize' was added to 'Mutation.platformWorkspaceRefreshTokenCreateNewSecret'
 - Directive 'authorize' was added to 'Mutation.platformWorkspaceRefreshTokenDeleteSecret'
 - Directive 'authorize' was added to 'Mutation.platformWorkspaceTokenCreate'
-- Directive 'authorize' was added to 'Mutation.gloEvtCreateWebhookSubscription'
-- Directive 'authorize' was added to 'Mutation.gloEvtDeleteSubscription'
-- Directive 'authorize' was added to 'Mutation.gloEvtPublishEvent'
-- Directive 'authorize' was added to 'Mutation.gloAddUsersToGroup'
-- Directive 'authorize' was added to 'Mutation.gloCreateUser'
-- Directive 'authorize' was added to 'Mutation.gloCreateUserGroup'
-- Directive 'authorize' was added to 'Mutation.gloRemoveUsersFromGroup'
 
 #### Types
 
@@ -164,10 +166,6 @@
 
 #### Fields
 
-- Directive 'authorize' was added to 'TokenQueries.byTokenId'
-- Directive 'authorize' was added to 'TokenQueries.byWorkspace'
-- Directive 'listSize' was added to 'TokenQueries.byWorkspace'
-- Directive 'authorize' was added to 'TokenQueries.workspaceTokenQuota'
 - Directive 'authorize' was added to 'DesWorkspaceGroup.members'
 - Directive 'listSize' was added to 'DesWorkspaceGroup.members'
 - Directive 'authorize' was added to 'DesWorkspaceTeam.projectGuests'
@@ -176,6 +174,10 @@
 - Directive 'listSize' was added to 'DesWorkspaceTeam.workspaceGroups'
 - Directive 'authorize' was added to 'DesWorkspaceTeam.workspaceUsers'
 - Directive 'listSize' was added to 'DesWorkspaceTeam.workspaceUsers'
+- Directive 'authorize' was added to 'TokenQueries.byTokenId'
+- Directive 'authorize' was added to 'TokenQueries.byWorkspace'
+- Directive 'listSize' was added to 'TokenQueries.byWorkspace'
+- Directive 'authorize' was added to 'TokenQueries.workspaceTokenQuota'
 
 ### Procurement
 
@@ -213,7 +215,8 @@
 
 ---
 
-## ✅ Non-Breaking Changes (145)
+## ✅ Non-Breaking Changes (325)
+
 
 ### Collaboration
 
@@ -224,6 +227,191 @@
 #### Fields
 
 - Field 'partId' was added to object type 'DesAnnotationManagedPartBinding'
+
+### Common
+
+#### Directives
+
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Directive 'listSize' was added
+- Location 'FIELD_DEFINITION' was added to directive 'listSize'
+- Argument 'assumedSize' was added to directive 'listSize'
+- Argument 'slicingArguments' was added to directive 'listSize'
+- Argument 'slicingArgumentDefaultValue' was added to directive 'listSize'
+- Argument 'sizedFields' was added to directive 'listSize'
+- Argument 'requireOneSlicingArgument' was added to directive 'listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'reason' was added to '@deprecated'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
 
 ### Insights
 
@@ -258,6 +446,11 @@
 - Field 'failureReason' was added to object type 'DesPartUploadOperationPayload'
 
 ### Platform
+
+#### 🔍 Query
+
+- Field 'Query.solBldEntityScaffoldingStatus' is deprecated
+- Directive 'deprecated' was added to 'Query.solBldEntityScaffoldingStatus'
 
 #### ✏️ Mutation
 
@@ -314,6 +507,7 @@
 - Type 'PlatformKeyValueStoreAddInput' was added
 - Type 'PlatformKeyValueStoreDeleteInput' was added
 - Type 'PlatformKeyValueStoreUpdateInput' was added
+- Object type 'SolAccessibleToInput' has description 'Specifies the grids whose permissions must provide access to a solution.'
 
 #### Arguments
 
@@ -413,17 +607,4 @@
 #### Fields
 
 - Field 'onChipMemoryCode' was added to object type 'DmRaPartNumberModel'
-
-### Solution Builder
-
-#### 🔍 Query
-
-- Field 'Query.solBldEntityScaffoldingStatus' is deprecated
-- Directive 'deprecated' was added to 'Query.solBldEntityScaffoldingStatus'
-
-### Solutions
-
-#### Types
-
-- Object type 'SolAccessibleToInput' has description 'Specifies the grids whose permissions must provide access to a solution.'
 

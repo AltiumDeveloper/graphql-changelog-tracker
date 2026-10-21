@@ -77,8 +77,14 @@
         <article class="entry" id="entry-2026-10-13">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-13">29/09/2026 - 13/10/2026</a></h3></summary>
-            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (46)</h4></summary>
-<details open class="ctx-d"><summary><h5>Design</h5></summary>
+            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (48)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Design</h5></summary>
 <details open class="kind-d"><summary><h6>Arguments</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></span></li>
@@ -87,6 +93,23 @@
 </details><details open class="kind-d"><summary><h6>Fields</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Field <code>byReleaseIdCombinedErc</code> was added to object type <code>RuleCheckExecutionQueries</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code> was added</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>downloadUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>fileName</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>fileSizeInBytes</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>outputSdmUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>updatedAt</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>artifact</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>projectSourceId</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code></span></li>
 </ul>
 </details></details><details open class="ctx-d"><summary><h5>Supply</h5></summary>
 <details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
@@ -133,23 +156,6 @@
 <li><span class="ba">+</span> <span>Input field <code>solutionTemplateId</code> of type <code>ID!</code> was added to input object type <code>SupSolutionTemplateSetRefDesignsInput</code></span></li>
 <li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateFilterInput</code></span></li>
 <li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateSearchFilterInput</code></span></li>
-</ul>
-</details></details><details open class="ctx-d"><summary><h5>Supply — Software Project</h5></summary>
-<details open class="kind-d"><summary><h6>Types</h6></summary>
-<ul>
-<li><span class="ba">+</span> <span>Type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code> was added</span></li>
-</ul>
-</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
-<ul>
-<li><span class="ba">+</span> <span>Field <code>downloadUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>fileName</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>fileSizeInBytes</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>outputSdmUrl</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>updatedAt</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>artifact</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
-<li><span class="ba">+</span> <span>Field <code>projectSourceId</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
-<li><span class="bc">Δ</span> <span>Field <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code> is deprecated</span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code></span></li>
 </ul>
 </details></details></details>
           </details>

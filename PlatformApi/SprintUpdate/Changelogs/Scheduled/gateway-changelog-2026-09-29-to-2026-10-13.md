@@ -1,6 +1,14 @@
 # gateway-changelog-2026-09-29-to-2026-10-13
 
-## ✅ Non-Breaking Changes (46)
+## ✅ Non-Breaking Changes (48)
+
+
+### Common
+
+#### Directives
+
+- Argument 'reason' was added to '@deprecated'
+- Argument 'reason' was added to '@deprecated'
 
 ### Design
 
@@ -12,6 +20,24 @@
 #### Fields
 
 - Field 'byReleaseIdCombinedErc' was added to object type 'RuleCheckExecutionQueries'
+
+### Renesas (preview)
+
+#### Types
+
+- Type 'SupSoftwareProjectEvalKitProjectSourceArtifact' was added
+
+#### Fields
+
+- Field 'downloadUrl' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
+- Field 'fileName' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
+- Field 'fileSizeInBytes' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
+- Field 'outputSdmUrl' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
+- Field 'updatedAt' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
+- Field 'artifact' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
+- Field 'projectSourceId' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
+- Field 'SupSoftwareProjectEvalKitProjectSource.projectSourceId' is deprecated
+- Directive 'deprecated' was added to 'SupSoftwareProjectEvalKitProjectSource.projectSourceId'
 
 ### Supply
 
@@ -59,22 +85,4 @@
 - Input field 'solutionTemplateId' of type 'ID!' was added to input object type 'SupSolutionTemplateSetRefDesignsInput'
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateFilterInput'
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateSearchFilterInput'
-
-### Supply — Software Project
-
-#### Types
-
-- Type 'SupSoftwareProjectEvalKitProjectSourceArtifact' was added
-
-#### Fields
-
-- Field 'downloadUrl' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
-- Field 'fileName' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
-- Field 'fileSizeInBytes' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
-- Field 'outputSdmUrl' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
-- Field 'updatedAt' was added to object type 'SupSoftwareProjectEvalKitProjectSourceArtifact'
-- Field 'artifact' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
-- Field 'projectSourceId' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
-- Field 'SupSoftwareProjectEvalKitProjectSource.projectSourceId' is deprecated
-- Directive 'deprecated' was added to 'SupSoftwareProjectEvalKitProjectSource.projectSourceId'
 

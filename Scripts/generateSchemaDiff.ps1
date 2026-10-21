@@ -115,66 +115,81 @@ if ($nodeExit -ne 0) {
 # ── Bounded-context lookup tables (most-specific pattern first) ───────────────
 # Tested against the first path segment for type-level and field-level changes.
 $script:TYPE_RULES = @(
-    @{ re = '^(CostedBoms|Bom)';                                                               ctx = 'Procurement' }
-    @{ re = '^DesAnnotation';                                                                  ctx = 'Collaboration' }
-    @{ re = '^DesWorkspaceIns';                                                                ctx = 'Insights' }
+    # Procurement
+    @{ re = '^(CostedBoms|Bom)';                                                                ctx = 'Procurement' }
+    # Collaboration
+    @{ re = '^DesAnnotation';                                                                   ctx = 'Collaboration' }
+    # Insights
+    @{ re = '^DesWorkspaceIns';                                                                 ctx = 'Insights' }
+    # Platform — workspace / user types under Des* prefix
     @{ re = '^(DesWorkspaceTeam|DesWorkspaceGroup|DesWorkspaceUser|DesProjectGuest|DesProfile)'; ctx = 'Platform' }
-    @{ re = '^(DesDesignData|DesRuleCheck|DesComparison|Design|Rule|LatestGeneration)';        ctx = 'Design' }
-    @{ re = '^(DesPart|DesSearch)';                                                            ctx = 'Library Management' }
-    @{ re = '^Des';                                                                            ctx = 'Design' }
-    @{ re = '^(GloCus|GloScr)';                                                               ctx = 'Customization' }
-    @{ re = '^GlobalTrackedEvent';                                                             ctx = 'Platform' }
-    @{ re = '^Glo';                                                                            ctx = 'Platform' }
-    @{ re = '^(Platform|TokenQueries)';                                                        ctx = 'Platform' }
-    @{ re = '^SolBld';                                                                         ctx = 'Solution Builder' }
-    @{ re = '^Sol';                                                                            ctx = 'Solutions' }
-    @{ re = '^SupSoftwareProject';                                                             ctx = 'Supply — Software Project' }
-    @{ re = '^Sup';                                                                            ctx = 'Supply' }
-    @{ re = '^(SysEsd|SysSdm|SysLib)';                                                        ctx = 'System Design' }
-    @{ re = '^Rsa';                                                                            ctx = 'Renesas (preview)' }
-    @{ re = '^Sft';                                                                            ctx = 'Software' }
-    @{ re = '^Requirements';                                                                   ctx = 'Requirements' }
-    @{ re = '^Dm';                                                                             ctx = 'Renesas (preview)' }
+    # Design
+    @{ re = '^(DesDesignData|DesRuleCheck|DesComparison|Design|Rule|LatestGeneration)';         ctx = 'Design' }
+    # Library Management
+    @{ re = '^(DesPart|DesSearch)';                                                             ctx = 'Library Management' }
+    @{ re = '^Des';                                                                             ctx = 'Design' }       # Des* catch-all
+    # Customization (must precede Glo* catch-all)
+    @{ re = '^(GloCus|GloScr)';                                                                ctx = 'Customization' }
+    # Platform — all remaining Glo*, App*, Platform, TokenQueries, Sol* (includes SolBld)
+    @{ re = '^(Glo|App|Platform|TokenQueries|Sol)';                                             ctx = 'Platform' }
+    # Renesas (preview) — must precede Sup* catch-all for SupSoftwareProject
+    @{ re = '^SupSoftwareProject';                                                              ctx = 'Renesas (preview)' }
+    # Supply
+    @{ re = '^Sup';                                                                             ctx = 'Supply' }
+    # System Design
+    @{ re = '^(SysEsd|SysSdm|SysLib)';                                                         ctx = 'System Design' }
+    # Requirements
+    @{ re = '^Requirements';                                                                    ctx = 'Requirements' }
+    # Renesas (preview)
+    @{ re = '^(Rsa|Dm|Sft)';                                                                    ctx = 'Renesas (preview)' }
 )
 
 # Tested against the operation field name (second segment) for Query/Mutation/Subscription.
 $script:OP_RULES = @(
-    @{ re = '^bom';                                           ctx = 'Procurement' }
-    @{ re = '^desAnnotation';                                 ctx = 'Collaboration' }
-    @{ re = '^desWorkspaceIns';                               ctx = 'Insights' }
+    # Procurement
+    @{ re = '^bom';                                            ctx = 'Procurement' }
+    # Collaboration
+    @{ re = '^desAnnotation';                                  ctx = 'Collaboration' }
+    # Insights
+    @{ re = '^desWorkspaceIns';                                ctx = 'Insights' }
+    # Platform — workspace / user ops under des* prefix
     @{ re = '^des(WorkspaceTeam|WorkspaceGroup|WorkspaceUser)'; ctx = 'Platform' }
-    @{ re = '^des(DesignData|RuleCheck|Comparison|Compare)';  ctx = 'Design' }
-    @{ re = '^des(Part|Search|PermissionsById)';              ctx = 'Library Management' }
-    @{ re = '^des';                                           ctx = 'Design' }
-    @{ re = '^glo(Cus|Scr)';                                  ctx = 'Customization' }
-    @{ re = '^glo(Organization|UserGroup|User)';              ctx = 'Platform' }
-    @{ re = '^glo.*[Uu]ser';                                  ctx = 'Platform' }
-    @{ re = '^(glo|ping|platform)';                           ctx = 'Platform' }
-    @{ re = '^global.*[Tt]racked';                            ctx = 'Platform' }
-    @{ re = '^solBld';                                        ctx = 'Solution Builder' }
-    @{ re = '^sol';                                           ctx = 'Solutions' }
-    @{ re = '^supSoftwareProject';                            ctx = 'Supply — Software Project' }
-    @{ re = '^sup';                                           ctx = 'Supply' }
-    @{ re = '^(sysEsd|sysSdm|sysLib)';                        ctx = 'System Design' }
-    @{ re = '^rsa';                                           ctx = 'Renesas (preview)' }
-    @{ re = '^sft';                                           ctx = 'Software' }
-    @{ re = '^requirements';                                  ctx = 'Requirements' }
-    @{ re = '^design';                                        ctx = 'Design' }
+    # Design
+    @{ re = '^des(DesignData|RuleCheck|Comparison|Compare)';   ctx = 'Design' }
+    # Library Management
+    @{ re = '^des(Part|Search|PermissionsById)';               ctx = 'Library Management' }
+    @{ re = '^des';                                            ctx = 'Design' }       # des* catch-all
+    # Customization (must precede glo* catch-all)
+    @{ re = '^glo(Cus|Scr)';                                   ctx = 'Customization' }
+    # Platform — all remaining glo*, app*, ping, platform, sol* (includes solBld), global*
+    @{ re = '^(glo|global|app|ping|platform|sol)';              ctx = 'Platform' }
+    # Renesas (preview) — must precede sup* catch-all for supSoftwareProject
+    @{ re = '^supSoftwareProject';                             ctx = 'Renesas (preview)' }
+    # Supply
+    @{ re = '^sup';                                            ctx = 'Supply' }
+    # System Design
+    @{ re = '^(sysEsd|sysSdm|sysLib)';                         ctx = 'System Design' }
+    # Requirements
+    @{ re = '^requirements';                                   ctx = 'Requirements' }
+    # Renesas (preview)
+    @{ re = '^(rsa|sft|dm)';                                   ctx = 'Renesas (preview)' }
+    # Design catch-all for any remaining design* ops
+    @{ re = '^design';                                         ctx = 'Design' }
 )
 
 function Get-BoundedContext([string]$path, [string]$changeType) {
-    if (-not $path) { return 'Schema' }
+    if (-not $path) { return 'Common' }
     $segs  = $path -split '\.'
     $first = $segs[0]
-    if ($first -match '^\@') { return 'Schema' }
+    if ($first -match '^\@') { return 'Common' }
     if ($first -in @('Query', 'Mutation', 'Subscription')) {
-        if ($segs.Count -lt 2) { return 'Schema' }
+        if ($segs.Count -lt 2) { return 'Common' }
         $field = $segs[1]
         foreach ($r in $script:OP_RULES) { if ($field -match $r.re) { return $r.ctx } }
-        return 'Schema'
+        return 'Common'
     }
     foreach ($r in $script:TYPE_RULES) { if ($first -match $r.re) { return $r.ctx } }
-    return 'Schema'
+    return 'Common'
 }
 
 function Get-ChangeKind([string]$path, [string]$changeType, [string]$msg = '') {
@@ -236,7 +251,7 @@ foreach ($change in $changes) {
 }
 
 # ── Kind ordering and display labels ──────────────────────────────────────────
-$script:KIND_ORDER = @('Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload')
+$script:KIND_ORDER = @('Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload', 'Schema')
 $script:KIND_LABEL = @{
     'Query'           = '🔍 Query'
     'Mutation'        = '✏️ Mutation'
@@ -245,6 +260,7 @@ $script:KIND_LABEL = @{
     'Argument'        = 'Arguments'
     'Field'           = 'Fields'
     'Input / Payload' = 'Input / Payload'
+    'Schema'          = 'Directives'
 }
 
 function Format-LevelSection([string]$title, [hashtable]$grp) {

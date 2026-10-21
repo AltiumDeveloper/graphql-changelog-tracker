@@ -2,5 +2,10 @@
 
 ## ⚠️ Dangerous Changes (1)
 
-### Schema
+
+### Common
+
+#### Directives
+
+- Enum value 'RASC_CMAKE' was added to enum 'SupSoftwareProjectEvalKitProjectSourceType'
 

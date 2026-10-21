@@ -2,6 +2,7 @@
 
 ## ⚠️ Dangerous Changes (1)
 
+
 ### Library Management
 
 #### 🔍 Query
@@ -10,16 +11,16 @@
 
 ---
 
-## ✅ Non-Breaking Changes (10)
+## ✅ Non-Breaking Changes (11)
 
-### Supply
 
-#### Input / Payload
+### Common
 
-- Input field 'toolchainId' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
-- Input field 'toolchainVersion' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
+#### Directives
 
-### Supply — Software Project
+- Argument 'reason' was added to '@deprecated'
+
+### Renesas (preview)
 
 #### Types
 
@@ -34,4 +35,11 @@
 - Directive 'deprecated' was added to 'SupSoftwareProjectToolchain.toolchainId'
 - Field 'toolchain' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
 - Field 'toolchainVersion' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
+
+### Supply
+
+#### Input / Payload
+
+- Input field 'toolchainId' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
+- Input field 'toolchainVersion' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
 

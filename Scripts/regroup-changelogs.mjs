@@ -11,53 +11,68 @@ import { fileURLToPath } from 'node:url';
 
 // ── Bounded-context lookup tables (same rules as generateSchemaDiff.ps1) ──────
 const TYPE_RULES = [
-  [/^(CostedBoms|Bom)/,                                                                      'Procurement'],
-  [/^DesAnnotation/,                                                                          'Collaboration'],
-  [/^DesWorkspaceIns/,                                                                        'Insights'],
-  [/^(DesWorkspaceTeam|DesWorkspaceGroup|DesWorkspaceUser|DesProjectGuest|DesProfile)/,       'Platform'],
-  [/^(DesDesignData|DesRuleCheck|DesComparison|Design|Rule|LatestGeneration)/,                'Design'],
-  [/^(DesPart|DesSearch)/,                                                                    'Library Management'],
-  [/^Des/,                                                                                    'Design'],
-  [/^(GloCus|GloScr)/,                                                                        'Customization'],
-  [/^GlobalTrackedEvent/,                                                                     'Platform'],
-  [/^Glo/,                                                                                    'Platform'],
-  [/^(Platform|TokenQueries)/,                                                                'Platform'],
-  [/^SolBld/,                                                                                 'Solution Builder'],
-  [/^Sol/,                                                                                    'Solutions'],
-  [/^SupSoftwareProject/,                                                                     'Supply — Software Project'],
-  [/^Sup/,                                                                                    'Supply'],
-  [/^(SysEsd|SysSdm|SysLib)/,                                                                'System Design'],
-  [/^Rsa/,                                                                                    'Renesas (preview)'],
-  [/^Sft/,                                                                                    'Software'],
-  [/^Requirements/,                                                                           'Requirements'],
-  [/^Dm/,                                                                                     'Renesas (preview)'],
+  // Procurement
+  [/^(CostedBoms|Bom)/,                                                                         'Procurement'],
+  // Collaboration
+  [/^DesAnnotation/,                                                                             'Collaboration'],
+  // Insights
+  [/^DesWorkspaceIns/,                                                                           'Insights'],
+  // Platform — workspace / user types under Des* prefix
+  [/^(DesWorkspaceTeam|DesWorkspaceGroup|DesWorkspaceUser|DesProjectGuest|DesProfile)/,          'Platform'],
+  // Design
+  [/^(DesDesignData|DesRuleCheck|DesComparison|Design|Rule|LatestGeneration)/,                   'Design'],
+  // Library Management
+  [/^(DesPart|DesSearch)/,                                                                       'Library Management'],
+  [/^Des/,                                                                                       'Design'],        // Des* catch-all
+  // Customization (must precede Glo* catch-all)
+  [/^(GloCus|GloScr)/,                                                                           'Customization'],
+  // Platform — all remaining Glo*, App*, Platform, TokenQueries, Sol* (includes SolBld)
+  [/^(Glo|App|Platform|TokenQueries|Sol)/,                                                        'Platform'],
+  // Renesas (preview) — must precede Sup* catch-all for SupSoftwareProject
+  [/^SupSoftwareProject/,                                                                        'Renesas (preview)'],
+  // Supply
+  [/^Sup/,                                                                                       'Supply'],
+  // System Design
+  [/^(SysEsd|SysSdm|SysLib)/,                                                                   'System Design'],
+  // Requirements
+  [/^Requirements/,                                                                              'Requirements'],
+  // Renesas (preview)
+  [/^(Rsa|Dm|Sft)/,                                                                              'Renesas (preview)'],
 ];
 
 const OP_RULES = [
-  [/^bom/,                                             'Procurement'],
-  [/^desAnnotation/,                                   'Collaboration'],
-  [/^desWorkspaceIns/,                                 'Insights'],
+  // Procurement
+  [/^bom/,                                              'Procurement'],
+  // Collaboration
+  [/^desAnnotation/,                                    'Collaboration'],
+  // Insights
+  [/^desWorkspaceIns/,                                  'Insights'],
+  // Platform — workspace / user ops under des* prefix
   [/^des(WorkspaceTeam|WorkspaceGroup|WorkspaceUser)/,  'Platform'],
-  [/^des(DesignData|RuleCheck|Comparison|Compare)/,    'Design'],
-  [/^des(Part|Search|PermissionsById)/,                'Library Management'],
-  [/^des/,                                             'Design'],
-  [/^glo(Cus|Scr)/,                                    'Customization'],
-  [/^glo(Organization|UserGroup|User)/,                'Platform'],
-  [/^glo.*[Uu]ser/,                                    'Platform'],
-  [/^(glo|ping|platform)/,                             'Platform'],
-  [/^global.*[Tt]racked/,                              'Platform'],
-  [/^solBld/,                                          'Solution Builder'],
-  [/^sol/,                                             'Solutions'],
-  [/^supSoftwareProject/,                              'Supply — Software Project'],
-  [/^sup/,                                             'Supply'],
-  [/^(sysEsd|sysSdm|sysLib)/,                          'System Design'],
-  [/^rsa/,                                             'Renesas (preview)'],
-  [/^sft/,                                             'Software'],
-  [/^requirements/,                                    'Requirements'],
-  [/^design/,                                          'Design'],
+  // Design
+  [/^des(DesignData|RuleCheck|Comparison|Compare)/,     'Design'],
+  // Library Management
+  [/^des(Part|Search|PermissionsById)/,                 'Library Management'],
+  [/^des/,                                              'Design'],        // des* catch-all
+  // Customization (must precede glo* catch-all)
+  [/^glo(Cus|Scr)/,                                     'Customization'],
+  // Platform — all remaining glo*, app*, ping, platform, sol* (includes solBld), global*
+  [/^(glo|global|app|ping|platform|sol)/,               'Platform'],
+  // Renesas (preview) — must precede sup* catch-all for supSoftwareProject
+  [/^supSoftwareProject/,                               'Renesas (preview)'],
+  // Supply
+  [/^sup/,                                              'Supply'],
+  // System Design
+  [/^(sysEsd|sysSdm|sysLib)/,                           'System Design'],
+  // Requirements
+  [/^requirements/,                                     'Requirements'],
+  // Renesas (preview)
+  [/^(rsa|sft|dm)/,                                     'Renesas (preview)'],
+  // Design catch-all for any remaining design* ops
+  [/^design/,                                           'Design'],
 ];
 
-const KIND_ORDER = ['Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload'];
+const KIND_ORDER = ['Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload', 'Schema'];
 const KIND_LABEL = {
   'Query':           '🔍 Query',
   'Mutation':        '✏️ Mutation',
@@ -66,6 +81,7 @@ const KIND_LABEL = {
   'Argument':        'Arguments',
   'Field':           'Fields',
   'Input / Payload': 'Input / Payload',
+  'Schema':          'Directives',
 };
 
 // ── Extract the primary path (TypeName.fieldName or just TypeName) from a message ──
@@ -92,6 +108,10 @@ function extractPath(msg) {
   m = msg.match(/^Argument '[^']+' added to '([^']+)'/);
   if (m) return m[1];
 
+  // "Argument 'x' was removed from 'Y.z'"
+  m = msg.match(/^Argument '[^']+' was removed from '([^']+)'/);
+  if (m) return m[1];
+
   // "Argument 'x' was added to '@yyy'" → @yyy (directive arg)
   m = msg.match(/^Argument '[^']+' was added to '@([^']+)'/);
   if (m) return `@${m[1]}`;
@@ -100,8 +120,8 @@ function extractPath(msg) {
   m = msg.match(/^Argument '[^']+' was added to directive '([^']+)'/);
   if (m) return `@${m[1]}`;
 
-  // "Input field 'x' of type 'T' was added to input object type 'Y'" → Y.x
-  m = msg.match(/^Input field '([^']+)' of type '[^']+' was added to input object type '([^']+)'/);
+  // "Input field 'x' of type 'T' was added/removed to/from input object type 'Y'" → Y.x
+  m = msg.match(/^Input field '([^']+)' of type '[^']+' was (?:added to|removed from) input object type '([^']+)'/);
   if (m) return `${m[2]}.${m[1]}`;
 
   // "Member 'X' was added to Union type 'Y'" → Y
@@ -110,6 +130,10 @@ function extractPath(msg) {
 
   // "Object type 'X' has description '...'" → X
   m = msg.match(/^Object type '([^']+)' has description/);
+  if (m) return m[1];
+
+  // "Directive 'x' was added to field 'Y.z'" (old format before "field" was stripped)
+  m = msg.match(/^Directive '[^']+' was added to field '([^']+)'/);
   if (m) return m[1];
 
   // "Directive 'x' was added to 'Y.z'" (formerly "to field 'Y.z'", stripped by cleanup)
@@ -129,18 +153,18 @@ function extractPath(msg) {
 }
 
 function getContext(path) {
-  if (!path) return 'Schema';
+  if (!path) return 'Common';
   const segs = path.split('.');
   const first = segs[0];
-  if (first.startsWith('@')) return 'Schema';
+  if (first.startsWith('@')) return 'Common';
   if (['Query', 'Mutation', 'Subscription'].includes(first)) {
-    if (segs.length < 2) return 'Schema';
+    if (segs.length < 2) return 'Common';
     const op = segs[1];
     for (const [re, ctx] of OP_RULES) { if (re.test(op)) return ctx; }
-    return 'Schema';
+    return 'Common';
   }
   for (const [re, ctx] of TYPE_RULES) { if (re.test(first)) return ctx; }
-  return 'Schema';
+  return 'Common';
 }
 
 function getKind(msg, path) {
@@ -163,8 +187,9 @@ function getKind(msg, path) {
   // Input / Payload
   if (/^Input field /.test(msg)) return 'Input / Payload';
 
-  // Field arguments (no 'was' — "Argument 'x' added to 'Y.z'")
-  if (/^Argument '[^']+' added to '/.test(msg)) return 'Argument';
+  // Field arguments — additions and removals
+  if (/^Argument '[^']+' added to '/.test(msg))       return 'Argument';
+  if (/^Argument '[^']+' was removed from '/.test(msg)) return 'Argument';
 
   // Directive additions — classify by what they target
   if (/^Directive '[^']+' was added/.test(msg)) {
@@ -229,7 +254,7 @@ function buildGrouped(sections) {
       groups[ctx][kind].push(item);
     }
 
-    let md = `## ${section.title} (${section.items.length})\n`;
+    let md = `## ${section.title} (${section.items.length})\n\n`;
 
     for (const ctx of Object.keys(groups).sort()) {
       md += `\n### ${ctx}\n`;

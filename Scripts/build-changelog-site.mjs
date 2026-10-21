@@ -71,6 +71,7 @@ const getActionBadge = (liContent) => {
   if (/\bwas added to object type\b/.test(text))       return '<span class="ba">+</span> ';
   if (/\bwas added to input object type\b/.test(text)) return '<span class="ba">+</span> ';
   if (/\bwas added to Union type\b/.test(text))        return '<span class="ba">+</span> ';
+  if (/\bwas added to enum\b/.test(text))              return '<span class="ba">+</span> ';
   // "Type X was added" — standalone, no "to" clause
   if (/\bwas added\b/.test(text) && !/\bwas added to\b/.test(text)) return '<span class="ba">+</span> ';
   // "Argument x: T added to Y.z" — no 'was', so it's a field-argument addition
@@ -129,8 +130,8 @@ for (const dir of inputDirs) {
     let md = readFileSync(join(dir, f), 'utf8');
     md = md.replace(/^\s*#\s+.*\r?\n/, '');          // drop the file's own H1 title
     md = md.replace(/^\s*(?:\|.*\|[ \t]*\r?\n)+\s*(?:---[ \t]*\r?\n)?/, ''); // drop the leading summary table (+ its --- rule)
-    md = monospaceNames(md);                         // field/type/query names → monospace
     md = md.replace(/ to field '/g, " to '");       // drop redundant "field" word in directive/argument messages
+    md = monospaceNames(md);                         // field/type/query names → monospace
     md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
     byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: wrapCollapsible(addActionBadges(marked.parse(md.trim()))) });
   }

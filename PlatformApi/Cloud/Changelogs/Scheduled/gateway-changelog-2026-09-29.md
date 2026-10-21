@@ -2,6 +2,7 @@
 
 ## ✅ Non-Breaking Changes (38)
 
+
 ### Customization
 
 #### 🔍 Query

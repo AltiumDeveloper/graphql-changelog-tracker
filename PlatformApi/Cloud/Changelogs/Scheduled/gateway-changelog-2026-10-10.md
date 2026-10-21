@@ -1,15 +1,15 @@
 # gateway-changelog-2026-10-10
 
-## ✅ Non-Breaking Changes (12)
+## ✅ Non-Breaking Changes (13)
 
-### Supply
 
-#### Input / Payload
+### Common
 
-- Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateFilterInput'
-- Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateSearchFilterInput'
+#### Directives
 
-### Supply — Software Project
+- Argument 'reason' was added to '@deprecated'
+
+### Renesas (preview)
 
 #### Types
 
@@ -26,4 +26,11 @@
 - Field 'projectSourceId' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
 - Field 'SupSoftwareProjectEvalKitProjectSource.projectSourceId' is deprecated
 - Directive 'deprecated' was added to 'SupSoftwareProjectEvalKitProjectSource.projectSourceId'
+
+### Supply
+
+#### Input / Payload
+
+- Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateFilterInput'
+- Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateSearchFilterInput'
 

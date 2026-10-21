@@ -78,8 +78,12 @@
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-20">20/10/2026</a></h3></summary>
             <details open class="sect-d"><summary><h4>⚠️ Dangerous Changes (1)</h4></summary>
-<details open class="ctx-d"><summary><h5>Schema</h5></summary>
-</details></details>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Enum value <code>RASC_CMAKE</code> was added to enum <code>SupSoftwareProjectEvalKitProjectSourceType</code></span></li>
+</ul>
+</details></details></details>
           </details>
         </article>
         <article class="entry" id="entry-2026-10-17">
@@ -92,14 +96,13 @@
 <li><span class="ba">+</span> <span>Argument <code>requestPaidData: Boolean</code> added to <code>Query.desPartGlobalPartByIds</code></span></li>
 </ul>
 <hr>
-</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (10)</h4></summary>
-<details open class="ctx-d"><summary><h5>Supply</h5></summary>
-<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (11)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
 <ul>
-<li><span class="ba">+</span> <span>Input field <code>toolchainId</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
-<li><span class="ba">+</span> <span>Input field <code>toolchainVersion</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
 </ul>
-</details></details><details open class="ctx-d"><summary><h5>Supply — Software Project</h5></summary>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
 <details open class="kind-d"><summary><h6>Types</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Type <code>SupSoftwareProjectToolchain</code> was added</span></li>
@@ -113,6 +116,12 @@
 <li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>SupSoftwareProjectToolchain.toolchainId</code></span></li>
 <li><span class="ba">+</span> <span>Field <code>toolchain</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
 <li><span class="ba">+</span> <span>Field <code>toolchainVersion</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Supply</h5></summary>
+<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>toolchainId</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>toolchainVersion</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
 </ul>
 </details></details></details>
           </details>
@@ -209,17 +218,17 @@
 </details></details><details open class="ctx-d"><summary><h5>Platform</h5></summary>
 <details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
 <ul>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppByClientId</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppById</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppInstalledApps</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloApps</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloApps</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceGroupById</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceGroupsByIds</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceTeamByAuth</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUserByAuth</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUserById</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUsersByIds</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppByClientId</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppInstalledApps</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloApps</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloApps</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloEvtSubscriptionById</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloOrganization</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloOrganizationById</code></span></li>
@@ -236,14 +245,21 @@
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppGrantType</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppRedirectUri</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppScope</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddUsersToGroup</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateApp</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateAppFromOAuthClient</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUser</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUserGroup</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloDeleteApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtCreateWebhookSubscription</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtDeleteSubscription</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtPublishEvent</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloInstallApp</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppClientSecret</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppGrantType</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppRedirectUri</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppScope</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveUsersFromGroup</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRestoreApp</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUninstallApp</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUpdateAppContactEmail</code></span></li>
@@ -256,13 +272,6 @@
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceRefreshTokenCreateNewSecret</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceRefreshTokenDeleteSecret</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceTokenCreate</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtCreateWebhookSubscription</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtDeleteSubscription</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtPublishEvent</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddUsersToGroup</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUser</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUserGroup</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveUsersFromGroup</code></span></li>
 </ul>
 </details><details open class="kind-d"><summary><h6>Types</h6></summary>
 <ul>
@@ -272,10 +281,6 @@
 </ul>
 </details><details open class="kind-d"><summary><h6>Fields</h6></summary>
 <ul>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byTokenId</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.workspaceTokenQuota</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceGroup.members</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceGroup.members</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceTeam.projectGuests</code></span></li>
@@ -284,6 +289,10 @@
 <li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceTeam.workspaceGroups</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceTeam.workspaceUsers</code></span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceTeam.workspaceUsers</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byTokenId</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.workspaceTokenQuota</code></span></li>
 </ul>
 </details></details><details open class="ctx-d"><summary><h5>Procurement</h5></summary>
 <details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
@@ -319,7 +328,7 @@
 <li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomWip.issues</code></span></li>
 </ul>
 <hr>
-</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (145)</h4></summary>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (325)</h4></summary>
 <details open class="ctx-d"><summary><h5>Collaboration</h5></summary>
 <details open class="kind-d"><summary><h6>Types</h6></summary>
 <ul>
@@ -328,6 +337,190 @@
 </details><details open class="kind-d"><summary><h6>Fields</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Field <code>partId</code> was added to object type <code>DesAnnotationManagedPartBinding</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Location <code>FIELD_DEFINITION</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to <code>@listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>policy</code> was added to <code>@authorize</code></span></li>
 </ul>
 </details></details><details open class="ctx-d"><summary><h5>Insights</h5></summary>
 <details open class="kind-d"><summary><h6>Types</h6></summary>
@@ -360,7 +553,12 @@
 <li><span class="ba">+</span> <span>Field <code>failureReason</code> was added to object type <code>DesPartUploadOperationPayload</code></span></li>
 </ul>
 </details></details><details open class="ctx-d"><summary><h5>Platform</h5></summary>
-<details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>Query.solBldEntityScaffoldingStatus</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>Query.solBldEntityScaffoldingStatus</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Field <code>platformKeyValueStoreAdd</code> was added to object type <code>Mutation</code></span></li>
 <li><span class="ba">+</span> <span>Argument <code>input: PlatformKeyValueStoreAddInput!</code> added to <code>Mutation.platformKeyValueStoreAdd</code></span></li>
@@ -415,6 +613,7 @@
 <li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreAddInput</code> was added</span></li>
 <li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreDeleteInput</code> was added</span></li>
 <li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreUpdateInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SolAccessibleToInput</code> has description <code>Specifies the grids whose permissions must provide access to a solution.</code></span></li>
 </ul>
 </details><details open class="kind-d"><summary><h6>Arguments</h6></summary>
 <ul>
@@ -513,31 +712,19 @@
 <ul>
 <li><span class="ba">+</span> <span>Field <code>onChipMemoryCode</code> was added to object type <code>DmRaPartNumberModel</code></span></li>
 </ul>
-</details></details><details open class="ctx-d"><summary><h5>Solution Builder</h5></summary>
-<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
-<ul>
-<li><span class="bc">Δ</span> <span>Field <code>Query.solBldEntityScaffoldingStatus</code> is deprecated</span></li>
-<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>Query.solBldEntityScaffoldingStatus</code></span></li>
-</ul>
-</details></details><details open class="ctx-d"><summary><h5>Solutions</h5></summary>
-<details open class="kind-d"><summary><h6>Types</h6></summary>
-<ul>
-<li><span class="bc">Δ</span> <span>Object type <code>SolAccessibleToInput</code> has description <code>Specifies the grids whose permissions must provide access to a solution.</code></span></li>
-</ul>
 </details></details></details>
           </details>
         </article>
         <article class="entry" id="entry-2026-10-10">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-10">10/10/2026</a></h3></summary>
-            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (12)</h4></summary>
-<details open class="ctx-d"><summary><h5>Supply</h5></summary>
-<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (13)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
 <ul>
-<li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateFilterInput</code></span></li>
-<li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateSearchFilterInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
 </ul>
-</details></details><details open class="ctx-d"><summary><h5>Supply — Software Project</h5></summary>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
 <details open class="kind-d"><summary><h6>Types</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Type <code>SupSoftwareProjectEvalKitProjectSourceArtifact</code> was added</span></li>
@@ -554,14 +741,25 @@
 <li><span class="bc">Δ</span> <span>Field <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code> is deprecated</span></li>
 <li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>SupSoftwareProjectEvalKitProjectSource.projectSourceId</code></span></li>
 </ul>
+</details></details><details open class="ctx-d"><summary><h5>Supply</h5></summary>
+<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>tags</code> of type <code>[String!]</code> was added to input object type <code>SupSolutionTemplateSearchFilterInput</code></span></li>
+</ul>
 </details></details></details>
           </details>
         </article>
         <article class="entry" id="entry-2026-10-08">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-08">08/10/2026</a></h3></summary>
-            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (34)</h4></summary>
-<details open class="ctx-d"><summary><h5>Design</h5></summary>
+            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (35)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Directives</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Argument <code>reason</code> was added to <code>@deprecated</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Design</h5></summary>
 <details open class="kind-d"><summary><h6>Arguments</h6></summary>
 <ul>
 <li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>RuleCheckExecutionQueries.byReleaseIdCombinedErc</code></span></li>
