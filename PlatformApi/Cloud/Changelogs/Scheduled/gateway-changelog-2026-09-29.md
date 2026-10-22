@@ -2,7 +2,6 @@
 
 ## ✅ Non-Breaking Changes (38)
 
-
 ### Customization
 
 #### 🔍 Query
@@ -57,4 +56,5 @@
 - Input field 'scriptId' of type 'String!' was added to input object type 'GloScrSetScriptSecretsInput'
 - Input field 'scriptVersionId' of type 'String!' was added to input object type 'GloScrSetScriptSecretsInput'
 - Input field 'secretNames' of type '[String!]!' was added to input object type 'GloScrSetScriptSecretsInput'
+
 

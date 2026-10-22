@@ -178,7 +178,9 @@ The GitHub Action calls this automatically after each diff run. You can also run
 
 ## 4. Restructuring existing changelog files
 
-`Scripts/regroup-changelogs.mjs` is a one-time utility that rewrites existing `.md` files into the bounded-context / change-kind structure that `generateSchemaDiff.ps1` now produces. Run it when changelog files were generated before the grouped format was introduced, or after updating the classification rules.
+`Scripts/regroup-changelogs.mjs` is a **last-resort** utility for restructuring `.md` files whose original snapshots are no longer available. It works by parsing change message text to infer the bounded context and change kind — which is less reliable than `generateSchemaDiff.ps1`, which classifies from the actual diff objects.
+
+**If both snapshots exist, regenerate with `generateSchemaDiff.ps1` instead.** Only reach for this script when the snapshots are gone.
 
 ```bash
 # Regroup a specific file

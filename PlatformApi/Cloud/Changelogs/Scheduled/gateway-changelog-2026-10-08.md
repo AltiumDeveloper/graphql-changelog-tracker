@@ -2,13 +2,6 @@
 
 ## ✅ Non-Breaking Changes (35)
 
-
-### Common
-
-#### Directives
-
-- Argument 'reason' was added to '@deprecated'
-
 ### Design
 
 #### Arguments
@@ -55,6 +48,7 @@
 - Field 'refDesignIds' was added to object type 'SupSolutionTemplate'
 - Field 'SupSolutionTemplate.refDesignIds' is deprecated
 - Directive 'deprecated' was added to 'SupSolutionTemplate.refDesignIds'
+- Argument 'reason' was added to '@deprecated'
 - Field 'refDesigns' was added to object type 'SupSolutionTemplate'
 
 #### Input / Payload
@@ -64,4 +58,5 @@
 - Input field 'solutionTemplateId' of type 'ID!' was added to input object type 'SupSolutionTemplatePatchRefDesignsInput'
 - Input field 'refDesignIds' of type '[ID!]!' was added to input object type 'SupSolutionTemplateSetRefDesignsInput'
 - Input field 'solutionTemplateId' of type 'ID!' was added to input object type 'SupSolutionTemplateSetRefDesignsInput'
+
 

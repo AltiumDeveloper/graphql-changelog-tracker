@@ -2,7 +2,6 @@
 
 ## 🔴 Breaking Changes (8)
 
-
 ### Customization
 
 #### Input / Payload
@@ -26,10 +25,10 @@
 - Directive 'oneOf' was added to input object 'BomCreateBomPartReferenceInput'
 - Directive 'oneOf' was added to input object 'BomCreateBomSupplierReferenceInput'
 
+
 ---
 
 ## ⚠️ Dangerous Changes (117)
-
 
 ### Collaboration
 
@@ -66,14 +65,11 @@
 - Directive 'authorize' was added to 'Mutation.gloScrSetScriptSecrets'
 - Directive 'authorize' was added to 'Mutation.gloScrUpdateScript'
 
-#### Types
-
-- Directive 'authorize' was added to object 'GloScrScript'
-
 #### Fields
 
 - Directive 'listSize' was added to 'GloCusExtensionPoint.assignments'
 - Directive 'listSize' was added to 'GloScrScript.versions'
+- Directive 'authorize' was added to object 'GloScrScript'
 - Directive 'authorize' was added to 'GloScrScriptVersion.package'
 
 ### Design
@@ -213,12 +209,20 @@
 - Directive 'authorize' was added to 'BomWip.incompleteHealthChecks'
 - Directive 'authorize' was added to 'BomWip.issues'
 
+
 ---
 
 ## ✅ Non-Breaking Changes (325)
 
-
 ### Collaboration
+
+#### 🔍 Query
+
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
 
 #### Types
 
@@ -232,11 +236,6 @@
 
 #### Directives
 
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
 - Directive 'listSize' was added
 - Location 'FIELD_DEFINITION' was added to directive 'listSize'
 - Argument 'assumedSize' was added to directive 'listSize'
@@ -244,6 +243,11 @@
 - Argument 'slicingArgumentDefaultValue' was added to directive 'listSize'
 - Argument 'sizedFields' was added to directive 'listSize'
 - Argument 'requireOneSlicingArgument' was added to directive 'listSize'
+
+### Customization
+
+#### 🔍 Query
+
 - Argument 'assumedSize' was added to '@listSize'
 - Argument 'slicingArguments' was added to '@listSize'
 - Argument 'slicingArgumentDefaultValue' was added to '@listSize'
@@ -256,150 +260,9 @@
 - Argument 'requireOneSlicingArgument' was added to '@listSize'
 - Argument 'policy' was added to '@authorize'
 - Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'reason' was added to '@deprecated'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'assumedSize' was added to '@listSize'
-- Argument 'slicingArguments' was added to '@listSize'
-- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
-- Argument 'sizedFields' was added to '@listSize'
-- Argument 'requireOneSlicingArgument' was added to '@listSize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
-- Argument 'policy' was added to '@authorize'
+
+#### ✏️ Mutation
+
 - Argument 'policy' was added to '@authorize'
 - Argument 'policy' was added to '@authorize'
 - Argument 'policy' was added to '@authorize'
@@ -413,7 +276,29 @@
 - Argument 'policy' was added to '@authorize'
 - Argument 'policy' was added to '@authorize'
 
+#### Fields
+
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+
 ### Insights
+
+#### 🔍 Query
+
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
 
 #### Types
 
@@ -434,6 +319,19 @@
 
 ### Library Management
 
+#### 🔍 Query
+
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+
 #### Fields
 
 - Field 'componentStatus' was added to object type 'DesPartUploadComponentOperationResult'
@@ -449,20 +347,81 @@
 
 #### 🔍 Query
 
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
 - Field 'Query.solBldEntityScaffoldingStatus' is deprecated
 - Directive 'deprecated' was added to 'Query.solBldEntityScaffoldingStatus'
+- Argument 'reason' was added to '@deprecated'
 
 #### ✏️ Mutation
 
 - Field 'platformKeyValueStoreAdd' was added to object type 'Mutation'
 - Argument 'input: PlatformKeyValueStoreAddInput!' added to 'Mutation.platformKeyValueStoreAdd'
 - Directive 'authorize' was added to 'Mutation.platformKeyValueStoreAdd'
+- Argument 'policy' was added to '@authorize'
 - Field 'platformKeyValueStoreDelete' was added to object type 'Mutation'
 - Argument 'input: PlatformKeyValueStoreDeleteInput!' added to 'Mutation.platformKeyValueStoreDelete'
 - Directive 'authorize' was added to 'Mutation.platformKeyValueStoreDelete'
+- Argument 'policy' was added to '@authorize'
 - Field 'platformKeyValueStoreUpdate' was added to object type 'Mutation'
 - Argument 'input: PlatformKeyValueStoreUpdateInput!' added to 'Mutation.platformKeyValueStoreUpdate'
 - Directive 'authorize' was added to 'Mutation.platformKeyValueStoreUpdate'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
 
 #### Types
 
@@ -545,6 +504,11 @@
 - Field 'message' was added to object type 'PlatformKeyValueStoreKeyInvalidError'
 - Field 'all' was added to object type 'PlatformKeyValueStoreQueries'
 - Directive 'listSize' was added to 'PlatformKeyValueStoreQueries.all'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
 - Field 'byKey' was added to object type 'PlatformKeyValueStoreQueries'
 - Field 'byKeys' was added to object type 'PlatformKeyValueStoreQueries'
 - Field 'maxEntryCount' was added to object type 'PlatformKeyValueStoreQuotaExceededError'
@@ -556,8 +520,37 @@
 - Field 'message' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
 - Field 'sizeBytes' was added to object type 'PlatformKeyValueStoreValueTooLargeError'
 - Field 'message' was added to object type 'PlatformTokenInvalidNameError'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
 - Field 'keyValueStore' was added to object type 'PlatformQueries'
 - Directive 'authorize' was added to 'PlatformQueries.keyValueStore'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'assumedSize' was added to '@listSize'
+- Argument 'slicingArguments' was added to '@listSize'
+- Argument 'slicingArgumentDefaultValue' was added to '@listSize'
+- Argument 'sizedFields' was added to '@listSize'
+- Argument 'requireOneSlicingArgument' was added to '@listSize'
+- Argument 'policy' was added to '@authorize'
 
 #### Input / Payload
 
@@ -568,6 +561,24 @@
 - Input field 'value' of type 'String!' was added to input object type 'PlatformKeyValueStoreUpdateInput'
 
 ### Procurement
+
+#### 🔍 Query
+
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+
+#### ✏️ Mutation
+
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
 
 #### Types
 
@@ -600,11 +611,23 @@
 - Field 'totalCount' was added to object type 'CostedBomsConnection'
 - Field 'cursor' was added to object type 'CostedBomsEdge'
 - Field 'node' was added to object type 'CostedBomsEdge'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
 - Field 'costedBoms' was added to object type 'BomWip'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
+- Argument 'policy' was added to '@authorize'
 
 ### Renesas (preview)
 
 #### Fields
 
 - Field 'onChipMemoryCode' was added to object type 'DmRaPartNumberModel'
+
 

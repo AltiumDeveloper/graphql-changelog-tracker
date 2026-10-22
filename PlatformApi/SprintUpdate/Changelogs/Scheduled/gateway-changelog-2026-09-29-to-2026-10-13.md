@@ -2,14 +2,6 @@
 
 ## ✅ Non-Breaking Changes (48)
 
-
-### Common
-
-#### Directives
-
-- Argument 'reason' was added to '@deprecated'
-- Argument 'reason' was added to '@deprecated'
-
 ### Design
 
 #### Arguments
@@ -38,6 +30,7 @@
 - Field 'projectSourceId' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
 - Field 'SupSoftwareProjectEvalKitProjectSource.projectSourceId' is deprecated
 - Directive 'deprecated' was added to 'SupSoftwareProjectEvalKitProjectSource.projectSourceId'
+- Argument 'reason' was added to '@deprecated'
 
 ### Supply
 
@@ -74,6 +67,7 @@
 - Field 'refDesignIds' was added to object type 'SupSolutionTemplate'
 - Field 'SupSolutionTemplate.refDesignIds' is deprecated
 - Directive 'deprecated' was added to 'SupSolutionTemplate.refDesignIds'
+- Argument 'reason' was added to '@deprecated'
 - Field 'refDesigns' was added to object type 'SupSolutionTemplate'
 
 #### Input / Payload
@@ -85,4 +79,5 @@
 - Input field 'solutionTemplateId' of type 'ID!' was added to input object type 'SupSolutionTemplateSetRefDesignsInput'
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateFilterInput'
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateSearchFilterInput'
+
 

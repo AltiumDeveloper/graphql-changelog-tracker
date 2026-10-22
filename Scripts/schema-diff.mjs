@@ -71,9 +71,15 @@ const ignoreDirective = IGNORED_DIRECTIVES.length
   ? new RegExp(`@(?:${names})\\b|directive '(?:${names})'`, 'i')
   : null;
 
-const visible = ignoreDirective
-  ? changes.filter((c) => !ignoreDirective.test(c.message))
-  : changes;
+const visible = changes.filter((c) => {
+  if (ignoreDirective?.test(c.message)) return false;
+  // Drop directive-usage argument entries — e.g. "Argument 'reason' was added to
+  // '@deprecated'". These report individual argument values within a directive
+  // application and are always implied by the accompanying DIRECTIVE_USAGE_*_ADDED
+  // entry, which names the actual field/type the directive was applied to.
+  if (c.type === 'DIRECTIVE_USAGE_ARGUMENT_ADDED') return false;
+  return true;
+});
 
 const out = visible.map((c) => ({
   level: c.criticality.level, // BREAKING | DANGEROUS | NON_BREAKING

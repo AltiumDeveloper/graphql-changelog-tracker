@@ -173,8 +173,6 @@ $script:OP_RULES = @(
     @{ re = '^requirements';                                   ctx = 'Requirements' }
     # Renesas (preview)
     @{ re = '^(rsa|sft|dm)';                                   ctx = 'Renesas (preview)' }
-    # Design catch-all for any remaining design* ops
-    @{ re = '^design';                                         ctx = 'Design' }
 )
 
 function Get-BoundedContext([string]$path, [string]$changeType) {
@@ -203,8 +201,8 @@ function Get-ChangeKind([string]$path, [string]$changeType, [string]$msg = '') {
     if ($changeType -match '^INPUT_FIELD_') { return 'Input / Payload' }
     if ($changeType -match '^FIELD_ARGUMENT_') { return 'Argument' }
     if ($changeType -match '^(DIRECTIVE_|SCHEMA_)') {
-        if ($segs.Count -ge 2)          { return 'Field' }
         if ($msg -match 'input object') { return 'Input / Payload' }
+        if ($segs.Count -ge 2)          { return 'Field' }
         if ($segs.Count -eq 1)         { return 'Type' }
         return 'Schema'
     }

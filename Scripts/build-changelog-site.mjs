@@ -64,14 +64,15 @@ const monospaceNames = (md) =>
 const getActionBadge = (liContent) => {
   const text = liContent.replace(/<[^>]+>/g, '');
 
-  // Directives applied to existing elements are always Δ, never +
-  if (/^Directive\b/.test(text)) return '<span class="bc">Δ</span> ';
+  // Directives applied to / removed from existing elements are always Δ, never + or −
+  // Standalone definition additions ("Directive 'x' was added") fall through to the + / − checks below
+  if (/^Directive\b/.test(text) && /\bwas (?:added to|removed from)\b/.test(text)) return '<span class="bc">Δ</span> ';
 
   // + : genuine new additions (new field/type/member/input field entering the surface)
   if (/\bwas added to object type\b/.test(text))       return '<span class="ba">+</span> ';
   if (/\bwas added to input object type\b/.test(text)) return '<span class="ba">+</span> ';
   if (/\bwas added to Union type\b/.test(text))        return '<span class="ba">+</span> ';
-  if (/\bwas added to enum\b/.test(text))              return '<span class="ba">+</span> ';
+  if (/\bEnum value\b.*\bwas added to enum\b/.test(text)) return '<span class="ba">+</span> ';
   // "Type X was added" — standalone, no "to" clause
   if (/\bwas added\b/.test(text) && !/\bwas added to\b/.test(text)) return '<span class="ba">+</span> ';
   // "Argument x: T added to Y.z" — no 'was', so it's a field-argument addition

@@ -68,8 +68,6 @@ const OP_RULES = [
   [/^requirements/,                                     'Requirements'],
   // Renesas (preview)
   [/^(rsa|sft|dm)/,                                     'Renesas (preview)'],
-  // Design catch-all for any remaining design* ops
-  [/^design/,                                           'Design'],
 ];
 
 const KIND_ORDER = ['Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload', 'Schema'];
@@ -124,8 +122,16 @@ function extractPath(msg) {
   m = msg.match(/^Input field '([^']+)' of type '[^']+' was (?:added to|removed from) input object type '([^']+)'/);
   if (m) return `${m[2]}.${m[1]}`;
 
-  // "Member 'X' was added to Union type 'Y'" → Y
-  m = msg.match(/^Member '[^']+' was added to Union type '([^']+)'/);
+  // "Enum value 'X' was added/removed to/from enum 'Y'" → Y
+  m = msg.match(/^Enum value '[^']+' was (?:added to|removed from) enum '([^']+)'/);
+  if (m) return m[1];
+
+  // "Member 'X' was added/removed to/from Union type 'Y'" → Y
+  m = msg.match(/^Member '[^']+' was (?:added to|removed from) Union type '([^']+)'/);
+  if (m) return m[1];
+
+  // "Field 'X.y' changed type from '...' to '...'" → X.y
+  m = msg.match(/^Field '([^']+)' changed type/);
   if (m) return m[1];
 
   // "Object type 'X' has description '...'" → X
@@ -180,7 +186,8 @@ function getKind(msg, path) {
 
   // Type-level changes
   if (/^Type '[^']+' was (?:added|removed)/.test(msg)) return 'Type';
-  if (/^Member '[^']+' was added to Union type/.test(msg)) return 'Type';
+  if (/^Enum value '[^']+' was /.test(msg)) return 'Type';
+  if (/^Member '[^']+' was (?:added to|removed from) Union type/.test(msg)) return 'Type';
   if (/^Object type '[^']+' has description/.test(msg)) return 'Type';
   if (/^'[^']+' object implements /.test(msg)) return 'Type';
 
@@ -219,21 +226,28 @@ const LEVEL_PREFIXES = [
 function parseFile(content) {
   const lines = content.split(/\r?\n/);
   const h1 = lines.find((l) => l.startsWith('# ')) ?? '';
+  const tableLines = [];
   const sections = [];
   let current = null;
+  let seenSection = false;
 
   for (const line of lines) {
     const level = LEVEL_PREFIXES.find((lp) => line.startsWith(lp.prefix));
     if (level) {
+      seenSection = true;
       current = { key: level.key, title: level.title, items: [] };
       sections.push(current);
+      continue;
+    }
+    if (!seenSection && line.startsWith('|')) {
+      tableLines.push(line);
       continue;
     }
     if (current && line.startsWith('- ')) {
       current.items.push(line.slice(2).trim());
     }
   }
-  return { h1, sections };
+  return { h1, table: tableLines.length ? tableLines.join('\n') : '', sections };
 }
 
 // ── Build grouped markdown ────────────────────────────────────────────────────
@@ -308,7 +322,7 @@ for (const f of files) {
   }
 
   const body = buildGrouped(sections);
-  const out  = h1 ? `${h1}\n\n${body}` : body;
+  const out  = [h1, table, body].filter(Boolean).join('\n\n');
 
   writeFileSync(abs, out);
   const total = sections.reduce((s, sec) => s + sec.items.length, 0);

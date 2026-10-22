@@ -2,10 +2,10 @@
 
 ## ⚠️ Dangerous Changes (1)
 
+### Renesas (preview)
 
-### Common
-
-#### Directives
+#### Types
 
 - Enum value 'RASC_CMAKE' was added to enum 'SupSoftwareProjectEvalKitProjectSourceType'
+
 

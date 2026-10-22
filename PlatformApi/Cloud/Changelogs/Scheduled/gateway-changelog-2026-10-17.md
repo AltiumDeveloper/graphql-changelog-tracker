@@ -2,23 +2,16 @@
 
 ## ⚠️ Dangerous Changes (1)
 
-
 ### Library Management
 
 #### 🔍 Query
 
 - Argument 'requestPaidData: Boolean' added to 'Query.desPartGlobalPartByIds'
 
+
 ---
 
-## ✅ Non-Breaking Changes (11)
-
-
-### Common
-
-#### Directives
-
-- Argument 'reason' was added to '@deprecated'
+## ✅ Non-Breaking Changes (10)
 
 ### Renesas (preview)
 
@@ -42,4 +35,5 @@
 
 - Input field 'toolchainId' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
 - Input field 'toolchainVersion' of type 'String' was added to input object type 'SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput'
+
 

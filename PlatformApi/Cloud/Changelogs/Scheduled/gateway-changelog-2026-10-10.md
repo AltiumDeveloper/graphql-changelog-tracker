@@ -2,13 +2,6 @@
 
 ## ✅ Non-Breaking Changes (13)
 
-
-### Common
-
-#### Directives
-
-- Argument 'reason' was added to '@deprecated'
-
 ### Renesas (preview)
 
 #### Types
@@ -26,6 +19,7 @@
 - Field 'projectSourceId' was added to object type 'SupSoftwareProjectEvalKitProjectSource'
 - Field 'SupSoftwareProjectEvalKitProjectSource.projectSourceId' is deprecated
 - Directive 'deprecated' was added to 'SupSoftwareProjectEvalKitProjectSource.projectSourceId'
+- Argument 'reason' was added to '@deprecated'
 
 ### Supply
 
@@ -33,4 +27,5 @@
 
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateFilterInput'
 - Input field 'tags' of type '[String!]' was added to input object type 'SupSolutionTemplateSearchFilterInput'
+
 
