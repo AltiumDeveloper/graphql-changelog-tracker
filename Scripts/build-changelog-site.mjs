@@ -56,6 +56,63 @@ const monospaceNames = (md) =>
   md.replace(/^(\s*[-*] )(.*)$/gm, (_, bullet, text) =>
     bullet + text.replace(/(?<![\w'`])'([^'\n]+?)'(?![\w`])/g, (_m, name) => codeSpan(name)));
 
+// Inject a coloured +/−/Δ badge at the start of each <li> based on the message text.
+// Rules:
+//   +  — the entity itself is newly added to the API surface
+//   −  — the entity itself is removed
+//   Δ  — anything else: directive applied/removed, deprecation, description, interface impl, etc.
+const getActionBadge = (liContent) => {
+  const text = liContent.replace(/<[^>]+>/g, '');
+
+  // Directives applied to / removed from existing elements are always Δ, never + or −
+  // Standalone definition additions ("Directive 'x' was added") fall through to the + / − checks below
+  if (/^Directive\b/.test(text) && /\bwas (?:added to|removed from)\b/.test(text)) return '<span class="bc">Δ</span> ';
+
+  // + : genuine new additions (new field/type/member/input field entering the surface)
+  if (/\bwas added to object type\b/.test(text))       return '<span class="ba">+</span> ';
+  if (/\bwas added to input object type\b/.test(text)) return '<span class="ba">+</span> ';
+  if (/\bwas added to Union type\b/.test(text))        return '<span class="ba">+</span> ';
+  if (/\bEnum value\b.*\bwas added to enum\b/.test(text)) return '<span class="ba">+</span> ';
+  // "Type X was added" — standalone, no "to" clause
+  if (/\bwas added\b/.test(text) && !/\bwas added to\b/.test(text)) return '<span class="ba">+</span> ';
+  // "Argument x: T added to Y.z" — no 'was', so it's a field-argument addition
+  if (/\badded to\b/.test(text) && !/\bwas added to\b/.test(text))  return '<span class="ba">+</span> ';
+
+  // − : removals
+  if (/\bwas removed\b/.test(text)) return '<span class="br">−</span> ';
+
+  // Δ : everything else (deprecation, description change, interface impl, directive noise, etc.)
+  return '<span class="bc">Δ</span> ';
+};
+const addActionBadges = (html) =>
+  html.replace(/<li>([\s\S]*?)<\/li>/g, (_, inner) => `<li>${getActionBadge(inner)}<span>${inner}</span></li>`);
+
+// Wrap h4/h5/h6 headings top-down and recursively so each level only processes
+// content within its own section — prevents lower-level headings from swallowing
+// higher-level siblings that come after them.
+const wrapCollapsible = (html) => {
+  const wrapLevel = (content, tag, cls, innerFn) => {
+    const tagRe = new RegExp(`(<${tag}[^>]*>[\\s\\S]*?<\\/${tag}>)`);
+    const parts  = content.split(tagRe);
+    const rebuilt = [];
+    let i = 0;
+    while (i < parts.length) {
+      if (new RegExp(`^<${tag}`).test(parts[i])) {
+        const inner = innerFn ? innerFn(parts[i + 1] ?? '') : (parts[i + 1] ?? '');
+        rebuilt.push(`<details open class="${cls}"><summary>${parts[i]}</summary>${inner}</details>`);
+        i += 2;
+      } else {
+        rebuilt.push(innerFn ? innerFn(parts[i]) : parts[i]);
+        i++;
+      }
+    }
+    return rebuilt.join('');
+  };
+  const wrapH6 = (c) => wrapLevel(c, 'h6', 'kind-d', null);
+  const wrapH5 = (c) => wrapLevel(c, 'h5', 'ctx-d',  wrapH6);
+  return               wrapLevel(html, 'h4', 'sect-d', wrapH5);
+};
+
 // Collect entries from all input folders — each changelog file becomes one dated
 // entry, deduped by its newest date (first folder listed wins).
 const byDate = new Map();
@@ -74,9 +131,10 @@ for (const dir of inputDirs) {
     let md = readFileSync(join(dir, f), 'utf8');
     md = md.replace(/^\s*#\s+.*\r?\n/, '');          // drop the file's own H1 title
     md = md.replace(/^\s*(?:\|.*\|[ \t]*\r?\n)+\s*(?:---[ \t]*\r?\n)?/, ''); // drop the leading summary table (+ its --- rule)
+    md = md.replace(/ to field '/g, " to '");       // drop redundant "field" word in directive/argument messages
     md = monospaceNames(md);                         // field/type/query names → monospace
     md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
-    byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: marked.parse(md.trim()) });
+    byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: wrapCollapsible(addActionBadges(marked.parse(md.trim()))) });
   }
 }
 
@@ -92,8 +150,10 @@ const body = years.map((y) => `
       <section class="year" id="year-${y}">
         ${byYear[y].map((e) => `
         <article class="entry" id="entry-${e.date}">
-          <h3><a href="#entry-${e.date}">${escapeHtml(e.title)}</a></h3>
-          ${e.html}
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-${e.date}">${escapeHtml(e.title)}</a></h3></summary>
+            ${e.html}
+          </details>
         </article>`).join('')}
       </section>`).join('');
 
@@ -123,14 +183,41 @@ const html = `<!doctype html>
     section.year { margin-top:32px; }
     section.year > h2 { font-size:24px; padding-bottom:8px; border-bottom:1px solid var(--border); }
     article.entry { padding:20px 0; border-bottom:1px solid var(--border); }
-    article.entry > h3 { margin:0 0 8px; font-size:18px; }
-    article.entry > h3 a { color:var(--fg); }
+    .entry-d > summary > h3 { margin:0 0 8px; font-size:18px; }
+    .entry-d > summary > h3 a { color:var(--fg); }
     article.entry h4 { font-size:15px; margin:16px 0 8px; }
     article.entry ul { margin:8px 0; padding-left:22px; }
     article.entry code { background:var(--canvas); padding:2px 6px; border-radius:6px; font-size:85%;
                          font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+    article.entry li { display:flex; align-items:baseline; }
+    .ba,.br,.bc { display:inline-flex; align-items:center; justify-content:center; min-width:20px;
+                  border-radius:3px; font-size:11px; font-weight:700; padding:1px 3px; flex-shrink:0;
+                  margin-right:6px; font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+    .ba { background:#dafbe1; color:#1a7f37; }
+    .br { background:#ffd7d5; color:#cf222e; }
+    .bc { background:#fff8c5; color:#9a6700; }
     article.entry table { border-collapse:collapse; margin:8px 0; }
     article.entry th, article.entry td { border:1px solid var(--border); padding:6px 12px; }
+    /* ── Collapsible details ───────────────────────────────────────────── */
+    details { margin:0; }
+    details > summary { list-style:none; cursor:pointer; user-select:none; }
+    details > summary::-webkit-details-marker { display:none; }
+    details > summary::marker { content:''; }
+    /* Chevron injected before the heading text */
+    details > summary h3::before,
+    details > summary h4::before,
+    details > summary h5::before,
+    details > summary h6::before {
+      content:'▸'; display:inline-block; width:1.1em; font-size:11px;
+      color:var(--muted); transition:transform .15s ease;
+      font-weight:normal; font-style:normal; }
+    details[open] > summary h3::before,
+    details[open] > summary h4::before,
+    details[open] > summary h5::before,
+    details[open] > summary h6::before { transform:rotate(90deg); }
+    /* Indent nested levels */
+    .ctx-d, .kind-d { padding-left:12px; }
+    .kind-d > summary h6 { color:var(--muted); font-size:13px; }
     hr { border:0; border-top:1px solid var(--border); }
     .empty { color:var(--muted); padding:32px 0; }
     footer { color:var(--muted); font-size:13px; border-top:1px solid var(--border); }

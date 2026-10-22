@@ -112,29 +112,178 @@ if ($nodeExit -ne 0) {
     exit 2
 }
 
-# ── Parse the change list and bucket by criticality level ─────────────────────
+# ── Bounded-context lookup tables (most-specific pattern first) ───────────────
+# Tested against the first path segment for type-level and field-level changes.
+$script:TYPE_RULES = @(
+    # Procurement
+    @{ re = '^(CostedBoms|Bom)';                                                                ctx = 'Procurement' }
+    # Collaboration
+    @{ re = '^DesAnnotation';                                                                   ctx = 'Collaboration' }
+    # Insights
+    @{ re = '^DesWorkspaceIns';                                                                 ctx = 'Insights' }
+    # Platform — workspace / user types under Des* prefix
+    @{ re = '^(DesWorkspaceTeam|DesWorkspaceGroup|DesWorkspaceUser|DesProjectGuest|DesProfile)'; ctx = 'Platform' }
+    # Design
+    @{ re = '^(DesDesignData|DesRuleCheck|DesComparison|Design|Rule|LatestGeneration)';         ctx = 'Design' }
+    # Library Management
+    @{ re = '^(DesPart|DesSearch)';                                                             ctx = 'Library Management' }
+    @{ re = '^Des';                                                                             ctx = 'Design' }       # Des* catch-all
+    # Customization (must precede Glo* catch-all)
+    @{ re = '^(GloCus|GloScr)';                                                                ctx = 'Customization' }
+    # Platform — all remaining Glo*, App*, Platform, TokenQueries, Sol* (includes SolBld)
+    @{ re = '^(Glo|App|Platform|TokenQueries|Sol)';                                             ctx = 'Platform' }
+    # Renesas (preview) — must precede Sup* catch-all for SupSoftwareProject
+    @{ re = '^SupSoftwareProject';                                                              ctx = 'Renesas (preview)' }
+    # Supply
+    @{ re = '^Sup';                                                                             ctx = 'Supply' }
+    # System Design
+    @{ re = '^(SysEsd|SysSdm|SysLib)';                                                         ctx = 'System Design' }
+    # Requirements
+    @{ re = '^Requirements';                                                                    ctx = 'Requirements' }
+    # Renesas (preview)
+    @{ re = '^(Rsa|Dm|Sft)';                                                                    ctx = 'Renesas (preview)' }
+)
+
+# Tested against the operation field name (second segment) for Query/Mutation/Subscription.
+$script:OP_RULES = @(
+    # Procurement
+    @{ re = '^bom';                                            ctx = 'Procurement' }
+    # Collaboration
+    @{ re = '^desAnnotation';                                  ctx = 'Collaboration' }
+    # Insights
+    @{ re = '^desWorkspaceIns';                                ctx = 'Insights' }
+    # Platform — workspace / user ops under des* prefix
+    @{ re = '^des(WorkspaceTeam|WorkspaceGroup|WorkspaceUser)'; ctx = 'Platform' }
+    # Design
+    @{ re = '^des(DesignData|RuleCheck|Comparison|Compare)';   ctx = 'Design' }
+    # Library Management
+    @{ re = '^des(Part|Search|PermissionsById)';               ctx = 'Library Management' }
+    @{ re = '^des';                                            ctx = 'Design' }       # des* catch-all
+    # Customization (must precede glo* catch-all)
+    @{ re = '^glo(Cus|Scr)';                                   ctx = 'Customization' }
+    # Platform — all remaining glo*, app*, ping, platform, sol* (includes solBld), global*
+    @{ re = '^(glo|global|app|ping|platform|sol)';              ctx = 'Platform' }
+    # Renesas (preview) — must precede sup* catch-all for supSoftwareProject
+    @{ re = '^supSoftwareProject';                             ctx = 'Renesas (preview)' }
+    # Supply
+    @{ re = '^sup';                                            ctx = 'Supply' }
+    # System Design
+    @{ re = '^(sysEsd|sysSdm|sysLib)';                         ctx = 'System Design' }
+    # Requirements
+    @{ re = '^requirements';                                   ctx = 'Requirements' }
+    # Renesas (preview)
+    @{ re = '^(rsa|sft|dm)';                                   ctx = 'Renesas (preview)' }
+)
+
+function Get-BoundedContext([string]$path, [string]$changeType) {
+    if (-not $path) { return 'Common' }
+    $segs  = $path -split '\.'
+    $first = $segs[0]
+    if ($first -match '^\@') { return 'Common' }
+    if ($first -in @('Query', 'Mutation', 'Subscription')) {
+        if ($segs.Count -lt 2) { return 'Common' }
+        $field = $segs[1]
+        foreach ($r in $script:OP_RULES) { if ($field -match $r.re) { return $r.ctx } }
+        return 'Common'
+    }
+    foreach ($r in $script:TYPE_RULES) { if ($first -match $r.re) { return $r.ctx } }
+    return 'Common'
+}
+
+function Get-ChangeKind([string]$path, [string]$changeType, [string]$msg = '') {
+    # Root-operation check applies to ALL change types
+    if (-not $path) { return 'Schema' }
+    $segs  = $path -split '\.'
+    $first = $segs[0]
+    if ($first -match '^\@') { return 'Schema' }
+    if ($first -in @('Query', 'Mutation', 'Subscription')) { return $first }
+    if ($changeType -match '^(TYPE_|UNION_MEMBER_|ENUM_VALUE_|OBJECT_TYPE_INTERFACE_)') { return 'Type' }
+    if ($changeType -match '^INPUT_FIELD_') { return 'Input / Payload' }
+    if ($changeType -match '^FIELD_ARGUMENT_') { return 'Argument' }
+    if ($changeType -match '^(DIRECTIVE_|SCHEMA_)') {
+        if ($msg -match 'input object') { return 'Input / Payload' }
+        if ($segs.Count -ge 2)          { return 'Field' }
+        if ($segs.Count -eq 1)         { return 'Type' }
+        return 'Schema'
+    }
+    if ($changeType -match '^FIELD_') { return 'Field' }
+    return 'Schema'
+}
+
+# ── Parse the change list and bucket by criticality level + bounded context ────
 $breaking    = [System.Collections.Generic.List[string]]::new()
 $dangerous   = [System.Collections.Generic.List[string]]::new()
 $nonBreaking = [System.Collections.Generic.List[string]]::new()
 
+$breakingGroups    = @{}
+$dangerousGroups   = @{}
+$nonBreakingGroups = @{}
+
 # The helper emits a JSON array; an empty diff yields "[]".
 $changes = @($diffJson | ConvertFrom-Json)
 foreach ($change in $changes) {
-    switch ($change.level) {
-        "BREAKING"     { $breaking.Add($change.message) }
-        "DANGEROUS"    { $dangerous.Add($change.message) }
-        "NON_BREAKING" { $nonBreaking.Add($change.message) }
-        default {
-            # Unknown level — fail closed (count as breaking) so the gate never
-            # lets an unclassified change through as safe.
-            Write-Warning "Unknown criticality level '$($change.level)' — treating as breaking."
-            $breaking.Add($change.message)
+    $msg  = $change.message.Replace(" to field '", " to '")
+    $typ  = "$($change.type)"
+    $pth  = "$($change.path)"
+    $ctx  = Get-BoundedContext $pth $typ
+    $kind = Get-ChangeKind $pth $typ $msg
+
+    if ($change.level -eq 'BREAKING') {
+        $breaking.Add($msg)
+        $grp = $breakingGroups
+    } elseif ($change.level -eq 'DANGEROUS') {
+        $dangerous.Add($msg)
+        $grp = $dangerousGroups
+    } elseif ($change.level -eq 'NON_BREAKING') {
+        $nonBreaking.Add($msg)
+        $grp = $nonBreakingGroups
+    } else {
+        Write-Warning "Unknown criticality level '$($change.level)' — treating as breaking."
+        $breaking.Add($msg)
+        $grp = $breakingGroups
+    }
+
+    if (-not $grp.ContainsKey($ctx))       { $grp[$ctx] = @{} }
+    if (-not $grp[$ctx].ContainsKey($kind)) { $grp[$ctx][$kind] = [System.Collections.Generic.List[string]]::new() }
+    $grp[$ctx][$kind].Add($msg)
+}
+
+# ── Kind ordering and display labels ──────────────────────────────────────────
+$script:KIND_ORDER = @('Query', 'Mutation', 'Subscription', 'Type', 'Argument', 'Field', 'Input / Payload', 'Schema')
+$script:KIND_LABEL = @{
+    'Query'           = '🔍 Query'
+    'Mutation'        = '✏️ Mutation'
+    'Subscription'    = '🔔 Subscription'
+    'Type'            = 'Types'
+    'Argument'        = 'Arguments'
+    'Field'           = 'Fields'
+    'Input / Payload' = 'Input / Payload'
+    'Schema'          = 'Directives'
+}
+
+function Format-LevelSection([string]$title, [hashtable]$grp) {
+    $total = 0
+    foreach ($ctx in $grp.Keys) {
+        foreach ($k in $grp[$ctx].Keys) { $total += $grp[$ctx][$k].Count }
+    }
+    if ($total -eq 0) { return $null }
+
+    $md = "## $title ($total)`n`n"
+    foreach ($ctx in ($grp.Keys | Sort-Object)) {
+        $km   = $grp[$ctx]
+        $md  += "### $ctx`n`n"
+        foreach ($kind in $script:KIND_ORDER) {
+            if (-not $km.ContainsKey($kind) -or $km[$kind].Count -eq 0) { continue }
+            $md += "#### $($script:KIND_LABEL[$kind])`n`n"
+            foreach ($item in $km[$kind]) { $md += "- $item`n" }
+            $md += "`n"
         }
     }
+    return $md
 }
 
 # ── Determine overall status ───────────────────────────────────────────────────
-$status = if ($breaking.Count -gt 0) { "Breaking changes detected" } else { "No breaking changes detected" }
+$status      = if ($breaking.Count -gt 0) { "Breaking changes detected" } else { "No breaking changes detected" }
 $statusEmoji = if ($breaking.Count -gt 0) { "🔴" } else { "🟢" }
 
 # ── Build Markdown ─────────────────────────────────────────────────────────────
@@ -173,17 +322,10 @@ if ($IncludeSummary) {
 "@
 }
 
-# Render one change section (title + bullets). Sections with no changes are omitted.
-function Format-Section([string]$Title, $Items) {
-    $section = "## $Title ($($Items.Count))`n`n"
-    foreach ($item in $Items) { $section += "- $item`n" }
-    return $section
-}
-
 $sections = @()
-if ($breaking.Count -gt 0)    { $sections += (Format-Section "🔴 Breaking Changes"     $breaking) }
-if ($dangerous.Count -gt 0)   { $sections += (Format-Section "⚠️ Dangerous Changes"    $dangerous) }
-if ($nonBreaking.Count -gt 0) { $sections += (Format-Section "✅ Non-Breaking Changes" $nonBreaking) }
+if ($breaking.Count -gt 0)    { $s = Format-LevelSection "🔴 Breaking Changes"     $breakingGroups;    if ($s) { $sections += $s } }
+if ($dangerous.Count -gt 0)   { $s = Format-LevelSection "⚠️ Dangerous Changes"    $dangerousGroups;   if ($s) { $sections += $s } }
+if ($nonBreaking.Count -gt 0) { $s = Format-LevelSection "✅ Non-Breaking Changes" $nonBreakingGroups; if ($s) { $sections += $s } }
 
 if ($sections.Count -gt 0) {
     $md += ($sections -join "`n---`n`n")
