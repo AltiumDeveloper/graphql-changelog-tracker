@@ -314,7 +314,7 @@ if (files.length === 0) {
 for (const f of files) {
   const abs     = resolve(f);
   const content = readFileSync(abs, 'utf8');
-  const { h1, sections } = parseFile(content);
+  const { h1, table, sections } = parseFile(content);
 
   if (sections.length === 0) {
     console.log(`SKIP  ${abs} — no change sections found`);
