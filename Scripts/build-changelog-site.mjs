@@ -19,13 +19,16 @@ if (!mode || !outputDir || inputDirs.length === 0) {
   process.exit(2);
 }
 
-const formatDate = (d) => { const [y, m, day] = d.split('-'); return `${day}/${m}/${y}`; }; // dd/mm/yyyy
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const formatDate = (d) => { const [y, m, day] = d.split('-'); return `${day}-${MONTHS[+m-1]}-${y}`; }; // dd-MMM-yyyy
 const escapeHtml = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const MODE_DISPLAY = { Cloud: 'Platform API', SprintUpdate: 'Platform API — Sprint Update' };
+const modeLabel = MODE_DISPLAY[mode] ?? `Platform API — ${mode}`;
 
 // Entry heading, derived from the file name per mode:
-//   Cloud        → the new date only              e.g. 15/09/2026
-//   SprintUpdate → the date interval (old - new)  e.g. 29/09/2026 - 13/10/2026
-//   OnPrem       → version + date interval        e.g. 1.6 (26/09/2026) - 1.7 (01/12/2026)
+//   Cloud        → the new date only              e.g. 15-Sep-2026
+//   SprintUpdate → the date interval (old - new)  e.g. 29-Sep-2026 - 13-Oct-2026
+//   OnPrem       → version + date interval        e.g. 1.6 (26-Sep-2026) - 1.7 (01-Dec-2026)
 // Falls back to the new date when the extra info isn't present in the file name.
 function entryTitle(m, filename, dates) {
   if (m === 'OnPrem') {
@@ -132,6 +135,9 @@ for (const dir of inputDirs) {
     md = md.replace(/^\s*#\s+.*\r?\n/, '');          // drop the file's own H1 title
     md = md.replace(/^\s*(?:\|.*\|[ \t]*\r?\n)+\s*(?:---[ \t]*\r?\n)?/, ''); // drop the leading summary table (+ its --- rule)
     md = md.replace(/ to field '/g, " to '");       // drop redundant "field" word in directive/argument messages
+    // Skip entries with no real content (e.g. description-only diffs or same-day reverts)
+    const trimmed = md.trim();
+    if (!trimmed || trimmed === '_No changes detected._') continue;
     md = monospaceNames(md);                         // field/type/query names → monospace
     md = md.replace(/^(#{1,4}) /gm, (_, h) => '#'.repeat(Math.min(h.length + 2, 6)) + ' '); // demote headings under the date
     byDate.set(date, { date, year: date.slice(0, 4), title: entryTitle(mode, f, dates), html: wrapCollapsible(addActionBadges(marked.parse(md.trim()))) });
@@ -164,7 +170,7 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${escapeHtml(mode)} GraphQL schema changelog</title>
+  <title>${escapeHtml(modeLabel)} GraphQL schema changelog</title>
   <style>
     :root { --fg:#1f2328; --muted:#59636e; --border:#d1d9e0; --accent:#0969da; --bg:#ffffff; --canvas:#f6f8fa; }
     * { box-sizing: border-box; }
@@ -227,7 +233,7 @@ const html = `<!doctype html>
 <body>
   <header class="site">
     <div class="wrap">
-      <h1>Platform API — ${escapeHtml(mode)}</h1>
+      <h1>${escapeHtml(modeLabel)}</h1>
       <p>GraphQL schema changelog</p>
     </div>
   </header>

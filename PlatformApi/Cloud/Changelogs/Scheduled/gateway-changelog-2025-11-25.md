@@ -1,0 +1,636 @@
+# gateway-changelog-25-Nov-2025
+
+## 🔴 Breaking Changes (3)
+
+### Renesas (preview)
+
+#### Fields
+
+- Field 'display' was removed from object type 'DmPortConfiguration'
+- Field 'display' was removed from object type 'DmPortConnection'
+- Field 'display' was removed from object type 'DmPortFunction'
+
+
+---
+
+## ✅ Non-Breaking Changes (590)
+
+### Common
+
+#### 🔍 Query
+
+- Field 'Query.kgNode' is deprecated
+- Directive 'deprecated' was added to 'Query.kgNode'
+
+#### Types
+
+- Type 'Upload' was added
+- Object type 'Upload' has description 'The `Upload` scalar type represents a file upload.'
+- Object type 'KgAnchorNode' has description '**Experimental**'
+- Object type 'KgNodeQueries' has description '**Experimental**'
+- Object type 'KgRelation' has description '**Experimental**'
+- Object type 'KgRelationQueries' has description '**Experimental**'
+- Object type 'KgNode' has description '**Experimental**'
+- Enum value 'KgRelationSemantic.DERIVES_FROM' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.DERIVES_INTO' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.HAS_INPUT' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.HAS_OUTPUT' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.HAS_PART' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.INFORMED_BY' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.INFORMS' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.INPUT_OF' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.OUTPUT_OF' was deprecated with reason 'Experimental'
+- Enum value 'KgRelationSemantic.PART_OF' was deprecated with reason 'Experimental'
+
+#### Fields
+
+- Field 'KgAnchorNode.id' is deprecated
+- Directive 'deprecated' was added to 'KgAnchorNode.id'
+- Field 'KgAnchorNode.relatedNodes' is deprecated
+- Directive 'deprecated' was added to 'KgAnchorNode.relatedNodes'
+- Field 'KgAnchorNode.relations' is deprecated
+- Directive 'deprecated' was added to 'KgAnchorNode.relations'
+- Field 'KgNodeQueries.usedBy' is deprecated
+- Directive 'deprecated' was added to 'KgNodeQueries.usedBy'
+- Field 'KgNodeQueries.uses' is deprecated
+- Directive 'deprecated' was added to 'KgNodeQueries.uses'
+- Field 'KgRelation.object' is deprecated
+- Directive 'deprecated' was added to 'KgRelation.object'
+- Field 'KgRelation.semantic' is deprecated
+- Directive 'deprecated' was added to 'KgRelation.semantic'
+- Field 'KgRelation.subject' is deprecated
+- Directive 'deprecated' was added to 'KgRelation.subject'
+- Field 'KgRelationQueries.all' is deprecated
+- Directive 'deprecated' was added to 'KgRelationQueries.all'
+- Field 'KgNode.id' is deprecated
+- Directive 'deprecated' was added to 'KgNode.id'
+- Field 'KgNode.relatedNodes' is deprecated
+- Directive 'deprecated' was added to 'KgNode.relatedNodes'
+- Field 'KgNode.relations' is deprecated
+- Directive 'deprecated' was added to 'KgNode.relations'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.DERIVES_FROM'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.DERIVES_INTO'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.HAS_INPUT'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.HAS_OUTPUT'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.HAS_PART'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.INFORMED_BY'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.INFORMS'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.INPUT_OF'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.OUTPUT_OF'
+- Directive 'deprecated' was added to enum value 'KgRelationSemantic.PART_OF'
+
+### Renesas (preview)
+
+#### 🔍 Query
+
+- Field 'Query.dmConfiguredDeviceModel' is deprecated
+- Directive 'deprecated' was added to 'Query.dmConfiguredDeviceModel'
+- Field 'Query.dmConfiguredDeviceModelAllDevices' is deprecated
+- Directive 'deprecated' was added to 'Query.dmConfiguredDeviceModelAllDevices'
+- Field 'Query.dmFamilyPartModel' is deprecated
+- Directive 'deprecated' was added to 'Query.dmFamilyPartModel'
+- Field 'Query.dmFullStackDeviceModel' is deprecated
+- Directive 'deprecated' was added to 'Query.dmFullStackDeviceModel'
+- Field 'Query.dmFullStackDeviceModelAllDevices' is deprecated
+- Directive 'deprecated' was added to 'Query.dmFullStackDeviceModelAllDevices'
+- Field 'Query.dmFullStackDeviceModelReport' is deprecated
+- Directive 'deprecated' was added to 'Query.dmFullStackDeviceModelReport'
+- Field 'Query.dmFullStackDeviceModelReportAllDevices' is deprecated
+- Directive 'deprecated' was added to 'Query.dmFullStackDeviceModelReportAllDevices'
+
+#### ✏️ Mutation
+
+- Field 'dmExecuteDeviceEvaluationFromConfiguration' was added to object type 'Mutation'
+- Field 'Mutation.dmExecuteDeviceEvaluationFromConfiguration' is deprecated
+- Argument 'input: DmExecuteDeviceEvaluationFromConfigurationInput!' added to 'Mutation.dmExecuteDeviceEvaluationFromConfiguration'
+- Directive 'deprecated' was added to 'Mutation.dmExecuteDeviceEvaluationFromConfiguration'
+- Field 'dmExecuteDeviceEvaluationFromXml' was added to object type 'Mutation'
+- Field 'Mutation.dmExecuteDeviceEvaluationFromXml' is deprecated
+- Argument 'input: DmExecuteDeviceEvaluationFromXmlInput!' added to 'Mutation.dmExecuteDeviceEvaluationFromXml'
+- Directive 'deprecated' was added to 'Mutation.dmExecuteDeviceEvaluationFromXml'
+- Field 'Mutation.dmExecuteDeviceEvaluation' is deprecated
+- Directive 'deprecated' was added to 'Mutation.dmExecuteDeviceEvaluation'
+
+#### Types
+
+- Type 'DmAddressBlock' was added
+- Object type 'DmAddressBlock' has description '**Experimental** Address block with start, size, and optional registers and peripherals.'
+- Type 'DmAddressMapModel' was added
+- Object type 'DmAddressMapModel' has description '**Experimental** Address map for the device including memory and peripheral regions.'
+- Type 'DmAddressSegment' was added
+- Object type 'DmAddressSegment' has description '**Experimental** Address segment which can contain child blocks and has a total segment size.'
+- Type 'DmAmFieldEnum' was added
+- Object type 'DmAmFieldEnum' has description '**Experimental** Enumerated value for a register field.'
+- Type 'DmAmMemory' was added
+- Object type 'DmAmMemory' has description '**Experimental** Memory entry with name, size and type.'
+- Type 'DmAmRegister' was added
+- Object type 'DmAmRegister' has description '**Experimental** Register entry within an address block.'
+- Type 'DmAmRegisterField' was added
+- Object type 'DmAmRegisterField' has description '**Experimental** Bit field within a register.'
+- Type 'DmConfigDependency' was added
+- Object type 'DmConfigDependency' has description '**Experimental** Dependency describing how a configuration value maps to GPIO or alternate function usage.'
+- Type 'DmConfigEnumValue' was added
+- Object type 'DmConfigEnumValue' has description '**Experimental** Configuration enumeration value for a port setting.'
+- Type 'DmExecuteDeviceEvaluationFromConfigurationPayload' was added
+- Object type 'DmExecuteDeviceEvaluationFromConfigurationPayload' has description '**Experimental**'
+- Type 'DmExecuteDeviceEvaluationFromXmlPayload' was added
+- Object type 'DmExecuteDeviceEvaluationFromXmlPayload' has description '**Experimental**'
+- Type 'DmExecuteDeviceEvaluationFromConfigurationInput' was added
+- Object type 'DmExecuteDeviceEvaluationFromConfigurationInput' has description '**Experimental**'
+- Type 'DmExecuteDeviceEvaluationFromXmlInput' was added
+- Object type 'DmExecuteDeviceEvaluationFromXmlInput' has description '**Experimental**'
+- Object type 'DmExecuteDeviceEvaluationPayload' has description '**Experimental**'
+- Object type 'DmFullStackModelReport' has description '**Experimental**'
+- Object type 'DmPeripheralPortCoverageItem' has description '**Experimental**'
+- Object type 'DmPeripheralPortCoverageReport' has description '**Experimental**'
+- Object type 'DmPin' has description '**Experimental**'
+- Object type 'DmExecuteDeviceEvaluationInput' has description '**Experimental**'
+- Object type 'DmRequiredPeripheralPayloadInput' has description '**Experimental**'
+
+#### Fields
+
+- Field 'dataSource' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.dataSource' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.dataSource'
+- Field 'description' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.description' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.description'
+- Field 'memories' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.memories' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.memories'
+- Field 'name' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.name' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.name'
+- Field 'peripheralInstance' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.peripheralInstance' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.peripheralInstance'
+- Field 'registers' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.registers' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.registers'
+- Field 'size' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.size' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.size'
+- Field 'sizeHex' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.sizeHex' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.sizeHex'
+- Field 'startAddress' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.startAddress' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.startAddress'
+- Field 'startAddressHex' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.startAddressHex' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.startAddressHex'
+- Field 'type' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.type' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.type'
+- Field 'upperAddress' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.upperAddress' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.upperAddress'
+- Field 'upperAddressHex' was added to object type 'DmAddressBlock'
+- Field 'DmAddressBlock.upperAddressHex' is deprecated
+- Directive 'deprecated' was added to 'DmAddressBlock.upperAddressHex'
+- Field 'addressSegments' was added to object type 'DmAddressMapModel'
+- Field 'DmAddressMapModel.addressSegments' is deprecated
+- Directive 'deprecated' was added to 'DmAddressMapModel.addressSegments'
+- Field 'blocks' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.blocks' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.blocks'
+- Field 'description' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.description' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.description'
+- Field 'name' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.name' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.name'
+- Field 'nameAliases' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.nameAliases' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.nameAliases'
+- Field 'peripherals' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.peripherals' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.peripherals'
+- Field 'size' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.size' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.size'
+- Field 'sizeHex' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.sizeHex' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.sizeHex'
+- Field 'startAddress' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.startAddress' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.startAddress'
+- Field 'startAddressHex' was added to object type 'DmAddressSegment'
+- Field 'DmAddressSegment.startAddressHex' is deprecated
+- Directive 'deprecated' was added to 'DmAddressSegment.startAddressHex'
+- Field 'description' was added to object type 'DmAmFieldEnum'
+- Field 'DmAmFieldEnum.description' is deprecated
+- Directive 'deprecated' was added to 'DmAmFieldEnum.description'
+- Field 'name' was added to object type 'DmAmFieldEnum'
+- Field 'DmAmFieldEnum.name' is deprecated
+- Directive 'deprecated' was added to 'DmAmFieldEnum.name'
+- Field 'value' was added to object type 'DmAmFieldEnum'
+- Field 'DmAmFieldEnum.value' is deprecated
+- Directive 'deprecated' was added to 'DmAmFieldEnum.value'
+- Field 'name' was added to object type 'DmAmMemory'
+- Field 'DmAmMemory.name' is deprecated
+- Directive 'deprecated' was added to 'DmAmMemory.name'
+- Field 'sizeHex' was added to object type 'DmAmMemory'
+- Field 'DmAmMemory.sizeHex' is deprecated
+- Directive 'deprecated' was added to 'DmAmMemory.sizeHex'
+- Field 'type' was added to object type 'DmAmMemory'
+- Field 'DmAmMemory.type' is deprecated
+- Directive 'deprecated' was added to 'DmAmMemory.type'
+- Field 'access' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.access' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.access'
+- Field 'addressOffset' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.addressOffset' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.addressOffset'
+- Field 'addressOffsetHex' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.addressOffsetHex' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.addressOffsetHex'
+- Field 'description' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.description' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.description'
+- Field 'fields' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.fields' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.fields'
+- Field 'name' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.name' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.name'
+- Field 'resetMask' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.resetMask' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.resetMask'
+- Field 'resetValue' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.resetValue' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.resetValue'
+- Field 'size' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.size' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.size'
+- Field 'sizeHex' was added to object type 'DmAmRegister'
+- Field 'DmAmRegister.sizeHex' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegister.sizeHex'
+- Field 'access' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.access' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.access'
+- Field 'description' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.description' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.description'
+- Field 'enums' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.enums' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.enums'
+- Field 'lsb' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.lsb' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.lsb'
+- Field 'msb' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.msb' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.msb'
+- Field 'name' was added to object type 'DmAmRegisterField'
+- Field 'DmAmRegisterField.name' is deprecated
+- Directive 'deprecated' was added to 'DmAmRegisterField.name'
+- Field 'altRef' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.altRef' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.altRef'
+- Field 'configRef' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.configRef' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.configRef'
+- Field 'functionName' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.functionName' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.functionName'
+- Field 'gpioMode' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.gpioMode' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.gpioMode'
+- Field 'peripheralInstanceName' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.peripheralInstanceName' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.peripheralInstanceName'
+- Field 'port' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.port' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.port'
+- Field 'portMode' was added to object type 'DmConfigDependency'
+- Field 'DmConfigDependency.portMode' is deprecated
+- Directive 'deprecated' was added to 'DmConfigDependency.portMode'
+- Field 'configDependencies' was added to object type 'DmConfigEnumValue'
+- Field 'DmConfigEnumValue.configDependencies' is deprecated
+- Directive 'deprecated' was added to 'DmConfigEnumValue.configDependencies'
+- Field 'display' was added to object type 'DmConfigEnumValue'
+- Field 'DmConfigEnumValue.display' is deprecated
+- Directive 'deprecated' was added to 'DmConfigEnumValue.display'
+- Field 'id' was added to object type 'DmConfigEnumValue'
+- Field 'DmConfigEnumValue.id' is deprecated
+- Directive 'deprecated' was added to 'DmConfigEnumValue.id'
+- Field 'name' was added to object type 'DmConfigEnumValue'
+- Field 'DmConfigEnumValue.name' is deprecated
+- Directive 'deprecated' was added to 'DmConfigEnumValue.name'
+- Field 'dmResolverSummary' was added to object type 'DmExecuteDeviceEvaluationFromConfigurationPayload'
+- Field 'DmExecuteDeviceEvaluationFromConfigurationPayload.dmResolverSummary' is deprecated
+- Directive 'deprecated' was added to 'DmExecuteDeviceEvaluationFromConfigurationPayload.dmResolverSummary'
+- Field 'dmResolverSummary' was added to object type 'DmExecuteDeviceEvaluationFromXmlPayload'
+- Field 'DmExecuteDeviceEvaluationFromXmlPayload.dmResolverSummary' is deprecated
+- Directive 'deprecated' was added to 'DmExecuteDeviceEvaluationFromXmlPayload.dmResolverSummary'
+- Field 'DmDeviceModelAsConfigured.deviceMpn' is deprecated
+- Directive 'deprecated' was added to 'DmDeviceModelAsConfigured.deviceMpn'
+- Field 'DmDeviceModelAsConfigured.devicePeripherals' is deprecated
+- Directive 'deprecated' was added to 'DmDeviceModelAsConfigured.devicePeripherals'
+- Field 'DmDeviceModelAsConfigured.devicePorts' is deprecated
+- Directive 'deprecated' was added to 'DmDeviceModelAsConfigured.devicePorts'
+- Field 'DmDeviceModelAsConfigured.familyPart' is deprecated
+- Directive 'deprecated' was added to 'DmDeviceModelAsConfigured.familyPart'
+- Field 'DmDeviceToPeripheralOptionsModel.deviceToPeripheralElements' is deprecated
+- Directive 'deprecated' was added to 'DmDeviceToPeripheralOptionsModel.deviceToPeripheralElements'
+- Field 'DmExecuteDeviceEvaluationPayload.dmResolverSummary' is deprecated
+- Directive 'deprecated' was added to 'DmExecuteDeviceEvaluationPayload.dmResolverSummary'
+- Field 'DmFamilyPart.concrete' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.concrete'
+- Field 'DmFamilyPart.description' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.description'
+- Field 'DmFamilyPart.display' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.display'
+- Field 'DmFamilyPart.friendlyPartialMpn' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.friendlyPartialMpn'
+- Field 'DmFamilyPart.level' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.level'
+- Field 'DmFamilyPart.manufacturer' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.manufacturer'
+- Field 'DmFamilyPart.partialMpn' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.partialMpn'
+- Field 'DmFamilyPart.raPartDetails' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPart.raPartDetails'
+- Field 'DmFamilyPartModel.familyParts' is deprecated
+- Directive 'deprecated' was added to 'DmFamilyPartModel.familyParts'
+- Field 'DmFspModule.category' is deprecated
+- Directive 'deprecated' was added to 'DmFspModule.category'
+- Field 'DmFspModule.id' is deprecated
+- Directive 'deprecated' was added to 'DmFspModule.id'
+- Field 'DmFspModule.name' is deprecated
+- Directive 'deprecated' was added to 'DmFspModule.name'
+- Field 'DmFspModule.provides' is deprecated
+- Directive 'deprecated' was added to 'DmFspModule.provides'
+- Field 'DmFspModule.requires' is deprecated
+- Directive 'deprecated' was added to 'DmFspModule.requires'
+- Field 'DmFspProvides.external' is deprecated
+- Directive 'deprecated' was added to 'DmFspProvides.external'
+- Field 'DmFspProvides.instances' is deprecated
+- Directive 'deprecated' was added to 'DmFspProvides.instances'
+- Field 'DmFspProvides.interface' is deprecated
+- Directive 'deprecated' was added to 'DmFspProvides.interface'
+- Field 'DmFspProvides.interfaceBase' is deprecated
+- Directive 'deprecated' was added to 'DmFspProvides.interfaceBase'
+- Field 'DmFspRequires.id' is deprecated
+- Directive 'deprecated' was added to 'DmFspRequires.id'
+- Field 'deviceAddressMap' was added to object type 'DmFullStackDeviceModel'
+- Field 'DmFullStackDeviceModel.deviceAddressMap' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.deviceAddressMap'
+- Field 'DmFullStackDeviceModel.deviceInterfaces' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.deviceInterfaces'
+- Field 'DmFullStackDeviceModel.deviceMpn' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.deviceMpn'
+- Field 'DmFullStackDeviceModel.devicePeripherals' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.devicePeripherals'
+- Field 'DmFullStackDeviceModel.devicePorts' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.devicePorts'
+- Field 'DmFullStackDeviceModel.deviceToPeripheralOptions' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.deviceToPeripheralOptions'
+- Field 'DmFullStackDeviceModel.familyPart' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.familyPart'
+- Field 'DmFullStackDeviceModel.softwareToDeviceOptions' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackDeviceModel.softwareToDeviceOptions'
+- Field 'DmFullStackModelReport.deviceMpn' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackModelReport.deviceMpn'
+- Field 'DmFullStackModelReport.reports' is deprecated
+- Directive 'deprecated' was added to 'DmFullStackModelReport.reports'
+- Field 'DmInstanceSelection.groupName' is deprecated
+- Directive 'deprecated' was added to 'DmInstanceSelection.groupName'
+- Field 'DmInstanceSelection.instanceName' is deprecated
+- Directive 'deprecated' was added to 'DmInstanceSelection.instanceName'
+- Field 'DmInstanceSelection.modeName' is deprecated
+- Directive 'deprecated' was added to 'DmInstanceSelection.modeName'
+- Field 'DmInstanceSelection.pins' is deprecated
+- Directive 'deprecated' was added to 'DmInstanceSelection.pins'
+- Field 'port' was added to object type 'DmModePinConfig'
+- Field 'DmModePinConfig.port' is deprecated
+- Directive 'deprecated' was added to 'DmModePinConfig.port'
+- Field 'DmModePinConfig.display' is deprecated
+- Directive 'deprecated' was added to 'DmModePinConfig.display'
+- Field 'DmModePinConfig.pinFunction' is deprecated
+- Directive 'deprecated' was added to 'DmModePinConfig.pinFunction'
+- Field 'DmModePinConfig.portName' is deprecated
+- Directive 'deprecated' was added to 'DmModePinConfig.portName'
+- Field 'DmOpMode.connectionSetRefId' is deprecated
+- Directive 'deprecated' was added to 'DmOpMode.connectionSetRefId'
+- Field 'DmOpMode.display' is deprecated
+- Directive 'deprecated' was added to 'DmOpMode.display'
+- Field 'DmOpMode.id' is deprecated
+- Directive 'deprecated' was added to 'DmOpMode.id'
+- Field 'DmOpMode.modePinConfigs' is deprecated
+- Directive 'deprecated' was added to 'DmOpMode.modePinConfigs'
+- Field 'DmOpMode.pinSummary' is deprecated
+- Directive 'deprecated' was added to 'DmOpMode.pinSummary'
+- Field 'DmPeripheral.id' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheral.id'
+- Field 'DmPeripheral.name' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheral.name'
+- Field 'DmPeripheral.peripheralInstances' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheral.peripheralInstances'
+- Field 'DmPeripheral.peripheralProperties' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheral.peripheralProperties'
+- Field 'addressBlocks' was added to object type 'DmPeripheralInstance'
+- Field 'DmPeripheralInstance.addressBlocks' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralInstance.addressBlocks'
+- Field 'DmPeripheralInstance.id' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralInstance.id'
+- Field 'DmPeripheralInstance.modes' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralInstance.modes'
+- Field 'DmPeripheralInstance.name' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralInstance.name'
+- Field 'DmPeripheralMode.display' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralMode.display'
+- Field 'DmPeripheralMode.name' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralMode.name'
+- Field 'DmPeripheralMode.opModes' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralMode.opModes'
+- Field 'DmPeripheralModel.peripherals' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralModel.peripherals'
+- Field 'DmPeripheralPortCoverageItem.functionName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.functionName'
+- Field 'DmPeripheralPortCoverageItem.modeName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.modeName'
+- Field 'DmPeripheralPortCoverageItem.opModeId' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.opModeId'
+- Field 'DmPeripheralPortCoverageItem.peripheralInstanceName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.peripheralInstanceName'
+- Field 'DmPeripheralPortCoverageItem.peripheralName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.peripheralName'
+- Field 'DmPeripheralPortCoverageItem.portName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageItem.portName'
+- Field 'DmPeripheralPortCoverageReport.coveragePercent' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageReport.coveragePercent'
+- Field 'DmPeripheralPortCoverageReport.covered' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageReport.covered'
+- Field 'DmPeripheralPortCoverageReport.notCovered' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageReport.notCovered'
+- Field 'DmPeripheralPortCoverageReport.peripheralName' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageReport.peripheralName'
+- Field 'DmPeripheralPortCoverageReport.total' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralPortCoverageReport.total'
+- Field 'DmPeripheralProperty.display' is deprecated
+- Directive 'deprecated' was added to 'DmPeripheralProperty.display'
+- Field 'DmPin.name' is deprecated
+- Directive 'deprecated' was added to 'DmPin.name'
+- Field 'DmPinAssignment.display' is deprecated
+- Directive 'deprecated' was added to 'DmPinAssignment.display'
+- Field 'DmPinAssignment.functionName' is deprecated
+- Directive 'deprecated' was added to 'DmPinAssignment.functionName'
+- Field 'DmPinAssignment.portName' is deprecated
+- Directive 'deprecated' was added to 'DmPinAssignment.portName'
+- Field 'DmPort.comment' is deprecated
+- Directive 'deprecated' was added to 'DmPort.comment'
+- Field 'DmPort.configurations' is deprecated
+- Directive 'deprecated' was added to 'DmPort.configurations'
+- Field 'DmPort.connections' is deprecated
+- Directive 'deprecated' was added to 'DmPort.connections'
+- Field 'DmPort.functions' is deprecated
+- Directive 'deprecated' was added to 'DmPort.functions'
+- Field 'DmPort.id' is deprecated
+- Directive 'deprecated' was added to 'DmPort.id'
+- Field 'DmPort.name' is deprecated
+- Directive 'deprecated' was added to 'DmPort.name'
+- Field 'DmPort.pin' is deprecated
+- Directive 'deprecated' was added to 'DmPort.pin'
+- Field 'DmPort.symbolicName' is deprecated
+- Directive 'deprecated' was added to 'DmPort.symbolicName'
+- Field 'enumValues' was added to object type 'DmPortConfiguration'
+- Field 'DmPortConfiguration.enumValues' is deprecated
+- Directive 'deprecated' was added to 'DmPortConfiguration.enumValues'
+- Field 'id' was added to object type 'DmPortConfiguration'
+- Field 'DmPortConfiguration.id' is deprecated
+- Directive 'deprecated' was added to 'DmPortConfiguration.id'
+- Field 'name' was added to object type 'DmPortConfiguration'
+- Field 'DmPortConfiguration.name' is deprecated
+- Directive 'deprecated' was added to 'DmPortConfiguration.name'
+- Field 'id' was added to object type 'DmPortConnection'
+- Field 'DmPortConnection.id' is deprecated
+- Directive 'deprecated' was added to 'DmPortConnection.id'
+- Field 'name' was added to object type 'DmPortConnection'
+- Field 'DmPortConnection.name' is deprecated
+- Directive 'deprecated' was added to 'DmPortConnection.name'
+- Field 'name' was added to object type 'DmPortFunction'
+- Field 'DmPortFunction.name' is deprecated
+- Directive 'deprecated' was added to 'DmPortFunction.name'
+- Field 'peripheralInstanceName' was added to object type 'DmPortFunction'
+- Field 'DmPortFunction.peripheralInstanceName' is deprecated
+- Directive 'deprecated' was added to 'DmPortFunction.peripheralInstanceName'
+- Field 'DmPortModel.ports' is deprecated
+- Directive 'deprecated' was added to 'DmPortModel.ports'
+- Field 'DmRaPartNumberModel.application' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.application'
+- Field 'DmRaPartNumberModel.device' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.device'
+- Field 'DmRaPartNumberModel.display' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.display'
+- Field 'DmRaPartNumberModel.family' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.family'
+- Field 'DmRaPartNumberModel.featureSet' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.featureSet'
+- Field 'DmRaPartNumberModel.flashMemorySizeKB' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.flashMemorySizeKB'
+- Field 'DmRaPartNumberModel.groupNumber' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.groupNumber'
+- Field 'DmRaPartNumberModel.package' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.package'
+- Field 'DmRaPartNumberModel.packing' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.packing'
+- Field 'DmRaPartNumberModel.partNumber' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.partNumber'
+- Field 'DmRaPartNumberModel.performance' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.performance'
+- Field 'DmRaPartNumberModel.pinCount' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.pinCount'
+- Field 'DmRaPartNumberModel.pitchMm' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.pitchMm'
+- Field 'DmRaPartNumberModel.qualityGrade' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.qualityGrade'
+- Field 'DmRaPartNumberModel.romCode' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.romCode'
+- Field 'DmRaPartNumberModel.temperatureRange' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.temperatureRange'
+- Field 'DmRaPartNumberModel.xMm' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.xMm'
+- Field 'DmRaPartNumberModel.yMm' is deprecated
+- Directive 'deprecated' was added to 'DmRaPartNumberModel.yMm'
+- Field 'DmRequestedPeripheral.count' is deprecated
+- Directive 'deprecated' was added to 'DmRequestedPeripheral.count'
+- Field 'DmRequestedPeripheral.name' is deprecated
+- Directive 'deprecated' was added to 'DmRequestedPeripheral.name'
+- Field 'DmRequiresProvidesMapping.provides' is deprecated
+- Directive 'deprecated' was added to 'DmRequiresProvidesMapping.provides'
+- Field 'DmRequiresProvidesMapping.requires' is deprecated
+- Directive 'deprecated' was added to 'DmRequiresProvidesMapping.requires'
+- Field 'DmRequiresProvidesResolution.requiresModule' is deprecated
+- Directive 'deprecated' was added to 'DmRequiresProvidesResolution.requiresModule'
+- Field 'DmRequiresProvidesResolution.requiresToProvidesMapping' is deprecated
+- Directive 'deprecated' was added to 'DmRequiresProvidesResolution.requiresToProvidesMapping'
+- Field 'DmResolverResult.completedAt' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.completedAt'
+- Field 'DmResolverResult.completedOpModeGroups' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.completedOpModeGroups'
+- Field 'DmResolverResult.configuredModel' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.configuredModel'
+- Field 'DmResolverResult.deviceFamily' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.deviceFamily'
+- Field 'DmResolverResult.deviceMpn' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.deviceMpn'
+- Field 'DmResolverResult.durationSeconds' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.durationSeconds'
+- Field 'DmResolverResult.errors' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.errors'
+- Field 'DmResolverResult.isFeasible' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.isFeasible'
+- Field 'DmResolverResult.isOptimal' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.isOptimal'
+- Field 'DmResolverResult.logs' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.logs'
+- Field 'DmResolverResult.objectiveValue' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.objectiveValue'
+- Field 'DmResolverResult.requestedPeripherals' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.requestedPeripherals'
+- Field 'DmResolverResult.requestedTotalCount' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.requestedTotalCount'
+- Field 'DmResolverResult.selections' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.selections'
+- Field 'DmResolverResult.solverStatus' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.solverStatus'
+- Field 'DmResolverResult.startedAt' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.startedAt'
+- Field 'DmResolverResult.wallTimeSeconds' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.wallTimeSeconds'
+- Field 'DmResolverResult.warnings' is deprecated
+- Directive 'deprecated' was added to 'DmResolverResult.warnings'
+- Field 'requiredPeripherals' was added to object type 'DmResolverSummary'
+- Field 'DmResolverSummary.requiredPeripherals' is deprecated
+- Directive 'deprecated' was added to 'DmResolverSummary.requiredPeripherals'
+- Field 'DmResolverSummary.percentResolvedSuccess' is deprecated
+- Directive 'deprecated' was added to 'DmResolverSummary.percentResolvedSuccess'
+- Field 'DmResolverSummary.results' is deprecated
+- Directive 'deprecated' was added to 'DmResolverSummary.results'
+- Field 'DmSoftwareToDeviceOptionsModel.softwareToDeviceElements' is deprecated
+- Directive 'deprecated' was added to 'DmSoftwareToDeviceOptionsModel.softwareToDeviceElements'
+- Field 'DmTemperatureRange.display' is deprecated
+- Directive 'deprecated' was added to 'DmTemperatureRange.display'
+- Field 'DmTemperatureRange.max' is deprecated
+- Directive 'deprecated' was added to 'DmTemperatureRange.max'
+- Field 'DmTemperatureRange.min' is deprecated
+- Directive 'deprecated' was added to 'DmTemperatureRange.min'
+- Field 'DmTemperatureRange.tempType' is deprecated
+- Directive 'deprecated' was added to 'DmTemperatureRange.tempType'
+
+#### Input / Payload
+
+- Input field 'fileId' of type 'String!' was added to input object type 'DmExecuteDeviceEvaluationFromConfigurationInput'
+- Input field 'onlyFeasible' of type 'Boolean' was added to input object type 'DmExecuteDeviceEvaluationFromConfigurationInput'
+- Directive 'deprecated' was added to input field 'onlyFeasible' in input object 'DmExecuteDeviceEvaluationFromConfigurationInput'
+- Input field 'sessionId' of type 'String!' was added to input object type 'DmExecuteDeviceEvaluationFromConfigurationInput'
+- Input field 'onlyFeasible' of type 'Boolean' was added to input object type 'DmExecuteDeviceEvaluationFromXmlInput'
+- Directive 'deprecated' was added to input field 'onlyFeasible' in input object 'DmExecuteDeviceEvaluationFromXmlInput'
+- Input field 'sessionId' of type 'String!' was added to input object type 'DmExecuteDeviceEvaluationFromXmlInput'
+- Input field 'xmlUpload' of type 'Upload!' was added to input object type 'DmExecuteDeviceEvaluationFromXmlInput'
+- Input field 'onlyFeasible' of type 'Boolean' was added to input object type 'DmExecuteDeviceEvaluationInput'
+- Directive 'deprecated' was added to input field 'onlyFeasible' in input object 'DmExecuteDeviceEvaluationInput'
+- Directive 'deprecated' was added to input field 'optionalDeviceMpn' in input object 'DmExecuteDeviceEvaluationInput'
+
+
