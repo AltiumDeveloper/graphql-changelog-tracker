@@ -127,7 +127,7 @@ The report uses the same three criticality levels that `@graphql-inspector/core`
 - **⚠️ Dangerous** — changes that are backward-compatible but *may* break clients depending on how they're used (e.g. adding a value to an enum, adding a new union member, or changing the default value of an argument).
 - **✅ Non-breaking** — safe, backward-compatible changes (e.g. adding a new field or type).
 
-Only categories with changes are rendered — a section is omitted entirely when it has none. When there are no changes at all, the report is a single line: `_No changes detected._`.
+Only categories with changes are rendered — a section is omitted entirely when it has none. When there are no changes at all (e.g. a same-day commit+revert pair, or only description changes suppressed by `ignoreDescriptionChanges`), **no file is written** and the script exits with code 3. Callers that check `$LASTEXITCODE` should treat 3 as "nothing to do" — not a failure.
 
 #### Summary table (`-IncludeSummary`)
 
@@ -176,7 +176,16 @@ node Scripts/build-changelog-site.mjs <mode> <outputDir> <inputDir> [<inputDir> 
 
 The GitHub Action calls this automatically after each diff run. You can also run it locally after adding or editing `.md` files.
 
-## 4. Restructuring existing changelog files
+## 4. Backfilling historical snapshots and changelogs
+
+`Scripts/backfill-snapshots.sh` and `Scripts/backfill-changelogs.ps1` are **one-off scripts** used to populate historical data. They have already been run to backfill Cloud snapshots and changelogs from 2024-12-20 through 2026-09-17. There is no need to run them again under normal circumstances.
+
+- **`backfill-snapshots.sh`** — extracts historical schema snapshots from the fusion-gateway git history for a date range, saving one snapshot per day (last commit of that day).
+- **`backfill-changelogs.ps1`** — generates changelog `.md` files for every consecutive snapshot pair that doesn't yet have one, skipping pairs where no changes were detected.
+
+If the backfill ever needs to be re-run from scratch (e.g. the snapshot directory is lost), delete the affected snapshots, update the date range in `backfill-snapshots.sh`, and run both scripts in order.
+
+## 5. Restructuring existing changelog files
 
 `Scripts/regroup-changelogs.mjs` is a **last-resort** utility for restructuring `.md` files whose original snapshots are no longer available. It works by parsing change message text to infer the bounded context and change kind — which is less reliable than `generateSchemaDiff.ps1`, which classifies from the actual diff objects.
 

@@ -142,11 +142,13 @@ else {
 }
 
 # generateSchemaDiff exit codes: 0 = no breaking, 1 = breaking (a verdict we still
-# want committed → warning), 2+ = hard failure (fail the run).
+# want committed → warning), 2+ = hard failure (fail the run), 3 = no changes (file not written).
 if ($diffExit -eq 0) {
     Write-Host "No breaking changes detected."
 } elseif ($diffExit -eq 1) {
     Write-Host "::warning::Breaking changes detected — see the generated changelog."
+} elseif ($diffExit -eq 3) {
+    Write-Host "No changes detected — changelog not written."
 } else {
     Write-Error "Schema diff failed (exit code $diffExit)."
     exit 1

@@ -1,0 +1,509 @@
+# gateway-changelog-27-Feb-2026
+
+## ✅ Non-Breaking Changes (465)
+
+### Common
+
+#### Types
+
+- Type 'UUID' was added
+- Type 'TriggerEdge' was added
+- Enum value 'BOTH' was added to enum 'TriggerEdge'
+- Enum value 'FALL' was added to enum 'TriggerEdge'
+- Enum value 'RISE' was added to enum 'TriggerEdge'
+- Object type 'TriggerEdge' has description '**Experimental**'
+- Type 'TriggerMode' was added
+- Enum value 'AUTO' was added to enum 'TriggerMode'
+- Enum value 'NORMAL' was added to enum 'TriggerMode'
+- Enum value 'SINGLE' was added to enum 'TriggerMode'
+- Object type 'TriggerMode' has description '**Experimental**'
+- Type 'BooleanOperationFilterInput' was added
+- Type 'GridFilterInput' was added
+- Object type 'GridFilterInput' has description '**Experimental**'
+- Type 'IntOperationFilterInput' was added
+- Type 'MotorStudioProjectGridFilterInput' was added
+- Object type 'MotorStudioProjectGridFilterInput' has description '**Experimental**'
+- Type 'MotorStudioProjectGridSortInput' was added
+- Object type 'MotorStudioProjectGridSortInput' has description '**Experimental**'
+- Type 'PathFilterInput' was added
+- Object type 'PathFilterInput' has description '**Experimental**'
+- Type 'UuidOperationFilterInput' was added
+- Object type 'UuidOperationFilterInput' has description '**Experimental**'
+
+#### Input / Payload
+
+- Input field 'eq' of type 'Boolean' was added to input object type 'BooleanOperationFilterInput'
+- Input field 'neq' of type 'Boolean' was added to input object type 'BooleanOperationFilterInput'
+- Input field 'and' of type '[GridFilterInput!]' was added to input object type 'GridFilterInput'
+- Input field 'hasTenant' of type 'BooleanOperationFilterInput' was added to input object type 'GridFilterInput'
+- Input field 'isInvalid' of type 'BooleanOperationFilterInput' was added to input object type 'GridFilterInput'
+- Input field 'isWellFormed' of type 'BooleanOperationFilterInput' was added to input object type 'GridFilterInput'
+- Input field 'or' of type '[GridFilterInput!]' was added to input object type 'GridFilterInput'
+- Input field 'resourcePath' of type 'PathFilterInput' was added to input object type 'GridFilterInput'
+- Input field 'value' of type 'StringOperationFilterInput' was added to input object type 'GridFilterInput'
+- Input field 'eq' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'gt' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'gte' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'in' of type '[Int]' was added to input object type 'IntOperationFilterInput'
+- Input field 'lt' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'lte' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'neq' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'ngt' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'ngte' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'nin' of type '[Int]' was added to input object type 'IntOperationFilterInput'
+- Input field 'nlt' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'nlte' of type 'Int' was added to input object type 'IntOperationFilterInput'
+- Input field 'and' of type '[MotorStudioProjectGridFilterInput!]' was added to input object type 'MotorStudioProjectGridFilterInput'
+- Input field 'or' of type '[MotorStudioProjectGridFilterInput!]' was added to input object type 'MotorStudioProjectGridFilterInput'
+- Input field 'projectId' of type 'StringOperationFilterInput' was added to input object type 'MotorStudioProjectGridFilterInput'
+- Input field 'tenantId' of type 'UuidOperationFilterInput' was added to input object type 'MotorStudioProjectGridFilterInput'
+- Input field 'projectId' of type 'SortEnumType' was added to input object type 'MotorStudioProjectGridSortInput'
+- Input field 'tenantId' of type 'SortEnumType' was added to input object type 'MotorStudioProjectGridSortInput'
+- Input field 'and' of type '[PathFilterInput!]' was added to input object type 'PathFilterInput'
+- Input field 'count' of type 'IntOperationFilterInput' was added to input object type 'PathFilterInput'
+- Input field 'isEmpty' of type 'BooleanOperationFilterInput' was added to input object type 'PathFilterInput'
+- Input field 'or' of type '[PathFilterInput!]' was added to input object type 'PathFilterInput'
+- Input field 'eq' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'gt' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'gte' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'in' of type '[UUID]' was added to input object type 'UuidOperationFilterInput'
+- Input field 'lt' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'lte' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'neq' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'ngt' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'ngte' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'nin' of type '[UUID]' was added to input object type 'UuidOperationFilterInput'
+- Input field 'nlt' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+- Input field 'nlte' of type 'UUID' was added to input object type 'UuidOperationFilterInput'
+
+### Platform
+
+#### ✏️ Mutation
+
+- Field 'solBldImportRefDesigns' was added to object type 'Mutation'
+- Argument 'input: SolBldImportRefDesignsInput!' added to 'Mutation.solBldImportRefDesigns'
+- Field 'solBldLinkSolution' was added to object type 'Mutation'
+- Argument 'input: SolBldLinkSolutionInput!' added to 'Mutation.solBldLinkSolution'
+
+#### Types
+
+- Type 'SolBldImportRefDesignsPayload' was added
+- Type 'SolBldLinkSolutionPayload' was added
+- Type 'DesWorkspaceUserSortInput' was added
+- Object type 'DesWorkspaceUserSortInput' has description '**Experimental**'
+- Type 'SolBldImportRefDesignsInput' was added
+- Type 'SolBldLinkSolutionInput' was added
+
+#### Fields
+
+- Field 'jobId' was added to object type 'SolBldImportRefDesignsPayload'
+- Field 'solutionId' was added to object type 'SolBldLinkSolutionPayload'
+
+#### Input / Payload
+
+- Input field 'id' of type 'SortEnumType' was added to input object type 'DesWorkspaceUserSortInput'
+- Input field 'refDesignIds' of type '[ID!]!' was added to input object type 'SolBldImportRefDesignsInput'
+- Input field 'solutionId' of type 'ID!' was added to input object type 'SolBldImportRefDesignsInput'
+- Input field 'ensureEsdExists' of type 'Boolean!' was added to input object type 'SolBldLinkSolutionInput'
+- Input field 'solutionId' of type 'ID!' was added to input object type 'SolBldLinkSolutionInput'
+- Input field 'solutionItems' of type '[ID!]!' was added to input object type 'SolBldLinkSolutionInput'
+- Input field 'and' of type '[DesWorkspaceUserFilterInput!]' was added to input object type 'DesWorkspaceUserFilterInput'
+- Input field 'id' of type 'GridFilterInput' was added to input object type 'DesWorkspaceUserFilterInput'
+- Input field 'or' of type '[DesWorkspaceUserFilterInput!]' was added to input object type 'DesWorkspaceUserFilterInput'
+
+### Renesas (preview)
+
+#### 🔍 Query
+
+- Field 'rsaMotorStudioEasyModeConfigById' was added to object type 'Query'
+- Argument 'configId: String!' added to 'Query.rsaMotorStudioEasyModeConfigById'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioEasyModeConfigById'
+- Field 'rsaMotorStudioEasyModeConfigs' was added to object type 'Query'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioEasyModeConfigs'
+- Field 'rsaMotorStudioProjectById' was added to object type 'Query'
+- Argument 'id: ID!' added to 'Query.rsaMotorStudioProjectById'
+- Field 'rsaMotorStudioProjects' was added to object type 'Query'
+- Argument 'order: [RsaMotorStudioProjectSortInput!]' added to 'Query.rsaMotorStudioProjects'
+- Argument 'where: RsaMotorStudioProjectFilterInput' added to 'Query.rsaMotorStudioProjects'
+- Field 'rsaMotorStudioScopeCaptureById' was added to object type 'Query'
+- Argument 'captureId: String!' added to 'Query.rsaMotorStudioScopeCaptureById'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioScopeCaptureById'
+- Field 'rsaMotorStudioScopeCaptures' was added to object type 'Query'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioScopeCaptures'
+- Field 'rsaMotorStudioScopeConfigById' was added to object type 'Query'
+- Argument 'configId: String!' added to 'Query.rsaMotorStudioScopeConfigById'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioScopeConfigById'
+- Field 'rsaMotorStudioScopeConfigs' was added to object type 'Query'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioScopeConfigs'
+- Field 'rsaMotorStudioVariableSetById' was added to object type 'Query'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioVariableSetById'
+- Argument 'variableSetId: String!' added to 'Query.rsaMotorStudioVariableSetById'
+- Field 'rsaMotorStudioVariableSets' was added to object type 'Query'
+- Argument 'projectId: ID!' added to 'Query.rsaMotorStudioVariableSets'
+
+#### ✏️ Mutation
+
+- Field 'rsaMotorStudioCreateEasyModeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateEasyModeConfigInput!' added to 'Mutation.rsaMotorStudioCreateEasyModeConfig'
+- Field 'rsaMotorStudioCreateProject' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateProjectInput!' added to 'Mutation.rsaMotorStudioCreateProject'
+- Field 'rsaMotorStudioCreateScopeCapture' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateScopeCaptureInput!' added to 'Mutation.rsaMotorStudioCreateScopeCapture'
+- Field 'rsaMotorStudioCreateScopeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateScopeConfigInput!' added to 'Mutation.rsaMotorStudioCreateScopeConfig'
+- Field 'rsaMotorStudioCreateVariableSet' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateVariableSetInput!' added to 'Mutation.rsaMotorStudioCreateVariableSet'
+- Field 'rsaMotorStudioCreateVariableSetRevision' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioCreateVariableSetRevisionInput!' added to 'Mutation.rsaMotorStudioCreateVariableSetRevision'
+- Field 'rsaMotorStudioDeleteEasyModeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioDeleteEasyModeConfigInput!' added to 'Mutation.rsaMotorStudioDeleteEasyModeConfig'
+- Field 'rsaMotorStudioDeleteProject' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioDeleteProjectInput!' added to 'Mutation.rsaMotorStudioDeleteProject'
+- Field 'rsaMotorStudioDeleteScopeCapture' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioDeleteScopeCaptureInput!' added to 'Mutation.rsaMotorStudioDeleteScopeCapture'
+- Field 'rsaMotorStudioDeleteScopeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioDeleteScopeConfigInput!' added to 'Mutation.rsaMotorStudioDeleteScopeConfig'
+- Field 'rsaMotorStudioDeleteVariableSet' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioDeleteVariableSetInput!' added to 'Mutation.rsaMotorStudioDeleteVariableSet'
+- Field 'rsaMotorStudioUpdateEasyModeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioUpdateEasyModeConfigInput!' added to 'Mutation.rsaMotorStudioUpdateEasyModeConfig'
+- Field 'rsaMotorStudioUpdateProject' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioUpdateProjectInput!' added to 'Mutation.rsaMotorStudioUpdateProject'
+- Field 'rsaMotorStudioUpdateScopeConfig' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioUpdateScopeConfigInput!' added to 'Mutation.rsaMotorStudioUpdateScopeConfig'
+- Field 'rsaMotorStudioUpdateVariableSet' was added to object type 'Mutation'
+- Argument 'input: RsaMotorStudioUpdateVariableSetInput!' added to 'Mutation.rsaMotorStudioUpdateVariableSet'
+
+#### Types
+
+- Type 'RsaMotorStudioCreateEasyModeConfigPayload' was added
+- Object type 'RsaMotorStudioCreateEasyModeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateProjectPayload' was added
+- Object type 'RsaMotorStudioCreateProjectPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateScopeCapturePayload' was added
+- Object type 'RsaMotorStudioCreateScopeCapturePayload' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateScopeConfigPayload' was added
+- Object type 'RsaMotorStudioCreateScopeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateVariableSetPayload' was added
+- Object type 'RsaMotorStudioCreateVariableSetPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateVariableSetRevisionPayload' was added
+- Object type 'RsaMotorStudioCreateVariableSetRevisionPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteEasyModeConfigPayload' was added
+- Object type 'RsaMotorStudioDeleteEasyModeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteProjectPayload' was added
+- Object type 'RsaMotorStudioDeleteProjectPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteScopeCapturePayload' was added
+- Object type 'RsaMotorStudioDeleteScopeCapturePayload' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteScopeConfigPayload' was added
+- Object type 'RsaMotorStudioDeleteScopeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteVariableSetPayload' was added
+- Object type 'RsaMotorStudioDeleteVariableSetPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioEasyModeConfig' was added
+- Object type 'RsaMotorStudioEasyModeConfig' has description '**Experimental**'
+- Type 'RsaMotorStudioProject' was added
+- Object type 'RsaMotorStudioProject' has description '**Experimental**'
+- Type 'RsaMotorStudioScopeCapture' was added
+- Object type 'RsaMotorStudioScopeCapture' has description '**Experimental**'
+- Type 'RsaMotorStudioScopeChannelConfig' was added
+- Object type 'RsaMotorStudioScopeChannelConfig' has description '**Experimental**'
+- Type 'RsaMotorStudioScopeConfig' was added
+- Object type 'RsaMotorStudioScopeConfig' has description '**Experimental**'
+- Type 'RsaMotorStudioScopeView' was added
+- Object type 'RsaMotorStudioScopeView' has description '**Experimental**'
+- Type 'RsaMotorStudioSlider' was added
+- Object type 'RsaMotorStudioSlider' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateEasyModeConfigPayload' was added
+- Object type 'RsaMotorStudioUpdateEasyModeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateProjectPayload' was added
+- Object type 'RsaMotorStudioUpdateProjectPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateScopeConfigPayload' was added
+- Object type 'RsaMotorStudioUpdateScopeConfigPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateVariableSetPayload' was added
+- Object type 'RsaMotorStudioUpdateVariableSetPayload' has description '**Experimental**'
+- Type 'RsaMotorStudioVariableSet' was added
+- Object type 'RsaMotorStudioVariableSet' has description '**Experimental**'
+- Type 'RsaMotorStudioVariableSetEntry' was added
+- Object type 'RsaMotorStudioVariableSetEntry' has description '**Experimental**'
+- Type 'RsaMotorStudioVariableSetRevision' was added
+- Object type 'RsaMotorStudioVariableSetRevision' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateEasyModeConfigInput' was added
+- Object type 'RsaMotorStudioCreateEasyModeConfigInput' has description '**Experimental** Represents input value for motor studio project easymode config creation.'
+- Type 'RsaMotorStudioCreateProjectInput' was added
+- Object type 'RsaMotorStudioCreateProjectInput' has description '**Experimental** Represents input value for motor studio project creation.'
+- Type 'RsaMotorStudioCreateScopeCaptureInput' was added
+- Object type 'RsaMotorStudioCreateScopeCaptureInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateScopeChannelInput' was added
+- Object type 'RsaMotorStudioCreateScopeChannelInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateScopeConfigInput' was added
+- Object type 'RsaMotorStudioCreateScopeConfigInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateScopeViewInput' was added
+- Object type 'RsaMotorStudioCreateScopeViewInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateSliderInput' was added
+- Object type 'RsaMotorStudioCreateSliderInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateVariableSetInput' was added
+- Object type 'RsaMotorStudioCreateVariableSetInput' has description '**Experimental**'
+- Type 'RsaMotorStudioCreateVariableSetRevisionInput' was added
+- Object type 'RsaMotorStudioCreateVariableSetRevisionInput' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteEasyModeConfigInput' was added
+- Object type 'RsaMotorStudioDeleteEasyModeConfigInput' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteProjectInput' was added
+- Object type 'RsaMotorStudioDeleteProjectInput' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteScopeCaptureInput' was added
+- Object type 'RsaMotorStudioDeleteScopeCaptureInput' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteScopeConfigInput' was added
+- Object type 'RsaMotorStudioDeleteScopeConfigInput' has description '**Experimental**'
+- Type 'RsaMotorStudioDeleteVariableSetInput' was added
+- Object type 'RsaMotorStudioDeleteVariableSetInput' has description '**Experimental**'
+- Type 'RsaMotorStudioProjectFilterInput' was added
+- Object type 'RsaMotorStudioProjectFilterInput' has description '**Experimental**'
+- Type 'RsaMotorStudioProjectSortInput' was added
+- Object type 'RsaMotorStudioProjectSortInput' has description '**Experimental**'
+- Type 'RsaMotorStudioScopeChannelInput' was added
+- Object type 'RsaMotorStudioScopeChannelInput' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateEasyModeConfigInput' was added
+- Object type 'RsaMotorStudioUpdateEasyModeConfigInput' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateProjectInput' was added
+- Object type 'RsaMotorStudioUpdateProjectInput' has description '**Experimental** Represents input value for motor studio project creation.'
+- Type 'RsaMotorStudioUpdateScopeConfigInput' was added
+- Object type 'RsaMotorStudioUpdateScopeConfigInput' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateScopeViewInput' was added
+- Object type 'RsaMotorStudioUpdateScopeViewInput' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateSliderInput' was added
+- Object type 'RsaMotorStudioUpdateSliderInput' has description '**Experimental**'
+- Type 'RsaMotorStudioUpdateVariableSetInput' was added
+- Object type 'RsaMotorStudioUpdateVariableSetInput' has description '**Experimental**'
+- Type 'RsaMotorStudioVariableSetEntryInput' was added
+- Object type 'RsaMotorStudioVariableSetEntryInput' has description '**Experimental**'
+
+#### Fields
+
+- Field 'config' was added to object type 'RsaMotorStudioCreateEasyModeConfigPayload'
+- Field 'project' was added to object type 'RsaMotorStudioCreateProjectPayload'
+- Field 'capture' was added to object type 'RsaMotorStudioCreateScopeCapturePayload'
+- Field 'config' was added to object type 'RsaMotorStudioCreateScopeConfigPayload'
+- Field 'variableSet' was added to object type 'RsaMotorStudioCreateVariableSetPayload'
+- Field 'revision' was added to object type 'RsaMotorStudioCreateVariableSetRevisionPayload'
+- Field 'isDeleted' was added to object type 'RsaMotorStudioDeleteEasyModeConfigPayload'
+- Field 'isDeleted' was added to object type 'RsaMotorStudioDeleteProjectPayload'
+- Field 'isDeleted' was added to object type 'RsaMotorStudioDeleteScopeCapturePayload'
+- Field 'isDeleted' was added to object type 'RsaMotorStudioDeleteScopeConfigPayload'
+- Field 'isDeleted' was added to object type 'RsaMotorStudioDeleteVariableSetPayload'
+- Field 'configId' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'modifiedAt' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'modifiedBy' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'modifiedById' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'RsaMotorStudioEasyModeConfig.modifiedById' is deprecated
+- Directive 'deprecated' was added to 'RsaMotorStudioEasyModeConfig.modifiedById'
+- Field 'path' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'projectId' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'sliders' was added to object type 'RsaMotorStudioEasyModeConfig'
+- Field 'createdAt' was added to object type 'RsaMotorStudioProject'
+- Field 'createdBy' was added to object type 'RsaMotorStudioProject'
+- Field 'createdById' was added to object type 'RsaMotorStudioProject'
+- Field 'RsaMotorStudioProject.createdById' is deprecated
+- Directive 'deprecated' was added to 'RsaMotorStudioProject.createdById'
+- Field 'description' was added to object type 'RsaMotorStudioProject'
+- Field 'easyModeConfigs' was added to object type 'RsaMotorStudioProject'
+- Field 'id' was added to object type 'RsaMotorStudioProject'
+- Field 'modifiedAt' was added to object type 'RsaMotorStudioProject'
+- Field 'modifiedBy' was added to object type 'RsaMotorStudioProject'
+- Field 'modifiedById' was added to object type 'RsaMotorStudioProject'
+- Field 'RsaMotorStudioProject.modifiedById' is deprecated
+- Directive 'deprecated' was added to 'RsaMotorStudioProject.modifiedById'
+- Field 'name' was added to object type 'RsaMotorStudioProject'
+- Field 'scopeCaptures' was added to object type 'RsaMotorStudioProject'
+- Field 'scopeConfigs' was added to object type 'RsaMotorStudioProject'
+- Field 'variableSets' was added to object type 'RsaMotorStudioProject'
+- Field 'capturedAt' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'capturedData' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'capturedDataUrl' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'captureId' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'createdBy' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'createdById' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'projectId' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'scopeConfigId' was added to object type 'RsaMotorStudioScopeCapture'
+- Field 'channelId' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'color' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'index' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'offset' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'scale' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'variableName' was added to object type 'RsaMotorStudioScopeChannelConfig'
+- Field 'channels' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'configId' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'createdAt' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'createdBy' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'createdById' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'description' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'modifiedAt' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'modifiedBy' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'modifiedById' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'name' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'preTriggerSamples' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'projectId' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'samplePeriodNs' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'samplesLength' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'triggerEdge' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'triggerLevel' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'triggerMode' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'triggerSourceChannelIndex' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'views' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'virtualVariables' was added to object type 'RsaMotorStudioScopeConfig'
+- Field 'channelIndexes' was added to object type 'RsaMotorStudioScopeView'
+- Field 'viewId' was added to object type 'RsaMotorStudioScopeView'
+- Field 'defaultValue' was added to object type 'RsaMotorStudioSlider'
+- Field 'description' was added to object type 'RsaMotorStudioSlider'
+- Field 'displayName' was added to object type 'RsaMotorStudioSlider'
+- Field 'max' was added to object type 'RsaMotorStudioSlider'
+- Field 'min' was added to object type 'RsaMotorStudioSlider'
+- Field 'sliderId' was added to object type 'RsaMotorStudioSlider'
+- Field 'unit' was added to object type 'RsaMotorStudioSlider'
+- Field 'variableName' was added to object type 'RsaMotorStudioSlider'
+- Field 'config' was added to object type 'RsaMotorStudioUpdateEasyModeConfigPayload'
+- Field 'project' was added to object type 'RsaMotorStudioUpdateProjectPayload'
+- Field 'config' was added to object type 'RsaMotorStudioUpdateScopeConfigPayload'
+- Field 'variableSet' was added to object type 'RsaMotorStudioUpdateVariableSetPayload'
+- Field 'createdAt' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'createdBy' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'createdById' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'description' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'latestRevision' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'modifiedAt' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'modifiedBy' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'modifiedById' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'name' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'path' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'projectId' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'revisions' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'variableSetId' was added to object type 'RsaMotorStudioVariableSet'
+- Field 'value' was added to object type 'RsaMotorStudioVariableSetEntry'
+- Field 'variableName' was added to object type 'RsaMotorStudioVariableSetEntry'
+- Field 'createdAt' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'createdBy' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'createdById' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'entries' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'projectId' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'revision' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'revisionId' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'variableSet' was added to object type 'RsaMotorStudioVariableSetRevision'
+- Field 'variableSetId' was added to object type 'RsaMotorStudioVariableSetRevision'
+
+#### Input / Payload
+
+- Input field 'path' of type 'String!' was added to input object type 'RsaMotorStudioCreateEasyModeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioCreateEasyModeConfigInput'
+- Input field 'sliders' of type '[RsaMotorStudioCreateSliderInput!]!' was added to input object type 'RsaMotorStudioCreateEasyModeConfigInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioCreateProjectInput'
+- Input field 'name' of type 'String!' was added to input object type 'RsaMotorStudioCreateProjectInput'
+- Input field 'capturedAt' of type 'DateTime!' was added to input object type 'RsaMotorStudioCreateScopeCaptureInput'
+- Input field 'capturedData' of type 'String!' was added to input object type 'RsaMotorStudioCreateScopeCaptureInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioCreateScopeCaptureInput'
+- Input field 'scopeConfigId' of type 'String!' was added to input object type 'RsaMotorStudioCreateScopeCaptureInput'
+- Input field 'color' of type 'String!' was added to input object type 'RsaMotorStudioCreateScopeChannelInput'
+- Input field 'index' of type 'Int!' was added to input object type 'RsaMotorStudioCreateScopeChannelInput'
+- Input field 'offset' of type 'Float' was added to input object type 'RsaMotorStudioCreateScopeChannelInput'
+- Input field 'scale' of type 'Float' was added to input object type 'RsaMotorStudioCreateScopeChannelInput'
+- Input field 'variableName' of type 'String' was added to input object type 'RsaMotorStudioCreateScopeChannelInput'
+- Input field 'channels' of type '[RsaMotorStudioCreateScopeChannelInput!]!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'name' of type 'String!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'preTriggerSamples' of type 'Int!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'samplePeriodNs' of type 'Int!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'samplesLength' of type 'Int!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'triggerEdge' of type 'TriggerEdge!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'triggerLevel' of type 'Float!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'triggerMode' of type 'TriggerMode!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'triggerSourceChannelIndex' of type 'Int!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'views' of type '[RsaMotorStudioCreateScopeViewInput!]!' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'virtualVariables' of type '[String!]' was added to input object type 'RsaMotorStudioCreateScopeConfigInput'
+- Input field 'channelIndexes' of type '[Int!]!' was added to input object type 'RsaMotorStudioCreateScopeViewInput'
+- Input field 'defaultValue' of type 'String' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'displayName' of type 'String!' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'max' of type 'Float!' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'min' of type 'Float!' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'unit' of type 'String' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'variableName' of type 'String!' was added to input object type 'RsaMotorStudioCreateSliderInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioCreateVariableSetInput'
+- Input field 'initialEntries' of type '[RsaMotorStudioVariableSetEntryInput!]' was added to input object type 'RsaMotorStudioCreateVariableSetInput'
+- Input field 'name' of type 'String!' was added to input object type 'RsaMotorStudioCreateVariableSetInput'
+- Input field 'path' of type 'String!' was added to input object type 'RsaMotorStudioCreateVariableSetInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioCreateVariableSetInput'
+- Input field 'entries' of type '[RsaMotorStudioVariableSetEntryInput!]!' was added to input object type 'RsaMotorStudioCreateVariableSetRevisionInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioCreateVariableSetRevisionInput'
+- Input field 'variableSetId' of type 'String!' was added to input object type 'RsaMotorStudioCreateVariableSetRevisionInput'
+- Input field 'configId' of type 'String!' was added to input object type 'RsaMotorStudioDeleteEasyModeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioDeleteEasyModeConfigInput'
+- Input field 'id' of type 'ID!' was added to input object type 'RsaMotorStudioDeleteProjectInput'
+- Input field 'captureId' of type 'String!' was added to input object type 'RsaMotorStudioDeleteScopeCaptureInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioDeleteScopeCaptureInput'
+- Input field 'configId' of type 'String!' was added to input object type 'RsaMotorStudioDeleteScopeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioDeleteScopeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioDeleteVariableSetInput'
+- Input field 'variableSetId' of type 'String!' was added to input object type 'RsaMotorStudioDeleteVariableSetInput'
+- Input field 'and' of type '[RsaMotorStudioProjectFilterInput!]' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'createdAt' of type 'DateTimeOperationFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'createdBy' of type 'DesWorkspaceUserFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'createdById' of type 'GridFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'description' of type 'StringOperationFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'id' of type 'MotorStudioProjectGridFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'modifiedAt' of type 'DateTimeOperationFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'modifiedBy' of type 'DesWorkspaceUserFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'modifiedById' of type 'GridFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'name' of type 'StringOperationFilterInput' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'or' of type '[RsaMotorStudioProjectFilterInput!]' was added to input object type 'RsaMotorStudioProjectFilterInput'
+- Input field 'createdAt' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'createdBy' of type 'DesWorkspaceUserSortInput' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'createdById' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'description' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'id' of type 'MotorStudioProjectGridSortInput' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'modifiedAt' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'modifiedBy' of type 'DesWorkspaceUserSortInput' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'modifiedById' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'name' of type 'SortEnumType' was added to input object type 'RsaMotorStudioProjectSortInput'
+- Input field 'channelId' of type 'String' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'color' of type 'String!' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'index' of type 'Int!' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'offset' of type 'Float' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'scale' of type 'Float' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'variableName' of type 'String' was added to input object type 'RsaMotorStudioScopeChannelInput'
+- Input field 'configId' of type 'String!' was added to input object type 'RsaMotorStudioUpdateEasyModeConfigInput'
+- Input field 'path' of type 'String' was added to input object type 'RsaMotorStudioUpdateEasyModeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioUpdateEasyModeConfigInput'
+- Input field 'sliders' of type '[RsaMotorStudioUpdateSliderInput!]!' was added to input object type 'RsaMotorStudioUpdateEasyModeConfigInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioUpdateProjectInput'
+- Input field 'id' of type 'ID!' was added to input object type 'RsaMotorStudioUpdateProjectInput'
+- Input field 'name' of type 'String' was added to input object type 'RsaMotorStudioUpdateProjectInput'
+- Input field 'channels' of type '[RsaMotorStudioScopeChannelInput!]!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'configId' of type 'String!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'name' of type 'String!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'preTriggerSamples' of type 'Int!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'samplePeriodNs' of type 'Int!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'samplesLength' of type 'Int!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'triggerEdge' of type 'TriggerEdge!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'triggerLevel' of type 'Float!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'triggerMode' of type 'TriggerMode!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'triggerSourceChannelIndex' of type 'Int!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'views' of type '[RsaMotorStudioUpdateScopeViewInput!]!' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'virtualVariables' of type '[String!]' was added to input object type 'RsaMotorStudioUpdateScopeConfigInput'
+- Input field 'channelIndexes' of type '[Int!]!' was added to input object type 'RsaMotorStudioUpdateScopeViewInput'
+- Input field 'viewId' of type 'String' was added to input object type 'RsaMotorStudioUpdateScopeViewInput'
+- Input field 'defaultValue' of type 'String' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'displayName' of type 'String!' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'max' of type 'Float!' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'min' of type 'Float!' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'sliderId' of type 'String' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'unit' of type 'String' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'variableName' of type 'String!' was added to input object type 'RsaMotorStudioUpdateSliderInput'
+- Input field 'description' of type 'String' was added to input object type 'RsaMotorStudioUpdateVariableSetInput'
+- Input field 'name' of type 'String!' was added to input object type 'RsaMotorStudioUpdateVariableSetInput'
+- Input field 'path' of type 'String!' was added to input object type 'RsaMotorStudioUpdateVariableSetInput'
+- Input field 'projectId' of type 'ID!' was added to input object type 'RsaMotorStudioUpdateVariableSetInput'
+- Input field 'variableSetId' of type 'String!' was added to input object type 'RsaMotorStudioUpdateVariableSetInput'
+- Input field 'value' of type 'String!' was added to input object type 'RsaMotorStudioVariableSetEntryInput'
+- Input field 'variableName' of type 'String!' was added to input object type 'RsaMotorStudioVariableSetEntryInput'
+
+

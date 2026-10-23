@@ -287,14 +287,17 @@ $status      = if ($breaking.Count -gt 0) { "Breaking changes detected" } else {
 $statusEmoji = if ($breaking.Count -gt 0) { "🔴" } else { "🟢" }
 
 # ── Build Markdown ─────────────────────────────────────────────────────────────
-$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$timestamp = (Get-Date).ToString("dd-MMM-yyyy HH:mm:ss", [System.Globalization.CultureInfo]::GetCultureInfo("en-US"))
 
-# Title mirrors the chosen output file name (without extension), e.g. test.md → "test".
-# Split on both / and \ so the leaf is found regardless of OS (Path.GetFileName only
-# treats \ as a separator on Windows), then drop the extension.
+# Title mirrors the chosen output file name (without extension), e.g. test.md → "test",
+# with any yyyy-MM-dd date portions reformatted as dd-MMM-yyyy (e.g. 09-Jan-2025).
 $outputLeaf  = ($OutputFile -split '[\\/]' | Where-Object { $_ -ne "" } | Select-Object -Last 1)
 $reportTitle = [System.IO.Path]::GetFileNameWithoutExtension($outputLeaf)
 if (-not $reportTitle) { $reportTitle = "GraphQL Schema Diff Report" }
+$months = @('','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
+$reportTitle = [regex]::Replace($reportTitle, '(\d{4})-(\d{2})-(\d{2})', {
+    param($m) "$($m.Groups[3].Value)-$($months[[int]$m.Groups[2].Value])-$($m.Groups[1].Value)"
+})
 
 # Show the applied rules as inline code, or "_None_" when the list is empty
 $appliedRules = @($Rules | Where-Object { $_ -and $_.Trim() -ne "" } | ForEach-Object { $_.Trim() })
@@ -330,7 +333,8 @@ if ($nonBreaking.Count -gt 0) { $s = Format-LevelSection "✅ Non-Breaking Chang
 if ($sections.Count -gt 0) {
     $md += ($sections -join "`n---`n`n")
 } else {
-    $md += "_No changes detected._`n"
+    Write-Host "No changes detected — changelog not written." -ForegroundColor Yellow
+    exit 3   # 0=no breaking, 1=breaking, 2=hard failure, 3=no changes (file not written)
 }
 
 

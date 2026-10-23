@@ -1,4 +1,4 @@
-# gateway-changelog-2026-09-24-to-2026-09-29
+# gateway-changelog-24-Sep-2026-to-29-Sep-2026
 
 ## ✅ Non-Breaking Changes (38)
 
