@@ -1,4 +1,4 @@
-# gateway-changelog-2026-10-15
+# gateway-changelog-15-Oct-2026
 
 ## 🔴 Breaking Changes (8)
 
