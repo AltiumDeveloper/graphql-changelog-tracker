@@ -149,6 +149,9 @@ if ($diffExit -eq 0) {
     Write-Host "::warning::Breaking changes detected — see the generated changelog."
 } elseif ($diffExit -eq 3) {
     Write-Host "No changes detected — changelog not written."
+    Set-Output 'changelog' ''
+    Set-Output 'changed' 'false'
+    exit 0
 } else {
     Write-Error "Schema diff failed (exit code $diffExit)."
     exit 1

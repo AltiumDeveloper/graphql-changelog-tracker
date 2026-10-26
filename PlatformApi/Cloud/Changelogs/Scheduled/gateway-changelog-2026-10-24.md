@@ -1,4 +1,4 @@
-# gateway-changelog-2026-10-24
+# 24-Oct-2026
 
 ## ⚠️ Dangerous Changes (1)
 

@@ -4,16 +4,16 @@
 # of that day's schema file as a snapshot in the Scheduled snapshots directory.
 set -euo pipefail
 
-FUSION_GATEWAY="/Users/hichamseffendji/Projects/fusion-gateway"
+FUSION_GATEWAY="${1:-"$(dirname "$0")/../../fusion-gateway"}"
 SCHEMA_FILE="Nexar.Gateway.Test/Nexar.Test/SchemaTest.A365Prod.Changes.verified.graphql"
-SNAPSHOT_DIR="/Users/hichamseffendji/Projects/graphql-changelog-tracker/PlatformApi/Cloud/Snapshots/Scheduled"
+SNAPSHOT_DIR="$(cd "$(dirname "$0")" && pwd)/../PlatformApi/Cloud/Snapshots/Scheduled"
 
 # Get date→commit pairs: git log is newest-first, so first occurrence per date = last commit of that day.
 # Output format: "<hash> <date>" sorted ascending by date.
 echo "Reading git history from fusion-gateway..."
 
 mapfile -t PAIRS < <(
-  git -C "$FUSION_GATEWAY" log --follow --format="%H %ai" -- "$SCHEMA_FILE" \
+  git -C "$FUSION_GATEWAY" log --follow --format="%H %ci" -- "$SCHEMA_FILE" \
   | awk '{date=$2; if (!seen[date]++) print $1, date}' \
   | sort -k2
 )
@@ -33,13 +33,17 @@ for pair in "${PAIRS[@]}"; do
   snapshot="$SNAPSHOT_DIR/gateway-snapshot-$date.graphql"
   if [[ -f "$snapshot" ]]; then
     echo "  skip  $date (already exists)"
-    ((skipped++))
+    (( ++skipped ))
     continue
   fi
 
   echo "  extract $date ($commit)"
-  git -C "$FUSION_GATEWAY" show "${commit}:${SCHEMA_FILE}" > "$snapshot"
-  ((extracted++))
+  tmp="$snapshot.tmp"
+  trap 'rm -f "$tmp"' EXIT
+  git -C "$FUSION_GATEWAY" show "${commit}:${SCHEMA_FILE}" > "$tmp"
+  mv "$tmp" "$snapshot"
+  trap - EXIT
+  (( ++extracted ))
 done
 
 echo ""

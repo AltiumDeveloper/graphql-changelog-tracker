@@ -31,15 +31,9 @@ for ($i = 1; $i -lt $snapshots.Count; $i++) {
 
     $changelogPath = Join-Path $ChangelogDir "gateway-changelog-$newDate.md"
     if (Test-Path -LiteralPath $changelogPath) {
-        $existingContent = Get-Content -LiteralPath $changelogPath -Raw
-        if ($existingContent -match '_No changes detected\._') {
-            Remove-Item -LiteralPath $changelogPath -Force
-            Write-Host "  stale $newDate (was no-change, re-processing)"
-        } else {
-            Write-Host "  skip  $newDate (exists)"
-            $skipped++
-            continue
-        }
+        Write-Host "  skip  $newDate (exists)"
+        $skipped++
+        continue
     }
 
     Write-Host "  diff  $($old.Name) → $($new.Name)"
@@ -51,8 +45,11 @@ for ($i = 1; $i -lt $snapshots.Count; $i++) {
     $diffExit = $LASTEXITCODE
     if ($diffExit -eq 3) {
         Write-Host "  no-change $newDate (skipped)"
-    } else {
+    } elseif ($diffExit -le 1) {
         $generated++
+    } else {
+        Write-Error "generateSchemaDiff failed (exit code $diffExit) for $newDate."
+        exit 1
     }
 }
 
