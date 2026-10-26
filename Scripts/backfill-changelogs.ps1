@@ -23,11 +23,22 @@ if ($snapshots.Count -lt 2) {
 $generated = 0
 $skipped   = 0
 
+# The snapshot at 2026-09-17 (backfill source: fusion-gateway test file) and
+# 2026-09-24 (live source: running gateway) come from different sources. Diffing
+# them produces ~395 spurious directive changes. Skip that boundary pair.
+$sourceBoundaryDate = '2026-09-24'
+
 for ($i = 1; $i -lt $snapshots.Count; $i++) {
     $old = $snapshots[$i - 1]
     $new = $snapshots[$i]
 
     $newDate = if ($new.Name -match '(\d{4}-\d{2}-\d{2})') { $Matches[1] } else { continue }
+
+    if ($newDate -eq $sourceBoundaryDate) {
+        Write-Host "  skip  $newDate (source boundary — backfill/live switch)"
+        $skipped++
+        continue
+    }
 
     $changelogPath = Join-Path $ChangelogDir "gateway-changelog-$newDate.md"
     if (Test-Path -LiteralPath $changelogPath) {

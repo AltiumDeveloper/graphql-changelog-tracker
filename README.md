@@ -178,10 +178,12 @@ The GitHub Action calls this automatically after each diff run. You can also run
 
 ## 4. Backfilling historical snapshots and changelogs
 
-`Scripts/backfill-snapshots.sh` and `Scripts/backfill-changelogs.ps1` are **one-off scripts** used to populate historical data. They have already been run to backfill Cloud snapshots and changelogs from 2024-12-20 through 2026-09-17. There is no need to run them again under normal circumstances.
+`Scripts/backfill-snapshots.sh` and `Scripts/backfill-changelogs.ps1` are **one-off scripts** used to populate historical data. They have already been run to backfill Cloud snapshots and changelogs from 2024-12-20 through 2026-09-11. There is no need to run them again under normal circumstances.
 
 - **`backfill-snapshots.sh`** — extracts historical schema snapshots from the fusion-gateway git history for a date range, saving one snapshot per day (last commit of that day).
 - **`backfill-changelogs.ps1`** — generates changelog `.md` files for every consecutive snapshot pair that doesn't yet have one, skipping pairs where no changes were detected.
+
+**Source boundary (2026-09-17 → 2026-09-24):** the backfill sourced snapshots from the fusion-gateway test file, while the live series is captured from the running gateway. Diffing across this boundary produces ~395 spurious directive changes reflecting the source switch, not real API changes. `backfill-changelogs.ps1` permanently skips the 2026-09-24 pair for this reason. The published changelog therefore has a gap from 17-Sep-2026 to 29-Sep-2026 (the first valid live-to-live diff).
 
 If the backfill ever needs to be re-run from scratch (e.g. the snapshot directory is lost), delete the affected snapshots, update the date range in `backfill-snapshots.sh`, and run both scripts in order.
 
