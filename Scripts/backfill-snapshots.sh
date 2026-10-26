@@ -8,13 +8,14 @@ FUSION_GATEWAY="${1:-"$(dirname "$0")/../../fusion-gateway"}"
 SCHEMA_FILE="Nexar.Gateway.Test/Nexar.Test/SchemaTest.A365Prod.Changes.verified.graphql"
 SNAPSHOT_DIR="$(cd "$(dirname "$0")" && pwd)/../PlatformApi/Cloud/Snapshots/Scheduled"
 
-# Get date→commit pairs: git log is newest-first, so first occurrence per date = last commit of that day.
+# Get date→commit pairs from main only (--first-parent), dates normalised to UTC.
+# git log is newest-first, so the first occurrence per UTC date = last commit of that day.
 # Output format: "<hash> <date>" sorted ascending by date.
 echo "Reading git history from fusion-gateway..."
 
 mapfile -t PAIRS < <(
-  git -C "$FUSION_GATEWAY" log --follow --format="%H %ci" -- "$SCHEMA_FILE" \
-  | awk '{date=$2; if (!seen[date]++) print $1, date}' \
+  TZ=UTC git -C "$FUSION_GATEWAY" log --first-parent --follow --format="%H %cd" --date=format:%Y-%m-%d -- "$SCHEMA_FILE" \
+  | awk '!seen[$2]++ {print $1, $2}' \
   | sort -k2
 )
 
