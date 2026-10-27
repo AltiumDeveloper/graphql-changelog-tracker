@@ -74,6 +74,278 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-10-27">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-10-27">13-Oct-2026 - 27-Oct-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>🔴 Breaking Changes (20)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>SchemaRegistryEntry</code> was removed</span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>Query.sysSdmSchemaVersionRegistry</code> changed type from <code>[SchemaRegistryEntry!]!</code> to <code>[SysSdmSchemaRegistryEntry!]!</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmConnection.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDeviceModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralConfiguration.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralInstance.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPort.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfiguration.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfigurationEnumValue.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConnection.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalBlock.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareComponent.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmParameter.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPeripheral.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPort.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareComponent.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareStackInstance.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>⚠️ Dangerous Changes (57)</h4></summary>
+<details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Enum value <code>RASC_CMAKE</code> was added to enum <code>SupSoftwareProjectEvalKitProjectSourceType</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysLibSoftwareComponentById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysLibSoftwareComponents</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysLibSoftwareLibraryDownloads</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysSdmSchemaVersionRegistry</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysSdmSystemModelById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysSdmSystemModelsByIds</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Query.sysSdmSystemModelVersionById</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Mutation.sysLibDeleteSoftwareLibrary</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Mutation.sysLibUploadSoftwareLibrary</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>Mutation.sysSdmCreateSystemModelVersion</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysLibDeleteSoftwareLibraryPayload</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysLibSoftwareComponent</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysLibSoftwareComponentSpecification</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysLibSoftwareLibraryDownload</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysLibUploadSoftwareLibraryPayload</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmAuthoringApplication</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmConnection</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmCreateSystemModelVersionPayload</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDeviceModel</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralConfiguration</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralInstance</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralMode</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralParameter</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralPinConfig</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPeripheralPinDependencyConfig</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPort</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPortConfiguration</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPortConfigurationDependency</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPortConfigurationEnumValue</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPortConnection</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmDmPortFunction</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmEndpoint</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmFunctionalBlock</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmFunctionalModel</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmHardwareComponent</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmHardwareModel</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmParameter</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmPeripheral</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmPort</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSoftwareComponent</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSoftwareModel</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSoftwareSpecification</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSoftwareStackInstance</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>SysSdmSystemModel.latestVersion</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>SysSdmSystemModel.name</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from field <code>SysSdmSystemModel.versions</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSystemModel</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSystemModelVersion</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from object <code>SysSdmSystemModelVersionMetadata</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from enum <code>SysSdmDmGpioMode</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from enum <code>SysSdmDmPeripheralVirtualization</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from enum <code>SysSdmDmPortMode</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from enum <code>SysSdmSoftwareComponentCategory</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from input object <code>SysLibDeleteSoftwareLibraryInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from input object <code>SysLibUploadSoftwareLibraryInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was removed from input object <code>SysSdmCreateSystemModelVersionInput</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (116)</h4></summary>
+<details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>globalTrackedEvent</code> was added to object type <code>Query</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>Query.globalTrackedEvent</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>Query.globalTrackedEvent</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>globalTrackedEventReport</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: GlobalTrackedEventReportInput!</code> added to <code>Mutation.globalTrackedEventReport</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>GlobalTrackedEventContextObjectIdInvalidError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>GlobalTrackedEventContextObjectIdInvalidError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GlobalTrackedEventContextObjectIdInvalidError</code> has description <code>Indicates that the supplied context object identifier is rejected.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>GlobalTrackedEventNameInvalidError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>GlobalTrackedEventNameInvalidError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GlobalTrackedEventNameInvalidError</code> has description <code>Indicates that the supplied event name is rejected.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>GlobalTrackedEventReportPayload</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GlobalTrackedEventReportPayload</code> has description <code>Result of reporting a business analytics event.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>GlobalTrackedEventReportError</code> was added</span></li>
+<li><span class="ba">+</span> <span>Member <code>GlobalTrackedEventNameInvalidError</code> was added to Union type <code>GlobalTrackedEventReportError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>GlobalTrackedEventContextObjectIdInvalidError</code> was added to Union type <code>GlobalTrackedEventReportError</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>GlobalTrackedEventReportInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GlobalTrackedEventReportInput</code> has description <code>Business analytics event to record.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>contextObjectId</code> was added to object type <code>GlobalTrackedEventContextObjectIdInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>GlobalTrackedEventContextObjectIdInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>eventName</code> was added to object type <code>GlobalTrackedEventNameInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>GlobalTrackedEventNameInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errors</code> was added to object type <code>GlobalTrackedEventReportPayload</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>contextObjectId</code> of type <code>String</code> was added to input object type <code>GlobalTrackedEventReportInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>eventName</code> of type <code>String!</code> was added to input object type <code>GlobalTrackedEventReportInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>sourceName</code> of type <code>String</code> was added to input object type <code>GlobalTrackedEventReportInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>userId</code> of type <code>String!</code> was added to input object type <code>GlobalTrackedEventReportInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>workspaceId</code> of type <code>String!</code> was added to input object type <code>GlobalTrackedEventReportInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>toolchain</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>toolchainVersion</code> was added to object type <code>SupSoftwareProjectEvalKitProjectSource</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Supply</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>supEvalKitSoftwareProjectToolchains</code> was added to object type <code>Query</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>after: String</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>before: String</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>first: Int</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>last: Int</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>order: [SupEvalKitSoftwareProjectToolchainSortInput!]</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>where: SupEvalKitSoftwareProjectToolchainFilterInput</code> added to <code>Query.supEvalKitSoftwareProjectToolchains</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitSoftwareProjectToolchain</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitSoftwareProjectToolchainConnection</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitSoftwareProjectToolchainConnection</code> has description <code>A connection to a list of items.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitSoftwareProjectToolchainEdge</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitSoftwareProjectToolchainEdge</code> has description <code>An edge in a connection.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitSoftwareProjectToolchainFilterInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitSoftwareProjectToolchainFilterInput</code> has description <code>Represents the filter for searching project source toolchains.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitSoftwareProjectToolchainSortInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitSoftwareProjectToolchainSortInput</code> has description <code>Input type for sorting.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>name</code> was added to object type <code>SupEvalKitSoftwareProjectToolchain</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>supportedVersions</code> was added to object type <code>SupEvalKitSoftwareProjectToolchain</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>toolchainId</code> was added to object type <code>SupEvalKitSoftwareProjectToolchain</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SupEvalKitSoftwareProjectToolchain.toolchainId</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>SupEvalKitSoftwareProjectToolchain.toolchainId</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>edges</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>nodes</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>pageInfo</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>totalCount</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cursor</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainEdge</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>node</code> was added to object type <code>SupEvalKitSoftwareProjectToolchainEdge</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>ids</code> of type <code>[String!]</code> was added to input object type <code>SupEvalKitSoftwareProjectToolchainFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>q</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectToolchainFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>name</code> of type <code>SortEnumType</code> was added to input object type <code>SupEvalKitSoftwareProjectToolchainSortInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>toolchainId</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>toolchainVersion</code> of type <code>String</code> was added to input object type <code>SupEvalKitSoftwareProjectCompatibleEvalKitProjectSourceInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SysSdmSchemaRegistryEntry</code> was added</span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibDeleteSoftwareLibraryPayload</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibSoftwareComponent</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibSoftwareComponentSpecification</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibSoftwareLibraryDownload</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibUploadSoftwareLibraryPayload</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmAuthoringApplication</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmConnection</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmCreateSystemModelVersionPayload</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDeviceModel</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralConfiguration</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralInstance</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralMode</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralParameter</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralPinConfig</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralPinDependencyConfig</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPort</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortConfiguration</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortConfigurationDependency</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortConfigurationEnumValue</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortConnection</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortFunction</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmEndpoint</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmFunctionalBlock</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmFunctionalModel</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmHardwareComponent</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmHardwareModel</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmParameter</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmPeripheral</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmPort</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSoftwareComponent</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSoftwareModel</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSoftwareSpecification</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSoftwareStackInstance</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSystemModel</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSystemModelVersion</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSystemModelVersionMetadata</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibDeleteSoftwareLibraryInput</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysLibUploadSoftwareLibraryInput</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmCreateSystemModelVersionInput</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmGpioMode</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPeripheralVirtualization</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmDmPortMode</code></span></li>
+<li><span class="br">−</span> <span>Description <code>**Experimental**</code> was removed from object type <code>SysSdmSoftwareComponentCategory</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>cdmReleaseUrl</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cdmVersion</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>description</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isLatest</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isOnlySemantic</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPullDeprecated</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPushDeprecated</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>migrationNotes</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>schemaVersion</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>status</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-10-13">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-13">29-Sep-2026 - 13-Oct-2026</a></h3></summary>
