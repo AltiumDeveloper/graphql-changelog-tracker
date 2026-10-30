@@ -74,6 +74,539 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-10-30">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-10-30">30-Oct-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>🔴 Breaking Changes (30)</h4></summary>
+<details open class="ctx-d"><summary><h5>Customization</h5></summary>
+<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>oneOf</code> was added to input object <code>GloCusUpdateAssignmentInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Insights</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Type for argument <code>filter</code> on field <code>Query.desWorkspaceInsInsights</code> changed from <code>DesWorkspaceInsInsightFilterInput</code> to <code>DesWorkspaceInsInsightFilterInput!</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Input field <code>DesWorkspaceInsInsightFilterInput.type</code> changed type from <code>[String!]</code> to <code>[String!]!</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Library Management</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Field <code>errorMessage</code> was removed from object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="br">−</span> <span>Field <code>status</code> was removed from object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="br">−</span> <span>Field <code>errorMessage</code> was removed from object type <code>DesPartUploadLibraryPartOperationResult</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Procurement</h5></summary>
+<details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>oneOf</code> was added to input object <code>BomCreateBomItemElementAttributeValueInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>oneOf</code> was added to input object <code>BomCreateBomOfferReferenceInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>oneOf</code> was added to input object <code>BomCreateBomPartReferenceInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>oneOf</code> was added to input object <code>BomCreateBomSupplierReferenceInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>Query.sysSdmSchemaVersionRegistry</code> changed type from <code>[SysSdmSchemaRegistryEntry!]!</code> to <code>[SchemaRegistryEntry!]!</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>SysSdmSchemaRegistryEntry</code> was removed</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmConnection.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDeviceModel.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralConfiguration.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralInstance.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPort.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfiguration.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfigurationEnumValue.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConnection.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalBlock.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalModel.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareComponent.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareModel.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmParameter.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPeripheral.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPort.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareComponent.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareModel.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareStackInstance.id</code> changed type from <code>ID!</code> to <code>String!</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>⚠️ Dangerous Changes (122)</h4></summary>
+<details open class="ctx-d"><summary><h5>Collaboration</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desAnnotations</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.desAnnotations</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Member <code>DesAnnotationManagedPartBinding</code> was added to Union type <code>DesAnnotationBinding</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Customization</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloScrScriptExecutionResults</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloScrScripts</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloScrScriptSecrets</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloScrSecrets</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCusAddAssignment</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCusDeleteAssignment</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCusUpdateAssignment</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCusUpdateAssignmentConfigurations</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrCreateScript</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrCreateSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrDeleteScript</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrDeleteSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrExecuteScript</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrRenameScript</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrSetScriptSecrets</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloScrUpdateScript</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>GloCusExtensionPoint.assignments</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>GloScrScript.versions</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to object <code>GloScrScript</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>GloScrScriptVersion.package</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desComparisonHealthcheck</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.desCompareReleases</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span><code>DesCommentThread</code> object implements <code>Node</code> interface</span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Insights</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.desWorkspaceInsInsights</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>domain: String</code> added to <code>Query.desWorkspaceInsInsightTypes</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Library Management</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Argument <code>requestPaidData: Boolean</code> added to <code>Query.desPartGlobalPartByIds</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.desPartGlobalSearch</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.desPartSearch</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceGroupById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceGroupsByIds</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceTeamByAuth</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUserByAuth</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUserById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.desWorkspaceUsersByIds</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppByClientId</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppInstalledApps</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloApps</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloApps</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloEvtSubscriptionById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloOrganization</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloOrganizationById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloUserById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloUserGroups</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloUserGroups</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloUsers</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>Query.gloUsers</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloUsersByIds</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppClientSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppGrantType</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppRedirectUri</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddAppScope</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloAddUsersToGroup</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.globalTrackedEventReport</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateAppFromOAuthClient</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUser</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloCreateUserGroup</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloDeleteApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtCreateWebhookSubscription</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtDeleteSubscription</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloEvtPublishEvent</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloInstallApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppClientSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppGrantType</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppRedirectUri</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveAppScope</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRemoveUsersFromGroup</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloRestoreApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUninstallApp</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUpdateAppContactEmail</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUpdateAppDescription</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUpdateAppHrid</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.gloUpdateAppName</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformTokenDelete</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformTokenUpdate</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceRefreshTokenCreate</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceRefreshTokenCreateNewSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceRefreshTokenDeleteSecret</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformWorkspaceTokenCreate</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformTokenUpdateError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformWorkspaceRefreshTokenCreateError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformTokenInvalidNameError</code> was added to Union type <code>PlatformWorkspaceTokenCreateError</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceGroup.members</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceGroup.members</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceTeam.projectGuests</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceTeam.projectGuests</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceTeam.workspaceGroups</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceTeam.workspaceGroups</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>DesWorkspaceTeam.workspaceUsers</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>DesWorkspaceTeam.workspaceUsers</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byTokenId</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>TokenQueries.byWorkspace</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>TokenQueries.workspaceTokenQuota</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Procurement</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.bomBom</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.bomBomById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.bomBomRelease</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.bomBoms</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomChangeBomReleaseLifecycleState</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomCreateBom</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBom</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBom</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBomById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBomById</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBomRelease</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.bomExportBomRelease</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomItem.issues</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomItemAlternate.issues</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomItemAlternate.selectedOffer</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomItemSubstitute.issues</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomItemSubstitute.selectedOffer</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomRelease.healthChecks</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomRelease.incompleteHealthChecks</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomRelease.issues</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomWip.healthChecks</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomWip.incompleteHealthChecks</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>BomWip.issues</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to object <code>SysSdmSystemModel</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (198)</h4></summary>
+<details open class="ctx-d"><summary><h5>Collaboration</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>DesAnnotationManagedPartBinding</code> was added</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>partId</code> was added to object type <code>DesAnnotationManagedPartBinding</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SchemaRegistryEntry</code> was added</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>cdmReleaseUrl</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cdmVersion</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>description</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isLatest</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isOnlySemantic</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPullDeprecated</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPushDeprecated</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>migrationNotes</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>schemaVersion</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>status</code> was added to object type <code>SchemaRegistryEntry</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Directives</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Directive <code>listSize</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Location <code>FIELD_DEFINITION</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>assumedSize</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArguments</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>slicingArgumentDefaultValue</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>sizedFields</code> was added to directive <code>listSize</code></span></li>
+<li><span class="bc">Δ</span> <span>Argument <code>requireOneSlicingArgument</code> was added to directive <code>listSize</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Design</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>DesCommentThreadProperty</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesCommentThreadProperty</code> has description <code>Comment thread metadata entry.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>DesMentionInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesMentionInput</code> has description <code>A user or group mention operation in a comment.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>DesMentionOperationType</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>ADD</code> was added to enum <code>DesMentionOperationType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>REMOVE</code> was added to enum <code>DesMentionOperationType</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesMentionOperationType</code> has description <code>An operation on a comment mention.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>DesMentionType</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>GROUP</code> was added to enum <code>DesMentionType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>USER</code> was added to enum <code>DesMentionType</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesMentionType</code> has description <code>The type of entity mentioned in a comment.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>name</code> was added to object type <code>DesCommentThreadProperty</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>value</code> was added to object type <code>DesCommentThreadProperty</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>id</code> was added to object type <code>DesCommentThread</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>properties</code> was added to object type <code>DesCommentThread</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>mentionGuid</code> of type <code>String!</code> was added to input object type <code>DesMentionInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>mentionType</code> of type <code>DesMentionType!</code> was added to input object type <code>DesMentionInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>operationType</code> of type <code>DesMentionOperationType!</code> with default value <code>&quot;ADD&quot;</code> was added to input object type <code>DesMentionInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>mentions</code> of type <code>[DesMentionInput!]</code> was added to input object type <code>DesCreateCommentInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>mentions</code> of type <code>[DesMentionInput!]</code> was added to input object type <code>DesCreateCommentThreadInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>mentions</code> of type <code>[DesMentionInput!]</code> was added to input object type <code>DesUpdateCommentInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Insights</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>desWorkspaceInsInsightsInitialized</code> was added to object type <code>Query</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>DesWorkspaceInsInsightDesignReviewLink</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesWorkspaceInsInsightDesignReviewLink</code> has description <code>Link to a design review associated with the insight.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>DesWorkspaceInsInsightTypesSettingsGql</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesWorkspaceInsInsightTypesSettingsGql</code> has description <code>Insight-type preferences affecting which insights are shown.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> has description <code>Insight-type preferences that define which insights are shown.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>created</code> was added to object type <code>DesWorkspaceInsInsightDesignReviewLink</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>id</code> was added to object type <code>DesWorkspaceInsInsightDesignReviewLink</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>excludedInsightTypes</code> was added to object type <code>DesWorkspaceInsInsightTypesSettingsGql</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>status</code> was added to object type <code>DesWorkspaceInsInitializeInsightsIfRequiredPayload</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>DesWorkspaceInsInitializeInsightsIfRequiredPayload.isSuccess</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>DesWorkspaceInsInitializeInsightsIfRequiredPayload.isSuccess</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>designReviews</code> was added to object type <code>DesWorkspaceInsRelatedEntities</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>insightTypesSettings</code> was added to object type <code>DesWorkspaceInsUserSettings</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>excludedInsightTypes</code> of type <code>[String!]!</code> was added to input object type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>insightTypesSettings</code> of type <code>DesWorkspaceInsInsightTypesSettingsInputGqlInput</code> was added to input object type <code>DesWorkspaceInsUserSettingsInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Library Management</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>hasComponentsUsages</code> was added to object type <code>DesPartSearchFixedFacets</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>lifecycleStates</code> was added to object type <code>DesPartSearchFixedFacets</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>componentStatus</code> was added to object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errorDetails</code> was added to object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>partChoiceStatus</code> was added to object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>revisionId</code> was added to object type <code>DesPartUploadComponentOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errorDetails</code> was added to object type <code>DesPartUploadLibraryPartOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>DesPartUploadLibraryPartOperationResult</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>failureReason</code> was added to object type <code>DesPartUploadOperationPayload</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>Query.solBldEntityScaffoldingStatus</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>Query.solBldEntityScaffoldingStatus</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>platformKeyValueStoreAdd</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: PlatformKeyValueStoreAddInput!</code> added to <code>Mutation.platformKeyValueStoreAdd</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformKeyValueStoreAdd</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>platformKeyValueStoreDelete</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: PlatformKeyValueStoreDeleteInput!</code> added to <code>Mutation.platformKeyValueStoreDelete</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformKeyValueStoreDelete</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>platformKeyValueStoreUpdate</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: PlatformKeyValueStoreUpdateInput!</code> added to <code>Mutation.platformKeyValueStoreUpdate</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Mutation.platformKeyValueStoreUpdate</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreAddPayload</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreDeletePayload</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntry</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformKeyValueStoreEntry</code> has description <code>A value stored in the key-value store of an app installation, in the workspace of the access token.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntryExistsError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformKeyValueStoreEntryExistsError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntryNotFoundError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformKeyValueStoreEntryNotFoundError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntrySummary</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformKeyValueStoreEntrySummary</code> has description <code>Entry metadata returned by *all*, without the value.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntrySummaryConnection</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformKeyValueStoreEntrySummaryConnection</code> has description <code>A connection to a list of items.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreEntrySummaryEdge</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformKeyValueStoreEntrySummaryEdge</code> has description <code>An edge in a connection.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreKeyInvalidError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformKeyValueStoreKeyInvalidError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreQueries</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreQuotaExceededError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformKeyValueStoreQuotaExceededError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformKeyValueStoreQuotaExceededError</code> has description &#39;Returned when adding the entry, or growing its value, would exceed the installation`s quota.`</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreUpdatePayload</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreValueTooLargeError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformKeyValueStoreValueTooLargeError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformTokenInvalidNameError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>PlatformTokenInvalidNameError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>PlatformTokenInvalidNameError</code> has description <code>Error returned by the Token API when an input name for a `PlatformToken` is invalid.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreAddError</code> was added</span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreValueTooLargeError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreEntryExistsError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreQuotaExceededError</code> was added to Union type <code>PlatformKeyValueStoreAddError</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreDeleteError</code> was added</span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreDeleteError</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreUpdateError</code> was added</span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreKeyInvalidError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreValueTooLargeError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreEntryNotFoundError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>PlatformKeyValueStoreQuotaExceededError</code> was added to Union type <code>PlatformKeyValueStoreUpdateError</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreAddInput</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreDeleteInput</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>PlatformKeyValueStoreUpdateInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SolAccessibleToInput</code> has description <code>Specifies the grids whose permissions must provide access to a solution.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Arguments</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Argument <code>after: String</code> added to <code>PlatformKeyValueStoreQueries.all</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>first: Int</code> added to <code>PlatformKeyValueStoreQueries.all</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>prefix: String</code> added to <code>PlatformKeyValueStoreQueries.all</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>key: String!</code> added to <code>PlatformKeyValueStoreQueries.byKey</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>keys: [String!]!</code> added to <code>PlatformKeyValueStoreQueries.byKeys</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>entry</code> was added to object type <code>PlatformKeyValueStoreAddPayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreAddPayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreDeletePayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isDeleted</code> was added to object type <code>PlatformKeyValueStoreDeletePayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>createdAt</code> was added to object type <code>PlatformKeyValueStoreEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>updatedAt</code> was added to object type <code>PlatformKeyValueStoreEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>value</code> was added to object type <code>PlatformKeyValueStoreEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntryExistsError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreEntryExistsError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntryNotFoundError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreEntryNotFoundError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>createdAt</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>updatedAt</code> was added to object type <code>PlatformKeyValueStoreEntrySummary</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>edges</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>nodes</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>pageInfo</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cursor</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryEdge</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>node</code> was added to object type <code>PlatformKeyValueStoreEntrySummaryEdge</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>key</code> was added to object type <code>PlatformKeyValueStoreKeyInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreKeyInvalidError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>all</code> was added to object type <code>PlatformKeyValueStoreQueries</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>listSize</code> was added to <code>PlatformKeyValueStoreQueries.all</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>byKey</code> was added to object type <code>PlatformKeyValueStoreQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>byKeys</code> was added to object type <code>PlatformKeyValueStoreQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>maxEntryCount</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>maxTotalSizeBytes</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreQuotaExceededError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>entry</code> was added to object type <code>PlatformKeyValueStoreUpdatePayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>errors</code> was added to object type <code>PlatformKeyValueStoreUpdatePayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>maxSizeBytes</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>sizeBytes</code> was added to object type <code>PlatformKeyValueStoreValueTooLargeError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>PlatformTokenInvalidNameError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>keyValueStore</code> was added to object type <code>PlatformQueries</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>PlatformQueries.keyValueStore</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreAddInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>value</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreAddInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreDeleteInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>key</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreUpdateInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>value</code> of type <code>String!</code> was added to input object type <code>PlatformKeyValueStoreUpdateInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>itemIds</code> of type <code>[ID!]</code> was added to input object type <code>SolCreateSolutionInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Procurement</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>BomCostedBomsConnection</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomCostedBomsConnection</code> has description <code>A connection to a list of items.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>BomCostedBomsEdge</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomCostedBomsEdge</code> has description <code>An edge in a connection.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomChangeBomReleaseLifecycleStatePayload</code> has description <code>Result of changing the lifecycle state of a BOM release.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomCreateBomPayload</code> has description <code>Result of creating a new BOM.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomExportBomPayload</code> has description <code>Result of exporting a BOM to a file.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomExportBomReleasePayload</code> has description <code>Result of exporting a BOM release to a file.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomChangeBomReleaseLifecycleStateInput</code> has description <code>Input for changing the lifecycle state of a BOM release.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomCreateBomInput</code> has description <code>Input for creating a new BOM.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomExportBomByIdInput</code> has description <code>Input for exporting a BOM by its identifier.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomExportBomInput</code> has description <code>Input for exporting a BOM.</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>BomExportBomReleaseInput</code> has description <code>Input for exporting a BOM release.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Arguments</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Argument <code>after: String</code> added to <code>BomWip.costedBoms</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>before: String</code> added to <code>BomWip.costedBoms</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>first: Int</code> added to <code>BomWip.costedBoms</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>last: Int</code> added to <code>BomWip.costedBoms</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>edges</code> was added to object type <code>BomCostedBomsConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>nodes</code> was added to object type <code>BomCostedBomsConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>pageInfo</code> was added to object type <code>BomCostedBomsConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>totalCount</code> was added to object type <code>BomCostedBomsConnection</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cursor</code> was added to object type <code>BomCostedBomsEdge</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>node</code> was added to object type <code>BomCostedBomsEdge</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>costedBoms</code> was added to object type <code>BomWip</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>onChipMemoryCode</code> was added to object type <code>DmRaPartNumberModel</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Object type <code>SysSdmSystemModel</code> has description <code>**Experimental**</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-10-28">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-28">28-Oct-2026</a></h3></summary>
