@@ -74,6 +74,63 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-11-03">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-11-03">03-Nov-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (30)</h4></summary>
+<details open class="ctx-d"><summary><h5>Design</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>DesignDataQueries</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>DesignDataQueries</code> has description <code>**Experimental** The entry point for queries related to the latest available design data.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Arguments</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>DesignDataQueries.byDesignId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>DesignDataQueries.byReleaseId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>releaseId: ID!</code> added to <code>DesignDataQueries.byReleaseId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>uploadId: String!</code> added to <code>DesignDataQueries.byUploadId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>DesignDataQueries.isGeneratingByDesignId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>designId: ID!</code> added to <code>DesignDataQueries.isGeneratingByReleaseId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>releaseId: ID!</code> added to <code>DesignDataQueries.isGeneratingByReleaseId</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>uploadId: String!</code> added to <code>DesignDataQueries.isGeneratingByUploadId</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>byDesignId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>byReleaseId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>byUploadId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isGeneratingByDesignId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isGeneratingByReleaseId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isGeneratingByUploadId</code> was added to object type <code>DesignDataQueries</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to object <code>DesignDataQueries</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to object <code>DesignDataQueries</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>designData</code> was added to object type <code>DesignQueries</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>LatestGenerationQueries.byDesignId</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>LatestGenerationQueries.byDesignId</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>LatestGenerationQueries.byUploadId</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>LatestGenerationQueries.byUploadId</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>sysEsdSystemDataModelByEsdId</code> was added to object type <code>Query</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>id: ID!</code> added to <code>Query.sysEsdSystemDataModelByEsdId</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>description</code> was added to object type <code>SysEsdDocument</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>description</code> of type <code>String</code> was added to input object type <code>SysEsdCreateDocumentInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>description</code> of type <code>String</code> was added to input object type <code>SysEsdUpdateDocumentInput</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>SysEsdUpdateDocumentInput.folderId</code> changed type from <code>String!</code> to <code>String</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>SysEsdUpdateDocumentInput.name</code> changed type from <code>String!</code> to <code>String</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-10-30">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-10-30">30-Oct-2026</a></h3></summary>
