@@ -74,6 +74,79 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-11-04">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-11-04">04-Nov-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>🔴 Breaking Changes (20)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>SchemaRegistryEntry</code> was removed</span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>Query.sysSdmSchemaVersionRegistry</code> changed type from <code>[SchemaRegistryEntry!]!</code> to <code>[SysSdmSchemaRegistryEntry!]!</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmConnection.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDeviceModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralConfiguration.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPeripheralInstance.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPort.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfiguration.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConfigurationEnumValue.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmDmPortConnection.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalBlock.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmFunctionalModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareComponent.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmHardwareModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmParameter.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPeripheral.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmPort.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareComponent.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareModel.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>SysSdmSoftwareStackInstance.id</code> changed type from <code>String!</code> to <code>ID!</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (20)</h4></summary>
+<details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>sysSdmBuildSystemModelFromSolution</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: SysSdmBuildSystemModelFromSolutionInput!</code> added to <code>Mutation.sysSdmBuildSystemModelFromSolution</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SysSdmBuildSystemModelFromSolutionPayload</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>SysSdmSchemaRegistryEntry</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>SysSdmSystemDataModelContent</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>SysSdmBuildSystemModelFromSolutionInput</code> was added</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>sysSdmSystemDataModelContent</code> was added to object type <code>SysSdmBuildSystemModelFromSolutionPayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cdmReleaseUrl</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>cdmVersion</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>description</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isLatest</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isOnlySemantic</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPullDeprecated</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isPushDeprecated</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>migrationNotes</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>schemaVersion</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>status</code> was added to object type <code>SysSdmSchemaRegistryEntry</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>content</code> was added to object type <code>SysSdmSystemDataModelContent</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>downloadUrl</code> was added to object type <code>SysSdmSystemDataModelContent</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>solutionId</code> of type <code>ID!</code> was added to input object type <code>SysSdmBuildSystemModelFromSolutionInput</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-11-03">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-11-03">03-Nov-2026</a></h3></summary>
