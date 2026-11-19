@@ -74,6 +74,48 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-11-19">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-11-19">19-Nov-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>⚠️ Dangerous Changes (1)</h4></summary>
+<details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Member <code>GloAppAutoInstallableForbiddenError</code> was added to Union type <code>GloCreateAppError</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (15)</h4></summary>
+<details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>gloAppInstallationStatus</code> was added to object type <code>Query</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>authorize</code> was added to <code>Query.gloAppInstallationStatus</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>GloAppAutoInstallableForbiddenError</code> was added</span></li>
+<li><span class="bc">Δ</span> <span><code>GloAppAutoInstallableForbiddenError</code> object implements <code>Error</code> interface</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GloAppAutoInstallableForbiddenError</code> has description <code>Error that occurs when the user is not permitted to mark an App as auto-installable.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>GloAppInstallationStatus</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>AUTO_INSTALLED</code> was added to enum <code>GloAppInstallationStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>INSTALLED</code> was added to enum <code>GloAppInstallationStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>NOT_INSTALLED</code> was added to enum <code>GloAppInstallationStatus</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>GloAppInstallationStatus</code> has description <code>Whether a `GloApp` is installed in the current Workspace.</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>message</code> was added to object type <code>GloAppAutoInstallableForbiddenError</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>isAutoInstallable</code> was added to object type <code>GloApp</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>isAutoInstallable</code> of type <code>BooleanOperationFilterInput</code> was added to input object type <code>GloAppFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>isAutoInstallable</code> of type <code>SortEnumType</code> was added to input object type <code>GloAppSortInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>isAutoInstallable</code> of type <code>Boolean</code> was added to input object type <code>GloCreateAppInput</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-11-18">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-11-18">18-Nov-2026</a></h3></summary>
