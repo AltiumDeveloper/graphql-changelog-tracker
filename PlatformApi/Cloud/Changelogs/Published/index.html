@@ -74,6 +74,52 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-11-26">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-11-26">26-Nov-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (19)</h4></summary>
+<details open class="ctx-d"><summary><h5>Library Management</h5></summary>
+<details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>hasStock</code> was added to object type <code>DesPartSearchFixedFacets</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>hasStock</code> of type <code>Boolean</code> was added to input object type <code>DesPartSearchFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>hasStock</code> of type <code>SortEnumType</code> was added to input object type <code>DesPartSortInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>System Design</h5></summary>
+<details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>sysEsdPushSdmIfChanged</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: SysEsdPushSdmIfChangedInput!</code> added to <code>Mutation.sysEsdPushSdmIfChanged</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>sysSdmSyncSystemModelFromSolution</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: SysSdmSyncSystemModelFromSolutionInput!</code> added to <code>Mutation.sysSdmSyncSystemModelFromSolution</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SysEsdPushSdmIfChangedPayload</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SysEsdPushSdmIfChangedPayload</code> has description <code>Result of pushing the System Data Model built from an ESD document.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SysSdmSyncSystemModelFromSolutionPayload</code> was added</span></li>
+<li><span class="ba">+</span> <span>Type <code>SysEsdPushSdmIfChangedInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SysEsdPushSdmIfChangedInput</code> has description <code>Input for pushing the System Data Model built from an ESD document.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SysSdmSyncSystemModelFromSolutionInput</code> was added</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>sdmVersionId</code> was added to object type <code>SysEsdPushSdmIfChangedPayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>sysSdmSystemModelVersion</code> was added to object type <code>SysSdmSyncSystemModelFromSolutionPayload</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>id</code> of type <code>ID!</code> was added to input object type <code>SysEsdPushSdmIfChangedInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>sdmId</code> of type <code>ID!</code> was added to input object type <code>SysEsdPushSdmIfChangedInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>solutionId</code> of type <code>ID!</code> was added to input object type <code>SysSdmSyncSystemModelFromSolutionInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>onlyCreateIfChangesDetected</code> of type <code>Boolean</code> was added to input object type <code>SysSdmCreateSystemModelVersionInput</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-11-25">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-11-25">25-Nov-2026</a></h3></summary>
