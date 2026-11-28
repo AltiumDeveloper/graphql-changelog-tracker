@@ -74,6 +74,148 @@
   <main><div class="wrap">
       <section class="year" id="year-2026">
         
+        <article class="entry" id="entry-2026-11-28">
+          <details open class="entry-d">
+            <summary><h3><a href="#entry-2026-11-28">28-Nov-2026</a></h3></summary>
+            <details open class="sect-d"><summary><h4>🔴 Breaking Changes (32)</h4></summary>
+<details open class="ctx-d"><summary><h5>Common</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>GridFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>IntOperationFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>MotorStudioProjectGridFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>MotorStudioProjectGridSortInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>PathFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>UuidOperationFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>ParamSource</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>TriggerEdge</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>TriggerMode</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>TuningModuleType</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>TuningType</code> was removed</span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Platform</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>DesWorkspaceUserSortInput</code> was removed</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Input field <code>and</code> was removed from input object type <code>DesWorkspaceUserFilterInput</code></span></li>
+<li><span class="br">−</span> <span>Input field <code>id</code> was removed from input object type <code>DesWorkspaceUserFilterInput</code></span></li>
+<li><span class="br">−</span> <span>Input field <code>or</code> was removed from input object type <code>DesWorkspaceUserFilterInput</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>🔍 Query</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Argument <code>order: [RsaMotorStudioProjectSortInput!]</code> was removed from field <code>Query.rsaMotorStudioProjects</code></span></li>
+<li><span class="br">−</span> <span>Argument <code>where: RsaMotorStudioProjectFilterInput</code> was removed from field <code>Query.rsaMotorStudioProjects</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="br">−</span> <span>Type <code>RsaMotorStudioProjectFilterInput</code> was removed</span></li>
+<li><span class="br">−</span> <span>Type <code>RsaMotorStudioProjectSortInput</code> was removed</span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Field <code>RsaMotorStudioScopeConfig.triggerEdge</code> changed type from <code>TriggerEdge!</code> to <code>RsaScopeTriggerEdge!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>RsaMotorStudioScopeConfig.triggerMode</code> changed type from <code>TriggerMode!</code> to <code>RsaScopeTriggerMode!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>RsaMotorStudioTuning.tuningType</code> changed type from <code>TuningType!</code> to <code>RsaTuningType!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>RsaMotorStudioTuningModule.moduleType</code> changed type from <code>TuningModuleType!</code> to <code>RsaTuningModuleType!</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>RsaMotorStudioTuningParameter.source</code> changed type from <code>ParamSource!</code> to <code>RsaTuningParamSource!</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioCreateScopeConfigInput.triggerEdge</code> changed type from <code>TriggerEdge!</code> to <code>RsaScopeTriggerEdge!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioCreateScopeConfigInput.triggerMode</code> changed type from <code>TriggerMode!</code> to <code>RsaScopeTriggerMode!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioCreateTuningInput.tuningType</code> changed type from <code>TuningType!</code> to <code>RsaTuningType!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioTuningModuleInput.moduleType</code> changed type from <code>TuningModuleType!</code> to <code>RsaTuningModuleType!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioTuningParameterInput.source</code> changed type from <code>ParamSource!</code> to <code>RsaTuningParamSource!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioUpdateScopeConfigInput.triggerEdge</code> changed type from <code>TriggerEdge!</code> to <code>RsaScopeTriggerEdge!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioUpdateScopeConfigInput.triggerMode</code> changed type from <code>TriggerMode!</code> to <code>RsaScopeTriggerMode!</code></span></li>
+<li><span class="bc">Δ</span> <span>Input field <code>RsaMotorStudioUpdateTuningInput.tuningType</code> changed type from <code>TuningType</code> to <code>RsaTuningType</code></span></li>
+</ul>
+<hr>
+</details></details></details><details open class="sect-d"><summary><h4>✅ Non-Breaking Changes (57)</h4></summary>
+<details open class="ctx-d"><summary><h5>Renesas (preview)</h5></summary>
+<details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>RsaScopeTriggerEdge</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>BOTH</code> was added to enum <code>RsaScopeTriggerEdge</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>FALL</code> was added to enum <code>RsaScopeTriggerEdge</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>RISE</code> was added to enum <code>RsaScopeTriggerEdge</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>RsaScopeTriggerEdge</code> has description <code>**Experimental**</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>RsaScopeTriggerMode</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>AUTO</code> was added to enum <code>RsaScopeTriggerMode</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>NORMAL</code> was added to enum <code>RsaScopeTriggerMode</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>SINGLE</code> was added to enum <code>RsaScopeTriggerMode</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>RsaScopeTriggerMode</code> has description <code>**Experimental**</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>RsaTuningModuleType</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>BRUSHLESS_THREE_PHASE_MOTOR</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>MOTOR</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>PI_CURRENT_CONTROLLER</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>PI_SPEED_CONTROLLER</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>THREE_PHASE_INVERTER</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>RsaTuningModuleType</code> has description <code>**Experimental**</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>RsaTuningParamSource</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>IDENT_RESULT</code> was added to enum <code>RsaTuningParamSource</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>USER_ENTERED</code> was added to enum <code>RsaTuningParamSource</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>RsaTuningParamSource</code> has description <code>**Experimental**</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>RsaTuningType</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>FOC3_PHASE_SENSORED</code> was added to enum <code>RsaTuningType</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>FOC3_PHASE_SENSORLESS</code> was added to enum <code>RsaTuningType</code></span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>RsaTuningType</code> has description <code>**Experimental**</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to enum <code>RsaScopeTriggerEdge</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to enum <code>RsaScopeTriggerMode</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to enum <code>RsaTuningModuleType</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to enum <code>RsaTuningParamSource</code></span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>experimental</code> was added to enum <code>RsaTuningType</code></span></li>
+</ul>
+</details></details><details open class="ctx-d"><summary><h5>Supply</h5></summary>
+<details open class="kind-d"><summary><h6>✏️ Mutation</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>supEvalKitUpdateEvalKitStatus</code> was added to object type <code>Mutation</code></span></li>
+<li><span class="ba">+</span> <span>Argument <code>input: SupEvalKitUpdateEvalKitStatusInput!</code> added to <code>Mutation.supEvalKitUpdateEvalKitStatus</code></span></li>
+<li><span class="bc">Δ</span> <span>Field <code>Mutation.supEvalKitSoftwareProjectCompatibleEvalKit</code> is deprecated</span></li>
+<li><span class="bc">Δ</span> <span>Directive <code>deprecated</code> was added to <code>Mutation.supEvalKitSoftwareProjectCompatibleEvalKit</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Types</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitUpdateEvalKitStatusPayload</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitUpdateEvalKitStatusPayload</code> has description <code>Payload associated with updating the status of an evaluation kit.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitUpdateEvalKitStatusError</code> was added</span></li>
+<li><span class="ba">+</span> <span>Member <code>SupEvalKitOperationFailedError</code> was added to Union type <code>SupEvalKitUpdateEvalKitStatusError</code></span></li>
+<li><span class="ba">+</span> <span>Member <code>SupEvalKitNotFoundError</code> was added to Union type <code>SupEvalKitUpdateEvalKitStatusError</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitUpdateEvalKitStatusInput</code> was added</span></li>
+<li><span class="bc">Δ</span> <span>Object type <code>SupEvalKitUpdateEvalKitStatusInput</code> has description <code>Input for evaluation kit status update.</code></span></li>
+<li><span class="ba">+</span> <span>Type <code>SupEvalKitStatus</code> was added</span></li>
+<li><span class="ba">+</span> <span>Enum value <code>ACTIVE</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>DRAFT</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>INACTIVE</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>ON_HOLD</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>REJECTED</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>REVIEWING</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+<li><span class="ba">+</span> <span>Enum value <code>SUBMITTED</code> was added to enum <code>SupEvalKitStatus</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Fields</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Field <code>errors</code> was added to object type <code>SupEvalKitUpdateEvalKitStatusPayload</code></span></li>
+<li><span class="ba">+</span> <span>Field <code>status</code> was added to object type <code>SupEvalKit</code></span></li>
+</ul>
+</details><details open class="kind-d"><summary><h6>Input / Payload</h6></summary>
+<ul>
+<li><span class="ba">+</span> <span>Input field <code>id</code> of type <code>ID!</code> was added to input object type <code>SupEvalKitUpdateEvalKitStatusInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>status</code> of type <code>SupEvalKitStatus!</code> was added to input object type <code>SupEvalKitUpdateEvalKitStatusInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>status</code> of type <code>SupEvalKitStatus</code> was added to input object type <code>SupEvalKitCreateEvalKitInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>hasRefDesigns</code> of type <code>Boolean</code> was added to input object type <code>SupEvalKitSearchFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>status</code> of type <code>SupEvalKitStatus</code> was added to input object type <code>SupEvalKitSearchFilterInput</code></span></li>
+<li><span class="ba">+</span> <span>Input field <code>status</code> of type <code>SupEvalKitStatus</code> was added to input object type <code>SupEvalKitUpdateEvalKitInput</code></span></li>
+</ul>
+</details></details></details>
+          </details>
+        </article>
         <article class="entry" id="entry-2026-11-26">
           <details open class="entry-d">
             <summary><h3><a href="#entry-2026-11-26">26-Nov-2026</a></h3></summary>
